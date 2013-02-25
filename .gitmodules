@@ -1,0 +1,9 @@
+[submodule "plugins/bsc/public/jquery.ui.spinner"]
+	path = plugins/bsc/public/jquery.ui.spinner
+	url = https://github.com/btburnett3/jquery.ui.spinner.git
+[submodule "public/designs/themes/consulta"]
+	path = public/designs/themes/consulta
+	url = git://gitorious.serpro/noosfero/consulta-theme.git
+[submodule "public/designs/themes/serpro"]
+	path = public/designs/themes/serpro
+	url = git://gitorious.serpro/noosfero/serpro-theme.git
