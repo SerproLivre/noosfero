@@ -551,5 +551,4 @@ class PluginTest < ActiveSupport::TestCase
     end
   end
 
-
 end
