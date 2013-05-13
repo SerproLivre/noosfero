@@ -42,7 +42,18 @@ class MarkCommentAsReadPluginTest < ActiveSupport::TestCase
     assert_match /mark_as_not_read/, link[:link]
   end
 
-  def link_to_function(content, url, options = {})
+  should 'return javascript to mark comment as read' do
+    @comment.mark_as_read(@person)
+    content = @plugin.comment_extra_contents(comment)
+    assert self.instance_eval(&content)
+  end
+
+  should 'do not return javascript if comment is not marked as read' do
+    content = @plugin.comment_extra_contents(comment)
+    assert !self.instance_eval(&content)
+  end
+
+  def link_to_remote(content, url, options = {})
     link_to(content, url, options)
   end
 
