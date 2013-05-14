@@ -15,6 +15,6 @@ class Comment
   end
 
   def marked_as_read?(person)
-    people.find(:first, :conditions => {:id => person.id})
+    person && people.find(:first, :conditions => {:id => person.id})
   end
 end
