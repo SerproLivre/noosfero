@@ -4,7 +4,8 @@ class MarkCommentAsReadPlugin::CommentTest < ActiveSupport::TestCase
 
   def setup
     @person = create_user('user').person
-    @comment = Comment.create!(:title => 'title', :body => 'body', :author_id => @person.id)
+    @article = TinyMceArticle.create!(:profile => @person, :name => 'An article')
+    @comment = Comment.create!(:title => 'title', :body => 'body', :author_id => @person.id, :source => @article)
   end
 
   should 'mark comment as read' do
@@ -25,6 +26,13 @@ class MarkCommentAsReadPlugin::CommentTest < ActiveSupport::TestCase
     assert @comment.marked_as_read?(@person)
     @comment.mark_as_not_read(@person)
     assert !@comment.marked_as_read?(@person)
+  end
+
+  should 'return comments marked as read for a user' do
+    person2 = create_user('user2').person
+    @comment.mark_as_read(@person)
+    assert_equal [], @article.comments.marked_as_read(@person) - [@comment]
+    assert_equal [], @article.comments.marked_as_read(person2)
   end
 
 end

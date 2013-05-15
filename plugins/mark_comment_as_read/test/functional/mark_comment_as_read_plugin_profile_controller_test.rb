@@ -23,11 +23,11 @@ class MarkCommentAsReadPluginProfileControllerTest < ActionController::TestCase
 
   should 'mark comment as read' do
     xhr :post, :mark_as_read, :profile => profile.identifier, :id => comment.id
-    assert_response :success
+    assert_match /\{\"ok\":true\}/, @response.body
   end
   
   should 'mark comment as npt read' do
     xhr :post, :mark_as_not_read, :profile => profile.identifier, :id => comment.id
-    assert_response :success
+    assert_match /\{\"ok\":true\}/, @response.body
   end
 end

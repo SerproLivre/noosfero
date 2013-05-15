@@ -300,6 +300,12 @@ class Noosfero::Plugin
   def check_comment_actions(comment)
     []
   end
+  
+  # -> Adds adicional content to article
+  # returns = lambda block that creates html code
+  def article_extra_contents(article)
+    nil
+  end
 
   # -> Adds fields to the signup form
   # returns = lambda block that creates html code
