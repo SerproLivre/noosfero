@@ -8,3 +8,22 @@ jQuery(window).bind("userDataLoaded", function(event, data) {
     mark_comment_as_read(data.read_comments[i]);
   }
 });
+
+function toggle_comment_read(button, url, mark) {
+  var $ = jQuery;
+  var $button = $(button);
+  $button.addClass('comment-button-loading');
+  $.post(url, function(data) {
+    if (data.ok) {
+      var $comment = $button.closest('.article-comment');
+      var $content = $comment.find('.comment-balloon-content').first();
+      if(mark)
+        $content.addClass('comment-mark-read');
+      else
+        $content.removeClass('comment-mark-read');
+      $button.removeClass('comment-button-loading');
+      return;
+    }
+  });
+}
+

@@ -20,8 +20,8 @@ class MarkCommentAsReadPlugin < Noosfero::Plugin
   
   def comment_actions(comment)
     lambda do
-      [{:link => link_to_remote(_('Mark as not read'), :url => {:controller => 'mark_comment_as_read_plugin_profile', :profile => profile.identifier, :action => 'mark_as_not_read', :id => comment.id}, :html => {:class => 'comment-footer comment-footer-link comment-footer-hide', :style => 'display: none', :id => "comment-action-mark-as-not-read-#{comment.id}"})},
-      {:link => link_to_remote(_('Mark as read'), :url => {:controller => 'mark_comment_as_read_plugin_profile', :profile => profile.identifier, :action => 'mark_as_read', :id => comment.id}, :html => {:class => 'comment-footer comment-footer-link comment-footer-hide', :style => 'display: none', :id => "comment-action-mark-as-read-#{comment.id}"})}] if user
+      [{:link => link_to_function(_('Mark as not read'), 'toggle_comment_read(this, %s, false);' % url_for(:controller => 'mark_comment_as_read_plugin_profile', :profile => profile.identifier, :action => 'mark_as_not_read', :id => comment.id).to_json, :class => 'comment-footer comment-footer-link comment-footer-hide', :style => 'display: none', :id => "comment-action-mark-as-not-read-#{comment.id}")},
+      {:link => link_to_function(_('Mark as read'), 'toggle_comment_read(this, %s, true);' % url_for(:controller => 'mark_comment_as_read_plugin_profile', :profile => profile.identifier, :action => 'mark_as_read', :id => comment.id).to_json, :class => 'comment-footer comment-footer-link comment-footer-hide', :style => 'display: none', :id => "comment-action-mark-as-read-#{comment.id}")}] if user
     end
   end
 
