@@ -109,7 +109,7 @@ class Noosfero::Plugin
     blocks = self.class.extra_blocks.map do |block, options|
       type = options[:type]
       type = type.is_a?(Array) ? type : [type].compact
-      type = type.map do |x| 
+      type = type.map do |x|
         x.is_a?(String) ? x.capitalize.constantize : x
       end
       raise "This is not a valid type" if !type.empty? && ![Person, Community, Enterprise, Environment].detect{|m| type.include?(m)}
@@ -121,16 +121,16 @@ class Noosfero::Plugin
 
       if !type.empty? && (params[:type] != :all)
         block = type.include?(params[:type]) ? block : nil
-      end    
- 
+      end
+
       if !position.empty? && !params[:position].nil?
         block = position.detect{ |p| [params[:position]].flatten.include?(p)} ? block : nil
       end
-      
+
       block
     end
     blocks.compact!
-    blocks || [] 
+    blocks || []
   end
 
   # Here the developer may specify the events to which the plugins can
@@ -469,17 +469,17 @@ class Noosfero::Plugin
   # Your plugin must implements a class method called 'extra_blocks'
   # that returns a hash with the following syntax.
   #    {
-  #      'block_name' => 
-  #        { 
+  #      'block_name' =>
+  #        {
   #          :type => 'for which holder the block will be available',
-  #          :position => 'where the block could be displayed' 
+  #          :position => 'where the block could be displayed'
   #        }
   #    }
   #
   # Where:
   #
   #   - block_name: Name of the new block added to the blocks list
-  #   - type: Could have some of the values
+  #   - type: Might have some of the values
   #      - 'environment' or Environment: If the block is available only for Environment models
   #      - 'community' or Community: If the block is available only for Community models
   #      - 'enterprise' or Enterprise: If the block is available only for Enterprise models

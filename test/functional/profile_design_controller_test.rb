@@ -4,7 +4,7 @@ require 'profile_design_controller'
 class ProfileDesignController; def rescue_action(e) raise e end; end
 
 class ProfileDesignControllerTest < ActionController::TestCase
-  
+
   COMMOM_BLOCKS = [ ArticleBlock, TagsBlock, RecentDocumentsBlock, ProfileInfoBlock, LinkListBlock, MyNetworkBlock, FeedReaderBlock, ProfileImageBlock, LocationBlock, SlideshowBlock, ProfileSearchBlock, HighlightsBlock ]
   PERSON_BLOCKS = COMMOM_BLOCKS + [FriendsBlock, FavoriteEnterprisesBlock, CommunitiesBlock, EnterprisesBlock ]
   PERSON_BLOCKS_WITH_MEMBERS = PERSON_BLOCKS + [MembersBlock]
@@ -21,7 +21,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
 
     @profile = @holder = create_user('designtestuser').person
     holder.save!
- 
+
     @box1 = Box.new
     @box2 = Box.new
     @box3 = Box.new
@@ -38,7 +38,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
     @b2 = Block.new
     @box1.blocks << @b2
     @b2.save!
-    
+
     ###### BOX 2
     @b3 = Block.new
     @box2.blocks << @b3
@@ -55,7 +55,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
     @b6 = Block.new
     @box2.blocks << @b6
     @b6.save!
-    
+
     ###### BOX 3
     @b7 = Block.new
     @box3.blocks << @b7
@@ -79,13 +79,13 @@ class ProfileDesignControllerTest < ActionController::TestCase
   def test_local_files_reference
     assert_local_files_reference :get, :index, :profile => 'designtestuser'
   end
-  
+
   def test_valid_xhtml
     assert_valid_xhtml
   end
-  
+
   ######################################################
-  # BEGIN - tests for BoxOrganizerController features 
+  # BEGIN - tests for BoxOrganizerController features
   ######################################################
   def test_should_move_block_to_the_end_of_another_block
     get :move_block, :profile => 'designtestuser', :id => "block-#{@b1.id}", :target => "end-of-box-#{@box2.id}"
@@ -192,18 +192,18 @@ class ProfileDesignControllerTest < ActionController::TestCase
       def self.extra_blocks
         {
           CustomBlock1 => {:type => Person, :position => [1]},
-          CustomBlock2 => {:type => Enterprise, :position => 1},
-          CustomBlock3 => {:type => Community, :position => '1'},
+          CustomBlock2 => {:type => Person, :position => 1},
+          CustomBlock3 => {:type => Person, :position => '1'},
           CustomBlock4 => {:type => Person, :position => [2]},
-          CustomBlock5 => {:type => Enterprise, :position => 2},
-          CustomBlock6 => {:type => Community, :position => '2'},
+          CustomBlock5 => {:type => Person, :position => 2},
+          CustomBlock6 => {:type => Person, :position => '2'},
           CustomBlock7 => {:type => Person, :position => [3]},
-          CustomBlock8 => {:type => Enterprise, :position => 3},
-          CustomBlock9 => {:type => Community, :position => '3'},
+          CustomBlock8 => {:type => Person, :position => 3},
+          CustomBlock9 => {:type => Person, :position => '3'},
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     get :add_block, :profile => 'designtestuser'
     assert_response :success
@@ -234,18 +234,18 @@ class ProfileDesignControllerTest < ActionController::TestCase
       def self.extra_blocks
         {
           CustomBlock1 => {:type => Person, :position => [1]},
-          CustomBlock2 => {:type => Enterprise, :position => 1},
-          CustomBlock3 => {:type => Community, :position => '1'},
+          CustomBlock2 => {:type => Person, :position => 1},
+          CustomBlock3 => {:type => Person, :position => '1'},
           CustomBlock4 => {:type => Person, :position => [2]},
-          CustomBlock5 => {:type => Enterprise, :position => 2},
-          CustomBlock6 => {:type => Community, :position => '2'},
+          CustomBlock5 => {:type => Person, :position => 2},
+          CustomBlock6 => {:type => Person, :position => '2'},
           CustomBlock7 => {:type => Person, :position => [3]},
-          CustomBlock8 => {:type => Enterprise, :position => 3},
-          CustomBlock9 => {:type => Community, :position => '3'},
+          CustomBlock8 => {:type => Person, :position => 3},
+          CustomBlock9 => {:type => Person, :position => '3'},
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     get :add_block, :profile => 'designtestuser'
     assert_response :success
@@ -261,13 +261,51 @@ class ProfileDesignControllerTest < ActionController::TestCase
     assert @controller.instance_variable_get('@side_block_types').include?(CustomBlock9)
   end
 
+  should 'a block plugin cannot be listed for unspecified types' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+    class CustomBlock3 < Block; end;
+    class CustomBlock4 < Block; end;
+    class CustomBlock5 < Block; end;
+    class CustomBlock6 < Block; end;
+    class CustomBlock7 < Block; end;
+    class CustomBlock8 < Block; end;
+
+    class TestBlockPlugin < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:type => Person, :position => 1},
+          CustomBlock2 => {:type => Community, :position => 1},
+          CustomBlock3 => {:type => Enterprise, :position => 1},
+          CustomBlock4 => {:type => Environment, :position => 1},
+          CustomBlock5 => {:type => Person, :position => 2},
+          CustomBlock6 => {:type => Community, :position => 3},
+          CustomBlock7 => {:type => Enterprise, :position => 2},
+          CustomBlock8 => {:type => Environment, :position => 3},
+        }
+      end
+    end
+
+    Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
+    get :add_block, :profile => 'designtestuser'
+    assert_response :success
+
+    assert @controller.instance_variable_get('@center_block_types').include?(CustomBlock1)
+    assert !@controller.instance_variable_get('@center_block_types').include?(CustomBlock2)
+    assert !@controller.instance_variable_get('@center_block_types').include?(CustomBlock3)
+    assert !@controller.instance_variable_get('@center_block_types').include?(CustomBlock4)
+    assert @controller.instance_variable_get('@side_block_types').include?(CustomBlock5)
+    assert !@controller.instance_variable_get('@side_block_types').include?(CustomBlock6)
+    assert !@controller.instance_variable_get('@side_block_types').include?(CustomBlock7)
+    assert !@controller.instance_variable_get('@side_block_types').include?(CustomBlock8)
+  end
 
   ######################################################
-  # END - tests for BoxOrganizerController features 
+  # END - tests for BoxOrganizerController features
   ######################################################
 
   ######################################################
-  # BEGIN - tests for ProfileDesignController features 
+  # BEGIN - tests for ProfileDesignController features
   ######################################################
 
   should 'display popup for adding a new block' do
@@ -370,10 +408,10 @@ class ProfileDesignControllerTest < ActionController::TestCase
 
   should 'create back link to profile control panel' do
     p = Profile.create!(:name => 'test_profile', :identifier => 'test_profile')
-   
+
     login_as(create_user_with_permission('test_user','edit_profile_design',p).identifier )
     get :index, :profile => p.identifier
-    
+
     assert_tag :tag => 'a', :attributes => {:href => '/myprofile/test_profile'}
   end
 
@@ -559,7 +597,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     assert @controller.available_blocks.include?(CustomBlock1)
   end
@@ -587,7 +625,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     assert @controller.available_blocks.include?(CustomBlock1)
   end
@@ -615,7 +653,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     assert @controller.available_blocks.include?(CustomBlock1)
   end
@@ -643,7 +681,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     assert @controller.available_blocks.include?(CustomBlock1)
   end
@@ -671,7 +709,7 @@ class ProfileDesignControllerTest < ActionController::TestCase
         }
       end
     end
-     
+
     Noosfero::Plugin::Manager.any_instance.stubs(:enabled_plugins).returns([TestBlockPlugin.new])
     assert !@controller.available_blocks.include?(CustomBlock1)
   end

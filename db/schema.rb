@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304200849) do
+ActiveRecord::Schema.define(:version => 20130429214630) do
 
   create_table "abuse_reports", :force => true do |t|
     t.integer  "reporter_id"
@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.integer  "license_id"
   end
 
-  add_index "articles", ["name"], :name => "index_articles_on_name"
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["profile_id"], :name => "index_articles_on_profile_id"
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
@@ -221,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.string   "source_type"
     t.string   "user_agent"
     t.string   "referrer"
+    t.integer  "group_id"
   end
 
   add_index "comments", ["source_id", "spam"], :name => "index_comments_on_source_id_and_spam"
@@ -229,6 +229,49 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.text     "list"
     t.string   "error_fetching"
     t.boolean  "fetched",        :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "custom_forms_plugin_answers", :force => true do |t|
+    t.text    "value"
+    t.integer "field_id"
+    t.integer "submission_id"
+  end
+
+  create_table "custom_forms_plugin_fields", :force => true do |t|
+    t.string  "name"
+    t.string  "slug"
+    t.string  "type"
+    t.string  "default_value"
+    t.string  "choices"
+    t.float   "minimum"
+    t.float   "maximum"
+    t.integer "form_id"
+    t.boolean "mandatory",     :default => false
+    t.boolean "multiple"
+    t.boolean "list"
+  end
+
+  create_table "custom_forms_plugin_forms", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "profile_id"
+    t.datetime "begining"
+    t.datetime "ending"
+    t.boolean  "report_submissions", :default => false
+    t.boolean  "on_membership",      :default => false
+    t.string   "access"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "custom_forms_plugin_submissions", :force => true do |t|
+    t.string   "author_name"
+    t.string   "author_email"
+    t.integer  "profile_id"
+    t.integer  "form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -264,11 +307,11 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.text     "design_data"
     t.text     "custom_header"
     t.text     "custom_footer"
-    t.string   "theme",                        :default => "default", :null => false
+    t.string   "theme",                        :default => "default",           :null => false
     t.text     "terms_of_use_acceptance_text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "reports_lower_bound",          :default => 0,         :null => false
+    t.integer  "reports_lower_bound",          :default => 0,                   :null => false
     t.string   "redirection_after_login",      :default => "keep_on_same_page"
     t.text     "signup_welcome_text"
     t.string   "languages"
@@ -428,7 +471,7 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.string   "type"
     t.string   "identifier"
     t.integer  "environment_id"
-    t.boolean  "active",                             :default => true
+    t.boolean  "active",                                :default => true
     t.string   "address"
     t.string   "contact_phone"
     t.integer  "home_page_id"
@@ -439,21 +482,21 @@ ActiveRecord::Schema.define(:version => 20130304200849) do
     t.float    "lat"
     t.float    "lng"
     t.integer  "geocode_precision"
-    t.boolean  "enabled",                            :default => true
-    t.string   "nickname",             :limit => 16
+    t.boolean  "enabled",                               :default => true
+    t.string   "nickname",                :limit => 16
     t.text     "custom_header"
     t.text     "custom_footer"
     t.string   "theme"
-    t.boolean  "public_profile",                     :default => true
+    t.boolean  "public_profile",                        :default => true
     t.date     "birth_date"
     t.integer  "preferred_domain_id"
     t.datetime "updated_at"
-    t.boolean  "visible",                            :default => true
+    t.boolean  "visible",                               :default => true
     t.integer  "image_id"
-    t.boolean  "validated",                          :default => true
+    t.boolean  "validated",                             :default => true
     t.string   "cnpj"
     t.string   "national_region_code"
-    t.boolean  "is_template",                        :default => false
+    t.boolean  "is_template",                           :default => false
     t.integer  "template_id"
     t.string   "redirection_after_login"
   end

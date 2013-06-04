@@ -2,7 +2,8 @@ require 'hpricot'
 
 class Article < ActiveRecord::Base
 
-include ActionController::UrlWriter
+  #FIXME This is necessary because html is being generated on the model...
+  include ActionView::Helpers::TagHelper
 
   # use for internationalizable human type names in search facets
   # reimplement on subclasses
@@ -239,8 +240,13 @@ include ActionController::UrlWriter
   # The implementation in this class just provides the +body+ attribute as the
   # HTML.  Other article types can override this method to provide customized
   # views of themselves.
+  # (To override short format representation, override the lead method)
   def to_html(options = {})
-    body || ''
+    if options[:format] == 'short'
+      display_short_format(self)
+    else
+      body || ''
+    end
   end
 
   include ApplicationHelper
@@ -314,14 +320,6 @@ include ActionController::UrlWriter
 
   def view_url
     @view_url ||= image? ? url.merge(:view => true) : url
-  end
-
-  def comment_url_structure(comment, action = :edit)
-    if comment.new_record?
-      profile.url.merge(:page => path.split("/"), :controller => :comment, :action => :create)
-    else
-      profile.url.merge(:page => path.split("/"), :controller => :comment, :action => action || :edit, :id => comment.id)
-    end
   end
 
   def allow_children?
