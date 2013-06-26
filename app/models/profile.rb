@@ -327,6 +327,7 @@ class Profile < ActiveRecord::Base
 
       if self.respond_to?(:default_set_of_blocks)
         default_set_of_blocks.each_with_index do |blocks,i|
+          blocks = blocks + plugins.dispatch(:extra_blocks, :type => self.class, :on_creation => i+1).map { |plugin| plugin.new }
           blocks.each do |block|
             self.boxes[i].blocks << block
           end

@@ -551,4 +551,92 @@ class PluginTest < ActiveSupport::TestCase
     end
   end
 
+  should 'returns array of blocks of a specified on_creation parameter' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+    class CustomBlock3 < Block; end;
+
+    class Plugin1 < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:on_creation => 1},
+          CustomBlock2 => {:on_creation => 2},
+          CustomBlock3 => {:on_creation => 3},
+        }
+      end
+    end
+    p = Plugin1.new
+    assert_equal([CustomBlock1], p.extra_blocks(:on_creation => 1))
+    assert_equal([CustomBlock2], p.extra_blocks(:on_creation => 2))
+    assert_equal([CustomBlock3], p.extra_blocks(:on_creation => 3))
+  end
+
+  should 'not return a block without on_creation parameter if on_creation parameter is defined' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+
+    class Plugin1 < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:on_creation => 1},
+          CustomBlock2 => {}
+        }
+      end
+    end
+    p = Plugin1.new
+    assert_equal([CustomBlock1], p.extra_blocks(:on_creation => 1))
+  end
+
+  should 'not return a block with on_creation parameter nil if on_creation parameter is defined' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+
+    class Plugin1 < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:on_creation => 1},
+          CustomBlock2 => {:on_creation => nil}
+        }
+      end
+    end
+    p = Plugin1.new
+    assert_equal([CustomBlock1], p.extra_blocks(:on_creation => 1))
+  end
+
+  should 'not take in consideration on_creation parameter if its not defined as parameter' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+
+    class Plugin1 < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:on_creation => 2},
+          CustomBlock2 => {}
+        }
+      end
+    end
+    p = Plugin1.new
+    assert_equal([], [CustomBlock1, CustomBlock2] - p.extra_blocks)
+  end
+
+  should 'returns array of blocks for expire_cache = true parameter' do
+    class CustomBlock1 < Block; end;
+    class CustomBlock2 < Block; end;
+    class CustomBlock3 < Block; end;
+
+    class Plugin1 < Noosfero::Plugin
+      def self.extra_blocks
+        {
+          CustomBlock1 => {:expire_cache => true},
+          CustomBlock2 => {:expire_cache => false},
+          CustomBlock3 => {},
+        }
+      end
+    end
+    p = Plugin1.new
+    assert_equal([CustomBlock1], p.extra_blocks(:expire_cache => true))
+    assert_equal([], [CustomBlock2, CustomBlock3] - p.extra_blocks(:expire_cache => false))
+    assert_equal([], [CustomBlock1, CustomBlock2, CustomBlock3] - p.extra_blocks)
+  end
+
 end

@@ -379,8 +379,6 @@ class DisplayContentBlockTest < ActiveSupport::TestCase
     assert_equal [], block.parent_nodes - [f1.id, f2.id, f3.id, f4.id, f5.id]
   end
 
-<<<<<<< HEAD
-=======
   should "save the folder in parent_nodes variable if it was checked" do
     profile = create_user('testuser').person
     Article.delete_all
@@ -432,7 +430,6 @@ class DisplayContentBlockTest < ActiveSupport::TestCase
     assert_equal [], block.parent_nodes - [f1.id]
   end
 
->>>>>>> ActionItem2543
   should "return all root articles from profile" do
     profile = create_user('testuser').person
     Article.delete_all

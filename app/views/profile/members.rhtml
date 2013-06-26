@@ -1,6 +1,6 @@
 <div class="common-profile-list-block">
 
-<h1><%= _("%s's members") % profile.name %></h1>
+<h1><%= _("%s's %s") % [profile.name, @members_title || 'members'] %></h1>
 
 <% cache_timeout(profile.members_cache_key(params), 4.hours) do %>
   <ul class='profile-list'>

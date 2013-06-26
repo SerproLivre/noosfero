@@ -1,0 +1,8 @@
+<%= render :partial => 'profile_list_block' %>
+
+<div id='edit-members-block'>
+  <%= labelled_form_field _('Visible role:'), '' %>
+  <div style='margin-left: 10px'>
+    <%= select_tag 'block[visible_role]', options_for_select(@block.roles.map{|r| [r.name, r.key]}.insert(0,''), @block.visible_role) %>
+  </div>
+</div>

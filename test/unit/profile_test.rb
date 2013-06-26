@@ -1823,4 +1823,67 @@ class ProfileTest < ActiveSupport::TestCase
     assert_equal f, p.fields_privacy
   end
 
+  should 'create three box of content for profile by default' do
+    profile = Profile.create(defaults_for_profile)
+    
+    assert_equal 3, profile.boxes.count
+  end
+
+  should 'create plugin blocks with on_creation_position defined' do
+    class NewBlock < Block
+    end
+    class SomePlugin <  Noosfero::Plugin
+      def self.extra_blocks
+        {
+          NewBlock => {:on_creation => 3}
+        }
+      end
+    end 
+    environment = Environment.default
+    
+    environment.enable_plugin(SomePlugin)
+
+    profile = Community.create(defaults_for_profile)
+  
+    assert profile.blocks.map{|n| n.class}.include?(NewBlock)
+  end
+
+  should 'not create plugin blocks with no on_creation_position defined' do
+    class SomeBlock < Block
+    end
+    class SomePlugin <  Noosfero::Plugin
+      def self.extra_blocks
+        {
+          SomeBlock => {}
+        }
+      end
+    end 
+    environment = Environment.default
+    
+    environment.enable_plugin(SomePlugin)
+
+    profile = Community.create(defaults_for_profile)
+
+    assert !profile.blocks.map{|n| n.class}.include?(SomeBlock)
+  end
+
+  should 'not create plugin blocks with on_creation_position defined as nil' do
+    class SomeBlock < Block
+    end
+    class SomePlugin <  Noosfero::Plugin
+      def self.extra_blocks
+        {
+          SomeBlock => {:on_creation => nil}
+        }
+      end
+    end 
+    environment = Environment.default
+    
+    environment.enable_plugin(SomePlugin)
+
+    profile = Community.create(defaults_for_profile)
+
+    assert !profile.blocks.map{|n| n.class}.include?(SomeBlock)
+  end
+
 end
