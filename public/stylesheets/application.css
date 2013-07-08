@@ -1809,6 +1809,7 @@ a.button.disabled, input.disabled {
 }
 #content .comment-header ul {
   float: right;
+  margin: 1px 0px 14px 0px;
 }
 #content .comment-actions .menu-submenu-header, #content .comment-actions .menu-submenu-footer, #content .comment-actions .menu-submenu h4 {
   display: none;
