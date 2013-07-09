@@ -947,9 +947,6 @@ module ApplicationHelper
     options.merge!(:page => params[:npage])
     content = article.to_html(options)
     content = content.kind_of?(Proc) ? self.instance_eval(&content).html_safe : content.html_safe
-    @plugins && @plugins.each do |plugin|
-      content = plugin.parse_content(content)
-    end
     filter_html(content, article)
   end
 
@@ -1479,7 +1476,6 @@ module ApplicationHelper
     content.nil? ? '' : content.id.to_s
   end
 
-<<<<<<< HEAD
   def filter_html(html, source)
     if @plugins
       html = convert_macro(html, source)
@@ -1512,6 +1508,14 @@ module ApplicationHelper
                        inject({}){|result, a| result.merge({a[0][11..-1] => a[1]})}.with_indifferent_access
   end 
 
-=======
->>>>>>> ActionItem2562
+  def default_folder_for_image_upload(profile)
+    default_folder = profile.folders.find_by_type('Gallery')
+    default_folder = profile.folders.find_by_type('Folder') if default_folder.nil?
+    default_folder
+  end
+
+  def content_id_to_str(content)
+    content.nil? ? '' : content.id.to_s
+  end
+
 end

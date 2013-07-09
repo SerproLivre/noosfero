@@ -86,6 +86,88 @@ class PluginManagerTest < ActiveSupport::TestCase
     assert_equal p1.random_event, plugins.dispatch_first(:random_event)
   end
 
+  should 'return the first non-blank result' do
+    class Plugin1 < Noosfero::Plugin
+      def random_event
+      end
+    end
+
+    class Plugin2 < Noosfero::Plugin
+      def random_event
+        'Plugin2'
+      end
+    end
+
+    class Plugin3 < Noosfero::Plugin
+      def random_event
+        'Plugin3'
+      end
+    end
+
+    environment.enable_plugin(Plugin1.name)
+    environment.enable_plugin(Plugin2.name)
+    environment.enable_plugin(Plugin3.name)
+
+    Plugin3.any_instance.expects(:random_event).never
+
+    assert 'Plugin2', manager.first(:random_event)
+  end
+
+  should 'returns plugins that returns true to the event' do
+    class Plugin1 < Noosfero::Plugin
+      def random_event
+      end
+    end
+
+    class Plugin2 < Noosfero::Plugin
+      def random_event
+        true
+      end
+    end
+
+    class Plugin3 < Noosfero::Plugin
+      def random_event
+        true
+      end
+    end
+
+    environment.enable_plugin(Plugin1.name)
+    environment.enable_plugin(Plugin2.name)
+    environment.enable_plugin(Plugin3.name)
+
+    results = manager.dispatch_plugins(:random_event)
+
+    assert_includes results, Plugin2
+    assert_includes results, Plugin3
+  end
+
+  should 'return the first plugin that returns true' do
+    class Plugin1 < Noosfero::Plugin
+      def random_event
+      end
+    end
+
+    class Plugin2 < Noosfero::Plugin
+      def random_event
+        true
+      end
+    end
+
+    class Plugin3 < Noosfero::Plugin
+      def random_event
+        true
+      end
+    end
+
+    environment.enable_plugin(Plugin1.name)
+    environment.enable_plugin(Plugin2.name)
+    environment.enable_plugin(Plugin3.name)
+
+    Plugin3.any_instance.expects(:random_event).never
+
+    assert_equal Plugin2, manager.first_plugin(:random_event)
+  end
+
   should 'dispatch_first method returns the first plugin response if there is many plugins to responde the event and the first one respond nil' do
 
     class Plugin1 < Noosfero::Plugin
@@ -111,170 +193,6 @@ class PluginManagerTest < ActiveSupport::TestCase
     p2 = Plugin2.new
 
     assert_equal p2.random_event, plugins.dispatch_first(:random_event)
-  end
-
-  should 'return the first non-blank result' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        'Plugin2'
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        'Plugin3'
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    Plugin3.any_instance.expects(:random_event).never
-
-    assert 'Plugin2', manager.first(:random_event)
-  end
-
-  should 'returns plugins that returns true to the event' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    results = manager.dispatch_plugins(:random_event)
-
-    assert_includes results, Plugin2
-    assert_includes results, Plugin3
-  end
-
-  should 'return the first plugin that returns true' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    Plugin3.any_instance.expects(:random_event).never
-
-    assert_equal Plugin2, manager.first_plugin(:random_event)
-  end
-
-  should 'return the first non-blank result' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        'Plugin2'
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        'Plugin3'
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    Plugin3.any_instance.expects(:random_event).never
-
-    assert 'Plugin2', manager.first(:random_event)
-  end
-
-  should 'returns plugins that returns true to the event' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    results = manager.dispatch_plugins(:random_event)
-
-    assert_includes results, Plugin2
-    assert_includes results, Plugin3
-  end
-
-  should 'return the first plugin that returns true' do
-    class Plugin1 < Noosfero::Plugin
-      def random_event
-      end
-    end
-
-    class Plugin2 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    class Plugin3 < Noosfero::Plugin
-      def random_event
-        true
-      end
-    end
-
-    environment.enable_plugin(Plugin1.name)
-    environment.enable_plugin(Plugin2.name)
-    environment.enable_plugin(Plugin3.name)
-
-    Plugin3.any_instance.expects(:random_event).never
-
-    assert_equal Plugin2, manager.first_plugin(:random_event)
   end
 
 end
