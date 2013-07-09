@@ -364,6 +364,9 @@ class Noosfero::Plugin
 
   # This method is called when the user click on comment actions menu.
   # returns = list or lambda block that return ids of enabled menu items for comments
+  #
+  # OBS: This hotspot could change the comment menu behavior dinamically removing 
+  #      existing menu itens or replacing othes itens
   # example:
   #
   #   def check_comment_actions(comment)
@@ -372,6 +375,12 @@ class Noosfero::Plugin
   #
   def check_comment_actions(comment)
     []
+  end
+  
+  # -> Adds adicional content to article
+  # returns = lambda block that creates html code
+  def article_extra_contents(article)
+    nil
   end
 
   # -> Adds fields to the signup form
