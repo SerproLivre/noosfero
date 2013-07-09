@@ -30,6 +30,8 @@ module ApplicationHelper
 
   include AccountHelper
 
+  include CommentHelper
+
   include BlogHelper
 
   include ContentViewerHelper
@@ -1011,6 +1013,36 @@ module ApplicationHelper
     html
   end
 
+  # Please, use link_to by default!
+  # This method was created to work around to inexplicable
+  # chain of problems when display_short_format was called
+  # from Article model for an ArticleBlock.
+  def reference_to_article(text, article, anchor=nil)
+    if article.profile.domains.empty?
+      href = "/#{article.url[:profile]}/"
+    else
+      href = "http://#{article.profile.domains.first.name}/"
+    end
+    href += article.url[:page].join('/')
+    href += '#' + anchor if anchor
+    content_tag('a', text, :href => href)
+  end
+
+  def display_short_format(article, options={})
+    options[:comments_link] ||= true
+    options[:read_more_link] ||= true
+    html = content_tag('div',
+             article.lead +
+             content_tag('div',
+               (options[:comments_link] ? link_to_comments(article) : '') +
+               (options[:read_more_link] ? reference_to_article( _('Read more'), article) : ''),
+               :class => 'read-more'
+             ),
+             :class => 'short-post'
+           )
+    html
+  end
+
   def colorpicker_field(object_name, method, options = {})
     text_field(object_name, method, options.merge(:class => 'colorpicker_field'))
   end
@@ -1447,6 +1479,7 @@ module ApplicationHelper
     content.nil? ? '' : content.id.to_s
   end
 
+<<<<<<< HEAD
   def filter_html(html, source)
     if @plugins
       html = convert_macro(html, source)
@@ -1479,4 +1512,6 @@ module ApplicationHelper
                        inject({}){|result, a| result.merge({a[0][11..-1] => a[1]})}.with_indifferent_access
   end 
 
+=======
+>>>>>>> ActionItem2562
 end

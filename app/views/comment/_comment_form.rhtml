@@ -1,10 +1,8 @@
 <% edition_mode = (defined? edition_mode) ? edition_mode : false %>
 <div class="<%= edition_mode ? '' : 'page-comment-form' %>">
 
-<% if @comment && @comment.errors.any? && @comment.reply_of_id.blank? %>
-  <%= error_messages_for :comment %>
-  <script type="text/javascript">jQuery(function() { document.location.href = '#page-comment-form'; });</script>
-<% end %>
+<% focus_on = logged_in? ? 'title' : 'name' %>
+
 
 <% @form_div ||= 'closed' %>
 
@@ -54,10 +52,15 @@ function check_captcha(button, confirm_action) {
 }
 </script>
 
-<% remote_form_for(:comment, comment, :url => {:profile => profile.identifier, :controller => 'comment', :action => (edition_mode ? 'update' : 'create'), :id => (edition_mode ?  comment.id : @page.id)}, :html => { :class => 'comment_form' } ) do |f| %>
-
+<% if @comment && @comment.errors.any? %>
   <%= error_messages_for :comment %>
+  <script type="text/javascript">jQuery(function() { document.location.href = '#page-comment-form'; });</script>
+<% end %>
 
+<div class="post_comment_box <%= ((defined? show_form) && show_form) ? 'opened' : 'closed' %>">
+
+  <%= link_to(_('Post a comment'), '#', :class => 'display-comment-form') if display_link && @comment.reply_of_id.blank? %>
+<% remote_form_for(:comment, comment, :url => {:profile => profile.identifier, :controller => 'comment', :action => (edition_mode ? 'update' : 'create'), :id => (edition_mode ?  comment.id : @page.id)}, :html => { :class => 'comment_form' } ) do |f| %>
 
   <%= required_fields_message %>
 
@@ -78,6 +81,9 @@ function check_captcha(button, confirm_action) {
 
   <%= labelled_form_field(_('Title'), f.text_field(:title)) %>
   <%= required labelled_form_field(_('Enter your comment'), f.text_area(:body, :rows => 5)) %>
+
+  <%= hidden_field_tag(:confirm, 'false') %>
+  <%= hidden_field_tag(:view, params[:view])%>
   <%= f.hidden_field(:reply_of_id) %>
 
   <%= @plugins.dispatch(:comment_form_extra_contents, local_assigns).collect { |content| instance_eval(&content) }.join("") %>
@@ -86,11 +92,17 @@ function check_captcha(button, confirm_action) {
   <%= hidden_field_tag(:view, params[:view])%>
 
   <% button_bar do %>
-      <%= submit_button('add', _('Post comment'), :onclick => "if(check_captcha(this)) { save_comment(this) } else { check_captcha(this, save_comment)};return false;") %>
-      <%= button_to_function :cancel, _('Cancel'), "jQuery.colorbox.close();f=jQuery(this).parents('.post_comment_box'); f.removeClass('opened'); f.addClass('closed'); return false" %>
+    <%= submit_button('add', _('Post comment'), :onclick => "if(check_captcha(this)) { save_comment(this) } else { check_captcha(this, save_comment)};return false;") %>
+    <% if !edition_mode %>
+      <%= button :cancel, _('Cancel'), '', :id => 'cancel-comment' %>
+    <% else %>
+      <%= button :cancel, _('Cancel'), '#', :onclick => "jQuery.colorbox.close();" %>
+    <% end %>
   <% end %>
 <% end %>
 
 
 </div><!-- end class="post_comment_box" -->
 </div><!-- end class="page-comment-form" -->
+
+<%= javascript_include_tag 'comment_form'%>
