@@ -4,12 +4,6 @@
 <% focus_on = logged_in? ? 'title' : 'name' %>
 
 
-<% @form_div ||= 'closed' %>
-
-<div class="post_comment_box <%= @form_div %>">
-
-  <%= link_to(_('Post a comment'), '#', :class => 'display-comment-form') if display_link %>
-
 <% if !edition_mode && !pass_without_comment_captcha? %>
   <div id="recaptcha-container" style="display: none">
     <h3><%= _('Please type the two words below') %></h3>
@@ -87,9 +81,6 @@ function check_captcha(button, confirm_action) {
   <%= f.hidden_field(:reply_of_id) %>
 
   <%= @plugins.dispatch(:comment_form_extra_contents, local_assigns).collect { |content| instance_eval(&content) }.join("") %>
-
-  <%= hidden_field_tag(:confirm, 'false') %>
-  <%= hidden_field_tag(:view, params[:view])%>
 
   <% button_bar do %>
     <%= submit_button('add', _('Post comment'), :onclick => "if(check_captcha(this)) { save_comment(this) } else { check_captcha(this, save_comment)};return false;") %>
