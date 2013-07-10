@@ -1,6 +1,6 @@
 class CreateMarkCommentAsReadPlugin < ActiveRecord::Migration
   def self.up
-    create_table :mark_comment_as_read_plugin, :id => false do |t|
+    create_table :mark_comment_as_read_plugin do |t|
       t.integer :comment_id
       t.integer :person_id
     end
