@@ -1,0 +1,16 @@
+.like-comment-action {
+  float: right;
+}
+
+.like-comment-action span, .like-comment-action a {
+  float: left;
+}
+
+.like-comment-action-separator {
+  color: #888;
+  margin-right: 5px;
+}
+
+.like-comment-action-active span {
+  color: green;
+}
