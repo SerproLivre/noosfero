@@ -16,6 +16,9 @@ class Comment < ActiveRecord::Base
   has_many :children, :class_name => 'Comment', :foreign_key => 'reply_of_id', :dependent => :destroy
   belongs_to :reply_of, :class_name => 'Comment', :foreign_key => 'reply_of_id'
 
+  has_many :comment_qualifiers, :class_name => 'CommentQualifiers'
+  has_many :people, :through => :comment_qualifiers
+
   named_scope :without_spam, :conditions => ['spam IS NULL OR spam = ?', false]
   named_scope :spam, :conditions => ['spam = ?', true]
 
@@ -261,6 +264,51 @@ class Comment < ActiveRecord::Base
 
   def marked_as_ham
     plugins.dispatch(:comment_marked_as_ham, self)
+  end
+
+  def like(person)
+    vote(person, 1)
+  end
+
+  def dislike(person)
+    vote(person, -1)
+  end
+
+  def unlike(person)
+    vote(person, 0)
+  end
+
+  def liked?(person)
+    voted?(person, 1)
+  end
+
+  def disliked?(person)
+    voted?(person, -1)
+  end
+
+  def count_dislikes
+    count_votes(-1);
+  end
+  
+  def count_likes
+    count_votes(1);
+  end
+
+  def voted?(person, value)
+    comment_qualifiers.find(:first, :conditions => {:value => value, :person_id => person.id})
+  end
+  
+  def count_votes(value)
+    comment_qualifiers.count(:conditions => {:value => value, :comment_id => id})
+  end
+
+  def vote(person, value)
+    like_comment = CommentQualifiers.find(:first, :conditions => {:person_id => person.id, :comment_id => id})
+    if like_comment.nil?
+      like_comment = CommentQualifiers.new(:person => person, :comment => self)
+    end
+    like_comment.value = value
+    like_comment.save!
   end
 
 end

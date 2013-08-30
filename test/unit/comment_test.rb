@@ -565,6 +565,106 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal 6, Comment.count_thread(comments)
   end
 
+  should 'vote in a comment' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.vote(person, 5)
+    assert_equal 1, comment.count_votes(5)
+    assert comment.voted?(person, 5)
+  end
+
+  should 'like a comment' do
+    person = create_user('user').person
+    comment = create_comment
+    assert !comment.liked?(person)
+    comment.like(person)
+    assert comment.liked?(person)
+    assert !comment.disliked?(person)
+  end
+
+  should 'do not like again' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.like(person)
+    comment.like(person)
+    assert_equal 1, comment.count_likes
+  end
+
+  should 'unlike a comment' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.like(person)
+    assert comment.liked?(person)
+    comment.unlike(person)
+    assert !comment.liked?(person)
+  end
+
+  should 'dislike a comment' do
+    person = create_user('user').person
+    comment = create_comment
+    assert !comment.disliked?(person)
+    comment.dislike(person)
+    assert !comment.liked?(person)
+    assert comment.disliked?(person)
+  end
+
+  should 'do not dislike again' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.dislike(person)
+    comment.dislike(person)
+    assert_equal 1, comment.count_dislikes
+  end
+
+  should 'undislike a comment' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.dislike(person)
+    assert comment.disliked?(person)
+    comment.unlike(person)
+    assert !comment.disliked?(person)
+  end
+
+  should 'count comments liked' do
+    person = create_user('user').person
+    person2 = create_user('user2').person
+    person3 = create_user('user3').person
+    comment = create_comment
+    comment.like(person)
+    comment.like(person2)
+    comment.dislike(person3)
+    assert_equal 2, comment.count_likes
+  end
+
+  should 'count comments disliked' do
+    person = create_user('user').person
+    person2 = create_user('user2').person
+    person3 = create_user('user3').person
+    comment = create_comment
+    comment.dislike(person)
+    comment.dislike(person2)
+    comment.like(person3)
+    assert_equal 2, comment.count_dislikes
+  end
+
+  should 'dislike a liked comment' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.like(person)
+    comment.dislike(person)
+    assert_equal 0, comment.count_likes
+    assert_equal 1, comment.count_dislikes
+  end
+
+  should 'not like a disliked comment' do
+    person = create_user('user').person
+    comment = create_comment
+    comment.dislike(person)
+    comment.like(person)
+    assert_equal 1, comment.count_likes
+    assert_equal 0, comment.count_dislikes
+  end
+
   private
 
   def create_comment(args = {})

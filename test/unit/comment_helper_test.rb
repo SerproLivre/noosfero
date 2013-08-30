@@ -23,14 +23,14 @@ class CommentHelperTest < ActiveSupport::TestCase
     assert_match /class=\"comment-actions\"/, menu
   end
   
-  should 'do not show menu if it has no actions' do
+  should 'do not render partial if it has no actions' do
     comment = Comment.new
     self.stubs(:links_for_comment_actions).returns([])
     menu = comment_actions(comment)
     assert_no_match /class=\"comment-actions\"/, menu
   end
   
-  should 'do not show menu if it has nil actions only' do
+  should 'do not render partial if it has nil actions only' do
     comment = Comment.new
     self.stubs(:link_for_report_abuse).returns(nil)
     self.stubs(:link_for_spam).returns(nil)

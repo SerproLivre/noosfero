@@ -23,11 +23,41 @@ class LikeCommentPluginProfileControllerTest < ActionController::TestCase
 
   should 'like comment' do
     xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    assert comment.liked?(profile)
+    assert_match /\{\"ok\":true\}/, @response.body
+  end
+
+  should 'unlike comment' do
+    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    assert !comment.liked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'dislike comment' do
     xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    assert comment.disliked?(profile)
+    assert_match /\{\"ok\":true\}/, @response.body
+  end
+
+  should 'undislike comment' do
+    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    assert !comment.disliked?(profile)
+    assert_match /\{\"ok\":true\}/, @response.body
+  end
+
+  should 'dislike a liked comment' do
+    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    assert comment.disliked?(profile)
+    assert_match /\{\"ok\":true\}/, @response.body
+  end
+
+  should 'like a disliked comment' do
+    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    assert comment.liked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 

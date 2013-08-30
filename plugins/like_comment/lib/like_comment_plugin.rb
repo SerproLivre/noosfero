@@ -1,5 +1,3 @@
-require_dependency 'like_comment_plugin/ext/comment'
-
 class LikeCommentPlugin < Noosfero::Plugin
 
   def self.plugin_name
