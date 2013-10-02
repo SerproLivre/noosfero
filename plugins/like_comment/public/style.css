@@ -14,3 +14,12 @@
 .like-comment-action-active span {
   color: green;
 }
+
+.like-comment-action .ui-icon, .like-comment-action .like-comment-action-separator {
+  margin-top: -3px;
+}
+
+.dislike-action .like-comment-action-counter {
+  border-left: 1px solid rgba(75,83,94,.3);
+  padding-left: 6px;
+}
