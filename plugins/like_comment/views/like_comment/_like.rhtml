@@ -1,5 +1,5 @@
 <span id="comment-action-<%= action %>-<%= comment.id %>" class="like-comment-action <%= action %>-action">
-  <a href="#" onclick="toggle_comment_like(this, 1, '<%= url %>');return false;" class="comment-footer comment-footer-link comment-footer-hide comment-action-extra <%= active ? 'like-comment-action-active':'' %>">
+  <a href="#" <%= "onclick=\"toggle_comment_like(this, 1, '#{url}');return false;\"" if enabled %> class="comment-footer comment-footer-link comment-footer-hide comment-action-extra <%= active ? 'like-comment-action-active':'' %> <%= enabled ? '':'disabled' %>">
     <span class="like-comment-action-counter"><%= count %></span>
     <span class="ui-icon <%= action=='like'?'ui-icon-carat-1-n':'ui-icon-carat-1-s' %>"></span>
   </a>

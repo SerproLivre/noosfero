@@ -24,11 +24,14 @@ class LikeCommentPluginTest < ActiveSupport::TestCase
     assert link
   end
   
-  should 'do not show link when person is not logged in' do
+  should 'show disabled link when person is not logged in' do
     self.stubs(:user).returns(nil)
     action = @plugin.comment_actions(@comment)
-    link = self.instance_eval(&action)
-    assert !link
+    links = self.instance_eval(&action)
+    links.collect do |link| 
+      assert_match /disabled/, link[:link]
+      assert_no_match /onclick/, link[:link]
+    end
   end
 
   should 'return actions when comment is not liked' do
