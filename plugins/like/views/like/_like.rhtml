@@ -1,0 +1,6 @@
+<span id="action-<%= action %>-<%= target.id %>" class="action <%= action %>-action">
+  <a href="#" <%= "onclick=\"toggle_like(this, 1, '#{url}');return false;\"" if enabled %> class="<%= active ? 'like-action-active':'' %> <%= enabled ? '':'disabled' %>">
+    <span class="like-action-counter"><%= count %></span>
+    <span class="ui-icon <%= action=='like'?'ui-icon-carat-1-n':'ui-icon-carat-1-s' %>"></span>
+  </a>
+</span>

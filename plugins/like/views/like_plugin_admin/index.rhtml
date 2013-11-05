@@ -1,0 +1,14 @@
+<h1><%= _('Like settings')%></h1>
+
+<% form_for(:settings) do |f| %>
+  
+  <h4><%= _('Enable like/dislike on:') %></h4>
+  <%= labelled_form_field f.check_box(:enable_like_article) + _('Article'), '' %>
+  <%= labelled_form_field f.check_box(:enable_like_comment) + _('Comment'), '' %>
+
+  <% button_bar do %>
+    <%= submit_button(:save, _('Save'), :cancel => {:controller => 'plugins', :action => 'index'}) %>
+  <% end %>
+
+<% end %>
+

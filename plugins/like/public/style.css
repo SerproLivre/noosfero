@@ -1,0 +1,30 @@
+.action {
+  float: right;
+}
+
+.action span, .action a {
+  float: left;
+}
+
+.like-action-separator {
+  color: #888;
+  margin-right: 5px;
+}
+
+.like-action-active span {
+  color: green;
+}
+
+.action .ui-icon, .action .like-action-separator {
+  margin-top: -3px;
+}
+
+.dislike-action .like-action-counter {
+  border-left: 1px solid rgba(75,83,94,.3);
+  padding-left: 6px;
+}
+
+.like-button-loading {
+  padding-left: 20px;
+  background: transparent url(/images/loading-small.gif) no-repeat left center;
+}

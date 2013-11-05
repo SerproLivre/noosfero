@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
-class LikeCommentPluginTest < ActiveSupport::TestCase
+class LikePluginTest < ActiveSupport::TestCase
 
   ActionController::Base.append_view_path(File.join(File.dirname(__FILE__) + '/../../views'))
   
@@ -8,12 +8,14 @@ class LikeCommentPluginTest < ActiveSupport::TestCase
   include NoosferoTestHelper
 
   def setup
-    @plugin = LikeCommentPlugin.new
+    @environment = fast_create(Environment)
+    @plugin = LikePlugin.new
     @person = create_user('user').person
     @article = TinyMceArticle.create!(:profile => @person, :name => 'An article')
     @comment = Comment.create!(:source => @article, :author => @person, :body => 'test')
     self.stubs(:user).returns(@person)
     self.stubs(:profile).returns(@person)
+    self.stubs(:environment).returns(@environment)
   end
 
   attr_reader :plugin, :comment
@@ -45,6 +47,13 @@ class LikeCommentPluginTest < ActiveSupport::TestCase
     action = @plugin.comment_actions(@comment)
     links = self.instance_eval(&action)
     assert_equal 2, links.size
+  end
+
+  should 'display actions to like an article' do
+    action = @plugin.article_extra_contents(@article)
+    link = self.instance_eval(&action)
+    assert_match /action-like-#{@article.id}/, link
+    assert_match /action-dislike-#{@article.id}/, link
   end
 
   def link_to_function(content, url, options = {})

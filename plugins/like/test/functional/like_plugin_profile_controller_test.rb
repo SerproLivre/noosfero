@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
-require File.dirname(__FILE__) + '/../../controllers/like_comment_plugin_profile_controller'
+require File.dirname(__FILE__) + '/../../controllers/like_plugin_profile_controller'
 
 # Re-raise errors caught by the controller.
-class LikeCommentPluginProfileController; def rescue_action(e) raise e end; end
+class LikePluginProfileController; def rescue_action(e) raise e end; end
 
-class LikeCommentPluginProfileControllerTest < ActionController::TestCase
+class LikePluginProfileControllerTest < ActionController::TestCase
   def setup
-    @controller = LikeCommentPluginProfileController.new
+    @controller = LikePluginProfileController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @profile = create_user('profile').person
@@ -15,48 +15,48 @@ class LikeCommentPluginProfileControllerTest < ActionController::TestCase
     @comment.save!
     login_as(@profile.identifier)
     environment = Environment.default
-    environment.enable_plugin(LikeCommentPlugin)
+    environment.enable_plugin(LikePlugin)
     self.stubs(:user).returns(@profile)
   end
 
   attr_reader :profile, :comment
 
   should 'like comment' do
-    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like_comment, :profile => profile.identifier, :id => comment.id
     assert comment.liked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'unlike comment' do
-    xhr :post, :like, :profile => profile.identifier, :id => comment.id
-    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like_comment, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like_comment, :profile => profile.identifier, :id => comment.id
     assert !comment.liked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'dislike comment' do
-    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike_comment, :profile => profile.identifier, :id => comment.id
     assert comment.disliked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'undislike comment' do
-    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
-    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike_comment, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike_comment, :profile => profile.identifier, :id => comment.id
     assert !comment.disliked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'dislike a liked comment' do
-    xhr :post, :like, :profile => profile.identifier, :id => comment.id
-    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like_comment, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike_comment, :profile => profile.identifier, :id => comment.id
     assert comment.disliked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end
 
   should 'like a disliked comment' do
-    xhr :post, :dislike, :profile => profile.identifier, :id => comment.id
-    xhr :post, :like, :profile => profile.identifier, :id => comment.id
+    xhr :post, :dislike_comment, :profile => profile.identifier, :id => comment.id
+    xhr :post, :like_comment, :profile => profile.identifier, :id => comment.id
     assert comment.liked?(profile)
     assert_match /\{\"ok\":true\}/, @response.body
   end

@@ -60,6 +60,9 @@ class Article < ActiveRecord::Base
   has_many :article_categorizations_including_virtual, :class_name => 'ArticleCategorization', :dependent => :destroy
   has_many :categories_including_virtual, :through => :article_categorizations_including_virtual, :source => :category
 
+  has_many :article_qualifiers, :class_name => 'ArticleQualifiers'
+  has_many :people, :through => :article_qualifiers
+
   acts_as_having_settings :field => :setting
 
   settings_items :display_hits, :type => :boolean, :default => true
@@ -668,6 +671,52 @@ class Article < ActiveRecord::Base
   end
 
   delegate :region, :region_id, :environment, :environment_id, :to => :profile, :allow_nil => true
+
+
+  def like(person)
+    vote(person, 1)
+  end
+
+  def dislike(person)
+    vote(person, -1)
+  end
+
+  def unlike(person)
+    vote(person, 0)
+  end
+
+  def liked?(person)
+    voted?(person, 1)
+  end
+
+  def disliked?(person)
+    voted?(person, -1)
+  end
+
+  def count_dislikes
+    count_votes(-1);
+  end
+  
+  def count_likes
+    count_votes(1);
+  end
+
+  def voted?(person, value)
+    article_qualifiers.find(:first, :conditions => {:value => value, :person_id => person.id}) if person
+  end
+  
+  def count_votes(value)
+    article_qualifiers.count(:conditions => {:value => value, :article_id => id})
+  end
+
+  def vote(person, value)
+    qualifier = ArticleQualifiers.find(:first, :conditions => {:person_id => person.id, :article_id => id})
+    if qualifier.nil?
+      qualifier = ArticleQualifiers.new(:person => person, :article => self)
+    end
+    qualifier.value = value
+    qualifier.save!
+  end
 
   private
 

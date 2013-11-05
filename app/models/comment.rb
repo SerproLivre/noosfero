@@ -295,7 +295,7 @@ class Comment < ActiveRecord::Base
   end
 
   def voted?(person, value)
-    comment_qualifiers.find(:first, :conditions => {:value => value, :person_id => person.id})
+    comment_qualifiers.find(:first, :conditions => {:value => value, :person_id => person.id}) if person
   end
   
   def count_votes(value)
