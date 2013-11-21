@@ -22,4 +22,18 @@ class RawHTMLBlockTest < ActiveSupport::TestCase
     assert_match(/HTML$/, block.content)
   end
 
+  should 'replace {profile} with profile identifier' do
+    profile = Profile.new(:identifier => 'test_profile')
+    block = RawHTMLBlock.new(:html => "Profile: {profile}")
+    block.stubs(:owner).returns(profile)
+    assert_equal 'Profile: test_profile', block.content
+  end
+
+  should 'do not replace {profile} if owner is not a profile' do
+    environment = fast_create(Environment)
+    block = RawHTMLBlock.new(:html => "Profile: {profile}")
+    block.stubs(:owner).returns(environment)
+    assert_equal 'Profile: {profile}', block.content
+  end
+
 end

@@ -1,1 +1,7 @@
 <%= labelled_form_field(_('HTML code'), text_area(:block, :html, :style => 'width: 90%', :rows => 15)) %>
+
+<% if @block.owner.kind_of?(Profile) %>
+  <div id="raw-html-tags-help-<%= @block.id %>" style="color: #999; margin-bottom: 8px;">
+    <%= _('{profile} will be replaced by the owner identifier.') %>
+  </div>
+<% end %>
