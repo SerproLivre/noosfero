@@ -1,0 +1,7 @@
+<ul>
+	<% @choices.each do |choice| %>
+	<li><%= choice.id %> - <%= choice.data %> | Edit | Approve</li>
+	<% end %>
+</ul>
+<%= pagination_links @choices, :params => {:controller => 'pairwise_plugin_suggestions', :action => :index, :profile => profile.identifier} %>
+

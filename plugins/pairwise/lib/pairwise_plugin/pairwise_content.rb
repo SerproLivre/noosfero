@@ -85,15 +85,21 @@ class PairwisePlugin::PairwiseContent < Article
     end
   end
 
+  def raw_choices
+    @raw_choices ||= question.get_choices
+  end
+
   def choices
-    if @choices.nil?
+    if raw_choices.nil?
+      @choices = []
+    else
       begin
         @choices ||= question.get_choices.map {|q| { q.id.to_s, q.data } }
       rescue
-        @choices = []
+       @choices = []
       end
     end
-    @choices ||= []
+    @choices
   end
 
   def choices=(value)
@@ -128,6 +134,15 @@ class PairwisePlugin::PairwiseContent < Article
         errors.add_to_base(_("Choice empty"))
         break
       end
+    end
+  end
+
+  def update_choice(choice)
+    begin
+      return pairwise_client.update_choice(question, choice.id, choice.data)
+    rescue Exception => e
+      errors.add_to_base(N_("Choices:") + " " + N_(e.message))
+      return false
     end
   end
 
