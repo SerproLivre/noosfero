@@ -28,7 +28,7 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
   should 'update a choice text' do
     choice = @question.get_choice_with_text("Choice 1")
     assert_not_nil choice
-    @client.update_choice(@question, choice.id, 'Choice Renamed')
+    @client.update_choice(@question, choice.id, 'Choice Renamed', true)
     @question_after_change  = @client.find_question_by_id(@question.id)
     assert @question_after_change.has_choice_with_text?("Choice Renamed"), "Choice not found"
     assert ! @question_after_change.has_choice_with_text?("Choice 1"), "Choice 1 should not exist"
@@ -38,7 +38,7 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
     choice = @question.get_choice_with_text("Choice 1")
     assert_not_nil choice
     exception = assert_raises Pairwise::Error do
-      @client.update_choice(@question, choice.id, '')
+      @client.update_choice(@question, choice.id, '', true)
     end
     assert_equal "Empty choice text", exception.message
   end
@@ -84,4 +84,19 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
     end
     assert_equal "Vote not registered. Please check if all the necessary parameters were passed.", exception.message
   end
+
+  should 'approve choice' do
+    @client.toggle_autoactivate_ideas(@question, false)
+    choice = @client.add_choice(@question.id, 'New inactive choice')
+    assert_equal 1, (@question.choices_include_inactive - @question.choices).size
+    @client.approve_choice(@question, choice.id)
+    assert_equal 0, (@question.choices_include_inactive - @question.choices).size
+    assert_equal 3, @question.choices.size
+  end
+
+  # should 'update choice' do
+  # end
+
+  # should 'toggle autoactivate ideas' do
+  # end
 end

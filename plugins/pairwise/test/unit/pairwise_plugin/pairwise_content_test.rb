@@ -61,7 +61,7 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
     pairwise_content.profile = @profile
     pairwise_content.expects(:valid?).returns(true)  
     pairwise_content.expects(:create_pairwise_question).returns(question)
-    
+    pairwise_content.expects(:toggle_autoactivate_ideas).at_least_once
     #save should call before_save which sends the question to pairwise
     pairwise_content.save!
     

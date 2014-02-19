@@ -1,7 +1,41 @@
-<ul>
+<% extend PairwisePlugin::Helpers::SuggestionsHelper %>
+
+<h1><%= _("Pairwise Question") %></h1>
+<h4><%= @pairwise_content.name %></h4>
+<% if flash[:error] %>
+	<div class="error">
+	   <%= flash[:error] %>
+	</div>
+<% end %>
+<% if  flash[:notice] %>
+	<div class="notice">
+	   <%= flash[:notice] %>
+	</div>
+<% end %>
+<%= label_tag  _('Show') + ":" %>
+<%= link_to_if params[:pending] == '1', _('Enabled'), :pending => '' %> |  
+<%= link_to_if params[:pending].blank?, _('Pending'), :pending => 1 %> 
+<table>
+	<tr>
+		<td><%= _('ID') %></td>
+		<td><%= _('Idea') %></td>
+		<td><%= _('Activated') %></td>
+		<td></td>
+	</tr>
 	<% @choices.each do |choice| %>
-	<li><%= choice.id %> - <%= choice.data %> | Edit | Approve</li>
+		<tr>
+			<td><%= choice.id %></td>
+			<td width="250px"><%= choice.data %></td>
+			<td><%= choice.active ? _("Yes") : _("No") %></td>
+			<td>
+				<%= link_to_edit_choice(@pairwise_content, choice) %>
+				<% unless choice.active %>
+					|
+					<%= link_to_approve_choice(@pairwise_content, choice, params)%>
+				<% end %>
+			</td>
+		</tr>
 	<% end %>
-</ul>
-<%= pagination_links @choices, :params => {:controller => 'pairwise_plugin_suggestions', :action => :index, :profile => profile.identifier} %>
+</table>
+<%= pagination_for_choices(@choices) %>
 

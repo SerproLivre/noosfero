@@ -11,6 +11,10 @@ class Pairwise::Question < ActiveResource::Base
     Pairwise::Choice.find(:all, :params => {:question_id => self.id , :include_inactive => true})
   end
 
+  def find_choice(id)
+    Pairwise::Choice.find(id, :params => {:question_id => self.id, :include_inactive => true })
+  end
+
   alias_method :choices, :get_choices
 
   def has_choice_with_text?(text)
