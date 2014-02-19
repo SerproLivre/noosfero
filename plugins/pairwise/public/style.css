@@ -199,3 +199,24 @@ div#pairwise_form_fields textarea {
 	text-decoration: underline;
 	width: 100%;
 }
+
+.result_label {
+	padding: 15px 0px;
+}
+
+div.choices_filter {
+	width: 100%;
+	text-align: right;
+}
+
+table.pairwise_choices_table {
+	border: 1px #fcfcfc solid;
+	 border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+}
+
+table.pairwise_choices_table th{
+	font-weight: bolder;
+	text-align: left;
+}

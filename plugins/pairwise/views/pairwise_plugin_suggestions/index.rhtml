@@ -1,7 +1,13 @@
+<% extend PairwisePlugin::Helpers::ViewerHelper %>
 <% extend PairwisePlugin::Helpers::SuggestionsHelper %>
+
+<%= pairwise_plugin_stylesheet  %>
 
 <h1><%= _("Pairwise Question") %></h1>
 <h4><%= @pairwise_content.name %></h4>
+<div class="result_label">
+	<%= pairwise_result_link _("Results"), @pairwise_content %>
+</div>
 <% if flash[:error] %>
 	<div class="error">
 	   <%= flash[:error] %>
@@ -12,15 +18,17 @@
 	   <%= flash[:notice] %>
 	</div>
 <% end %>
-<%= label_tag  _('Show') + ":" %>
-<%= link_to_if params[:pending] == '1', _('Enabled'), :pending => '' %> |  
-<%= link_to_if params[:pending].blank?, _('Pending'), :pending => 1 %> 
-<table>
+<div class="choices_filter">
+	<%= label_tag  _('Show') + ":" %>
+	<%= link_to_if params[:pending] == '1', _('Enabled'), :pending => '' %> |  
+	<%= link_to_if params[:pending].blank?, _('Pending'), :pending => 1 %>
+</div>
+<table class="pairwise_choices_table">
 	<tr>
-		<td><%= _('ID') %></td>
-		<td><%= _('Idea') %></td>
-		<td><%= _('Activated') %></td>
-		<td></td>
+		<th><%= _('ID') %></th>
+		<th><%= _('Idea') %></th>
+		<th><%= _('Activated') %></th>
+		<th></th>
 	</tr>
 	<% @choices.each do |choice| %>
 		<tr>
