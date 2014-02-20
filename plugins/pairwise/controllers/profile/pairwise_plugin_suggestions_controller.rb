@@ -10,7 +10,7 @@ class PairwisePluginSuggestionsController < ProfileController
     return no_result if @pairwise_content.nil?
     return no_result if @pairwise_content.question.nil?
     @choices = list_choices
-    @choices = WillPaginate::Collection.create(params[:page] || 1, 5, @choices.length) do |pager|
+    @choices = WillPaginate::Collection.create(params[:page] || 1, 20, @choices.length) do |pager|
       pager.replace(@choices.slice(pager.offset, pager.per_page))
     end
   end

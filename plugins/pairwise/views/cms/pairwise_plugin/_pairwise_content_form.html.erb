@@ -30,16 +30,6 @@
 		<input class="button with-text icon-add" type="button" id="add_new_choice" value="<%= _("New choice") %>">
 		<br style="clear: left;">
 	</div>
-
-	<div id="choices_waiting_approval">
-		<span class="formlabel">Choices waiting approval</span>
-		<ul>
-			<% @article.inactive_choices.each do |choice| %>
-				<li><%= choice.data %></li>
-			<% end %>
-		</ul>
-	</div>
-
 	<script type="text/javascript">
 	jQuery('#add_new_choice').click(function(){
 		var qty = jQuery("#pairwise_choices_list textarea").size();

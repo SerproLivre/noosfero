@@ -174,7 +174,10 @@ class PairwisePlugin::PairwiseContent < Article
       unless @choices.nil?
         @choices.each do |choice_text|
           begin
-            pairwise_client.add_choice(pairwise_question_id, choice_text) unless choice_text.empty?
+            unless choice_text.empty?
+              choice = pairwise_client.add_choice(pairwise_question_id, choice_text)
+              pairwise_client.approve_choice(question, choice.id)
+            end
           rescue Exception => e
             errors.add_to_base(N_("Choices: Error adding new choice to question") + N_(e.message))
             return false

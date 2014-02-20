@@ -91,13 +91,17 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
     @pairwise_content.expects('valid?').returns(true).at_least_once
 
     @pairwise_content.expects(:pairwise_client).returns(@pairwise_client).at_least_once
-
+    @pairwise_content.expects(:question).returns(@question).at_least_once
     @pairwise_content.choices = ['New Choice 1', 'New Choice 2']
     @pairwise_content.choices_saved = []
 
-    @pairwise_client.expects(:add_choice).with(@pairwise_content.pairwise_question_id, "New Choice 1")
-    @pairwise_client.expects(:add_choice).with(@pairwise_content.pairwise_question_id, "New Choice 2")
+    @pairwise_client.expects(:approve_choice).returns(true).at_least_once
+    choice_stub = Pairwise::Choice.new(:id=> 1, :data => 'txt')
+    @pairwise_client.expects(:add_choice).with(@pairwise_content.pairwise_question_id, "New Choice 1").returns(choice_stub)
+    @pairwise_client.expects(:add_choice).with(@pairwise_content.pairwise_question_id, "New Choice 2").returns(choice_stub)
+    @pairwise_client.expects(:update_question).with(@question.id, @question.name).returns(true)
     @pairwise_content.save
+    puts @pairwise_content.errors.full_messages
   end
 
   should 'allow new ideas by default when created' do
