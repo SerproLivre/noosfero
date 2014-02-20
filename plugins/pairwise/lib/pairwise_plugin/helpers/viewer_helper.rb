@@ -80,5 +80,20 @@ module PairwisePlugin::Helpers::ViewerHelper
   def is_external_vote
     params.has_key?("source") && !params[:source].empty?
   end
+
+  def ideas_management_link(label, pairwise_content, user)
+    return "" unless user
+    return "" unless pairwise_content.allow_edit?(user)
+    link_to label, :controller => :pairwise_plugin_suggestions, :action => :index, :id => pairwise_content.id
+  end
+
+  def has_param_pending_choices?
+    params.has_key?("pending") && "1".eql?(params[:pending])
+  end
+
+  def choices_showing_text
+    ideas_or_suggestions_text = has_param_pending_choices? ? "Suggestions" : "Ideas"
+    _("Showing")  + " " + ideas_or_suggestions_text
+  end
 end
 

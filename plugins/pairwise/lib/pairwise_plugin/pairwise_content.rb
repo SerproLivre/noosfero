@@ -85,15 +85,21 @@ class PairwisePlugin::PairwiseContent < Article
     end
   end
 
+  def raw_choices
+    @raw_choices ||= question ? question.get_choices : []
+  end
+
   def choices
-    if @choices.nil?
+    if raw_choices.nil?
+      @choices = []
+    else
       begin
         @choices ||= question.get_choices.map {|q| { q.id.to_s, q.data } }
       rescue
-        @choices = []
+       @choices = []
       end
     end
-    @choices ||= []
+    @choices
   end
 
   def choices=(value)
@@ -131,16 +137,47 @@ class PairwisePlugin::PairwiseContent < Article
     end
   end
 
+  def update_choice(choice_id, choice_text, active)
+    begin
+      return pairwise_client.update_choice(question, choice_id, choice_text, active)
+    rescue Exception => e
+      errors.add_to_base(N_("Choices:") + " " + N_(e.message))
+      return false
+    end
+  end
+
+  def approve_choice(choice_id)
+    begin
+      return pairwise_client.approve_choice(question, choice_id)
+    rescue Exception => e
+      errors.add_to_base(N_("Choices:") + " " + N_(e.message))
+      return false
+    end
+  end
+
+  def find_choice id
+    return nil if question.nil?
+    question.find_choice id
+  end
+
+  def toggle_autoactivate_ideas(active_flag)
+    pairwise_client.toggle_autoactivate_ideas(question, active_flag)
+  end
+
   def send_question_to_service
     if new_record?
-      created_question = create_pairwise_question
-      self.pairwise_question_id = created_question.id
+      @question = create_pairwise_question
+      toggle_autoactivate_ideas(false)
+      self.pairwise_question_id = @question.id
     else
       #add new choices
       unless @choices.nil?
         @choices.each do |choice_text|
           begin
-            pairwise_client.add_choice(pairwise_question_id, choice_text) unless choice_text.empty?
+            unless choice_text.empty?
+              choice = pairwise_client.add_choice(pairwise_question_id, choice_text)
+              pairwise_client.approve_choice(question, choice.id)
+            end
           rescue Exception => e
             errors.add_to_base(N_("Choices: Error adding new choice to question") + N_(e.message))
             return false
@@ -151,7 +188,7 @@ class PairwisePlugin::PairwiseContent < Article
       unless @choices_saved.nil?
         @choices_saved.each do |id,data|
           begin
-            pairwise_client.update_choice(question, id, data)
+            pairwise_client.update_choice(question, id, data, true)
           rescue Exception => e
             errors.add_to_base(N_("Choices:") + " " + N_(e.message))
             return false

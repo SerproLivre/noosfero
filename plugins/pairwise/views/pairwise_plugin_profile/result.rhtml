@@ -11,6 +11,7 @@
 <% else %>
    <h1 class="title"><%= @page.name %></h1>
   <br/>
+  <%= ideas_management_link _('Manage Ideas'), @page, user %>
   <table>
     <thead>
     <tr>

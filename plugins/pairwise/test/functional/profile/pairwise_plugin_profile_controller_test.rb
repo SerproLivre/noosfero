@@ -18,18 +18,12 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     @controller = PairwisePluginProfileController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
-    
+   
     @profile = fast_create(Community, :environment_id => @environment.id)
-
     @question = PairwiseContentFixtures.pairwise_question_with_prompt
-
     @user = create_user('testinguser').person
-
     @profile.add_admin(@user)
-
     @content =  PairwiseContentFixtures.pairwise_content
-    @content.expects(:send_question_to_service).returns(nil)
-
     @profile.articles << @content
   end
 
