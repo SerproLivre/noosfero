@@ -4,7 +4,7 @@
 <%= pairwise_plugin_stylesheet  %>
 
 <h1><%= _("Pairwise Question") %></h1>
-<h4><%= @pairwise_content.name %></h4>
+<h4><%= _("Question text" ) %>: </h4><span><%= @pairwise_content.name %></span>
 <div class="result_label">
 	<%= pairwise_result_link _("Results"), @pairwise_content %>
 </div>
@@ -20,22 +20,19 @@
 <% end %>
 <div class="choices_filter">
 	<%= label_tag  _('Show') + ":" %>
-	<%= link_to_if params[:pending] == '1', _('Enabled'), :pending => '' %> |  
-	<%= link_to_if params[:pending].blank?, _('Pending'), :pending => 1 %>
+	<%= link_to_if  has_param_pending_choices?, _('Ideas'), :pending => '' %> |  
+	<%= link_to_if ! has_param_pending_choices?, _('Suggestions'), :pending => '1' %>
 </div>
+  <h4><%= choices_showing_text %></h4>
 <table class="pairwise_choices_table">
 	<tr>
-		<th><%= _('ID') %></th>
-		<th><%= _('Idea') %></th>
-		<th><%= _('Activated') %></th>
+		<th><%= _("Text") %></th>
 		<th></th>
 	</tr>
 	<% @choices.each do |choice| %>
 		<tr>
-			<td><%= choice.id %></td>
-			<td width="250px"><%= choice.data %></td>
-			<td><%= choice.active ? _("Yes") : _("No") %></td>
-			<td>
+      <td><%= choice.data %></td>
+			<td width="105px">
 				<%= link_to_edit_choice(@pairwise_content, choice) %>
 				<% unless choice.active %>
 					|
