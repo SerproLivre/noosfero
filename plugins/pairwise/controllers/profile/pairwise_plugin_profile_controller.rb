@@ -3,10 +3,10 @@ class PairwisePluginProfileController < ProfileController
 
   def prompt
     prompt_id = params[:prompt_id]
-    @page = find_content(params)
+    pairwise_content = find_content(params)
     embeded = params.has_key?("embeded")
     source = params[:source]
-    locals = {:embeded => embeded, :source => source, :prompt_id => prompt_id }
+    locals = {:pairwise_content => pairwise_content, :embeded => embeded, :source => source, :prompt_id => prompt_id }
     if embeded
       render 'content_viewer/prompt', :layout => false, :locals => locals
     else
