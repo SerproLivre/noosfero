@@ -86,6 +86,7 @@ class PairwisePlugin::PairwiseContent < Article
   end
 
   def raw_choices
+    return [] if pairwise_question_id.nil?
     @raw_choices ||= question ? question.get_choices : []
   end
 
@@ -167,8 +168,8 @@ class PairwisePlugin::PairwiseContent < Article
   def send_question_to_service
     if new_record?
       @question = create_pairwise_question
-      toggle_autoactivate_ideas(false)
       self.pairwise_question_id = @question.id
+      toggle_autoactivate_ideas(false)
     else
       #add new choices
       unless @choices.nil?
