@@ -217,5 +217,21 @@ class PairwisePlugin::PairwiseContent < Article
     return false unless allow_new_ideas?
     pairwise_client.add_new_idea(pairwise_question_id, text)
   end
-end
 
+#   def join_choices(ids_choices_to_join, id_choice_elected)
+#     ids_choices_to_join.each do |id_choice|
+#       choice = question.find_choice(id_choice)
+#       if id_choice.eql?(id_choice_elected)
+                
+#       else
+#         define_as_similar_choice(choice, id_choice_elected )
+#       end
+#     end
+#   end
+# protected
+#   def define_as_similar_choice(choice, id_choice_parent)
+#     choice.id_parent = id_choice_parent
+#     choice.active = false
+#     choice.save
+#   end
+end
