@@ -94,9 +94,16 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
     assert_equal 3, @question.choices.size
   end
 
-  # should 'update choice' do
-  # end
+  should 'update choice' do
+    choice = @question.get_choices.first
+    new_choice_text = choice.data + " Changes"
+    assert_equal true, @client.update_choice(@question, choice.id, choice.data + " Changes", true)
+    assert_equal new_choice_text, @client.find_question_by_id(@question.id).find_choice(choice.id).data
+  end
 
-  # should 'toggle autoactivate ideas' do
-  # end
+  should 'toggle autoactivate ideas' do
+    assert_equal true, @client.find_question_by_id(@question.id).it_should_autoactivate_ideas
+    @client.toggle_autoactivate_ideas(@question, false)
+    assert_equal false, @client.find_question_by_id(@question.id).it_should_autoactivate_ideas
+  end
 end
