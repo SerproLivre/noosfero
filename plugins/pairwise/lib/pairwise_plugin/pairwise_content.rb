@@ -211,7 +211,7 @@ class PairwisePlugin::PairwiseContent < Article
   end
 
   def allow_new_ideas?
-    return allow_new_ideas === true
+    return allow_new_ideas
   end
 
   def add_new_idea(text)
