@@ -1,3 +1,3 @@
-#require 'active_resource'
-#require 'active_support/all'
-
+require 'rubygems'
+require 'webmock'
+require 'vcr'

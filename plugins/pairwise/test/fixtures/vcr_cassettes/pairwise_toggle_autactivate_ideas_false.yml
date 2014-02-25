@@ -1,0 +1,61 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "957"
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhcvcXVlc3Rpb25zLzYyMS54bWw6D3Nlc3Npb25faWQiJTFhMjY0Y2QzMjcwYzNlNTE3ZTQ5MDNlMzc3OTc2ZjAy--84c41f15fa9f0dcd8d3e6ae39c788f7a67562511; path=/; HttpOnly
+      Date: 
+      - Tue, 25 Feb 2014 14:22:26 GMT
+      Content-Type: 
+      - application/xml; charset=utf-8
+      Etag: 
+      - "\"d8c777513c17ba76ca9de9b4e6e68a57\""
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "32"
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <question>
+          <active type="boolean">true</active>
+          <choices-count type="integer">3</choices-count>
+          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+          <creator-id type="integer">8</creator-id>
+          <id type="integer">621</id>
+          <inactive-choices-count type="integer">0</inactive-choices-count>
+          <information nil="true"></information>
+          <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
+          <local-identifier>1</local-identifier>
+          <name>Q1</name>
+          <prompts-count type="integer">1</prompts-count>
+          <show-results type="boolean">true</show-results>
+          <site-id type="integer">1</site-id>
+          <tracking nil="true"></tracking>
+          <updated-at type="datetime">2014-02-25T14:22:26Z</updated-at>
+          <uses-catchup type="boolean">true</uses-catchup>
+          <version type="integer">6</version>
+          <votes-count type="integer">1</votes-count>
+          <item-count type="integer">3</item-count>
+        </question>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:22:26 GMT
+recorded_with: VCR 2.8.0

@@ -1,0 +1,309 @@
+--- 
+recorded_with: VCR 2.8.0
+http_interactions: 
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/choices.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "1170"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "42"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIh8vcXVlc3Rpb25zLzYyMS9jaG9pY2VzLnhtbDoPc2Vzc2lvbl9pZCIlZGIyODdkMDkxZjQ1YzY0NDJiMmRiYjAwMjc5N2NhYjU%3D--3de3339f65e1c0f4327bfa05bbfadd1198d26d08; path=/; HttpOnly
+      Etag: 
+      - "\"4499ec7892e925bc738d04fba7e7112a\""
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Date: 
+      - Tue, 25 Feb 2014 14:16:35 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <choices type="array">
+          <choice>
+            <active type="boolean">true</active>
+            <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+            <data>Choice Renamed</data>
+            <id type="integer">1300</id>
+            <losses type="integer">0</losses>
+            <score type="float">66.6666666666667</score>
+            <wins type="integer">1</wins>
+            <user-created type="boolean">false</user-created>
+          </choice>
+          <choice>
+            <active type="boolean">true</active>
+            <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+            <data>Choice 2</data>
+            <id type="integer">1301</id>
+            <losses type="integer">0</losses>
+            <score type="float">50.0</score>
+            <wins type="integer">0</wins>
+            <user-created type="boolean">false</user-created>
+          </choice>
+          <choice>
+            <active type="boolean">true</active>
+            <created-at type="datetime">2014-02-25T14:16:27Z</created-at>
+            <data>New inactive choice</data>
+            <id type="integer">1302</id>
+            <losses type="integer">1</losses>
+            <score type="float">33.3333333333333</score>
+            <wins type="integer">0</wins>
+            <user-created type="boolean">false</user-created>
+          </choice>
+        </choices>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/choices/1300.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "1069"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "29"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIiQvcXVlc3Rpb25zLzYyMS9jaG9pY2VzLzEzMDAueG1sOg9zZXNzaW9uX2lkIiVmNDE2MDZhY2ZiMzRjMDAwMzU3ODBhODQ1NzMyMjY4NQ%3D%3D--86aaaec5679b175623406db6ba65d6c5fb4e6d97; path=/; HttpOnly
+      Etag: 
+      - "\"ab31fd1d686e83c7c2273e12f1e2dc02\""
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Date: 
+      - Tue, 25 Feb 2014 14:16:35 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <choice>
+          <active type="boolean">true</active>
+          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+          <creator-id type="integer">8</creator-id>
+          <data>Choice Renamed</data>
+          <id type="integer">1300</id>
+          <item-id type="integer" nil="true"></item-id>
+          <local-identifier nil="true"></local-identifier>
+          <losses type="integer">0</losses>
+          <position type="integer" nil="true"></position>
+          <prompt-id type="integer" nil="true"></prompt-id>
+          <prompts-count type="integer">0</prompts-count>
+          <prompts-on-the-left-count type="integer">1</prompts-on-the-left-count>
+          <prompts-on-the-right-count type="integer">0</prompts-on-the-right-count>
+          <question-id type="integer">621</question-id>
+          <ratings type="integer" nil="true"></ratings>
+          <request-id type="integer" nil="true"></request-id>
+          <score type="float">66.6666666666667</score>
+          <tracking nil="true"></tracking>
+          <updated-at type="datetime">2014-02-25T14:16:33Z</updated-at>
+          <version type="integer">2</version>
+          <wins type="integer">1</wins>
+        </choice>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
+- request: 
+    method: put
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/choices/1300.xml
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <choice>
+          <data>Choice Renamed Changes</data>
+          <active type="boolean">true</active>
+          <prompts-count type="integer">0</prompts-count>
+          <request-id nil="true"></request-id>
+          <ratings nil="true"></ratings>
+          <version type="integer">2</version>
+          <position nil="true"></position>
+          <prompts-on-the-left-count type="integer">1</prompts-on-the-left-count>
+          <creator-id type="integer">8</creator-id>
+          <tracking nil="true"></tracking>
+          <wins type="integer">1</wins>
+          <id type="integer">1300</id>
+          <losses type="integer">0</losses>
+          <prompt-id nil="true"></prompt-id>
+          <prompts-on-the-right-count type="integer">0</prompts-on-the-right-count>
+          <local-identifier nil="true"></local-identifier>
+          <item-id nil="true"></item-id>
+          <updated-at type="datetime">2014-02-25T14:16:33Z</updated-at>
+          <score type="float">66.6666666666667</score>
+          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+        </choice>
+
+    headers: 
+      Accept: 
+      - "*/*"
+      Content-Type: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "1"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "64"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlODU1MTc3MWU3NmVhZjAwMzljZDE0OTk5NTE4NmYzYTk%3D--8a7c41d7b32b8e8f954e53030ba7610b36d53d5b; path=/; HttpOnly
+      Cache-Control: 
+      - no-cache
+      Date: 
+      - Tue, 25 Feb 2014 14:16:35 GMT
+    body: 
+      string: " "
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "958"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "34"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhcvcXVlc3Rpb25zLzYyMS54bWw6D3Nlc3Npb25faWQiJWU3MmNkNzRmNGQxNTM2M2JjYzA0Zjg3MjUxMmQwNzE1--1b5735f96904a34b9eaa922b68821b538e14c403; path=/; HttpOnly
+      Etag: 
+      - "\"6aff43874c87f80028ca1c7a2d991209\""
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Date: 
+      - Tue, 25 Feb 2014 14:16:35 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <question>
+          <active type="boolean">true</active>
+          <choices-count type="integer">3</choices-count>
+          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+          <creator-id type="integer">8</creator-id>
+          <id type="integer">621</id>
+          <inactive-choices-count type="integer">0</inactive-choices-count>
+          <information nil="true"></information>
+          <it-should-autoactivate-ideas type="boolean">false</it-should-autoactivate-ideas>
+          <local-identifier>1</local-identifier>
+          <name>Q1</name>
+          <prompts-count type="integer">1</prompts-count>
+          <show-results type="boolean">true</show-results>
+          <site-id type="integer">1</site-id>
+          <tracking nil="true"></tracking>
+          <updated-at type="datetime">2014-02-25T14:16:28Z</updated-at>
+          <uses-catchup type="boolean">true</uses-catchup>
+          <version type="integer">5</version>
+          <votes-count type="integer">1</votes-count>
+          <item-count type="integer">3</item-count>
+        </question>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/choices/1300.xml?include_inactive=true
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "1077"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "28"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIjovcXVlc3Rpb25zLzYyMS9jaG9pY2VzLzEzMDAueG1sP2luY2x1ZGVfaW5hY3RpdmU9dHJ1ZToPc2Vzc2lvbl9pZCIlY2FiNGU5NzNmNDhmZDY4MDEzODgxNTBmNmEyNThmOTU%3D--6c56068949777a4aedb03117aa5ddd53cf8840e9; path=/; HttpOnly
+      Etag: 
+      - "\"164a46b666740de439ffca6cdfee1882\""
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Date: 
+      - Tue, 25 Feb 2014 14:16:36 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <choice>
+          <active type="boolean">true</active>
+          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+          <creator-id type="integer">8</creator-id>
+          <data>Choice Renamed Changes</data>
+          <id type="integer">1300</id>
+          <item-id type="integer" nil="true"></item-id>
+          <local-identifier nil="true"></local-identifier>
+          <losses type="integer">0</losses>
+          <position type="integer" nil="true"></position>
+          <prompt-id type="integer" nil="true"></prompt-id>
+          <prompts-count type="integer">0</prompts-count>
+          <prompts-on-the-left-count type="integer">1</prompts-on-the-left-count>
+          <prompts-on-the-right-count type="integer">0</prompts-on-the-right-count>
+          <question-id type="integer">621</question-id>
+          <ratings type="integer" nil="true"></ratings>
+          <request-id type="integer" nil="true"></request-id>
+          <score type="float">66.6666666666667</score>
+          <tracking nil="true"></tracking>
+          <updated-at type="datetime">2014-02-25T14:16:35Z</updated-at>
+          <version type="integer">3</version>
+          <wins type="integer">1</wins>
+        </choice>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:36 GMT

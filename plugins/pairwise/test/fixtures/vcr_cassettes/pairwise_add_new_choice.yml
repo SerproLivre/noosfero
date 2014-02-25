@@ -1,0 +1,62 @@
+--- 
+recorded_with: VCR 2.8.0
+http_interactions: 
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/choices.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Connection: 
+      - Keep-Alive
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "777"
+      Content-Type: 
+      - application/xml; charset=utf-8
+      X-Runtime: 
+      - "32"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIh8vcXVlc3Rpb25zLzYyMS9jaG9pY2VzLnhtbDoPc2Vzc2lvbl9pZCIlN2NjMmExYTMwZTMyZjM2OTQ5MDI5MDRmYzM1MGJiNmQ%3D--b7f48f62e069524a1b291249203e6302bf4a684a; path=/; HttpOnly
+      Etag: 
+      - "\"9ca2f194db0a6a942ff1f2f74fb4eca8\""
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Date: 
+      - Tue, 25 Feb 2014 14:16:26 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <choices type="array">
+          <choice>
+            <active type="boolean">true</active>
+            <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+            <data>Choice 1</data>
+            <id type="integer">1300</id>
+            <losses type="integer">0</losses>
+            <score type="float">50.0</score>
+            <wins type="integer">0</wins>
+            <user-created type="boolean">false</user-created>
+          </choice>
+          <choice>
+            <active type="boolean">true</active>
+            <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
+            <data>Choice 2</data>
+            <id type="integer">1301</id>
+            <losses type="integer">0</losses>
+            <score type="float">50.0</score>
+            <wins type="integer">0</wins>
+            <user-created type="boolean">false</user-created>
+          </choice>
+        </choices>
+
+    http_version: 
+  recorded_at: Tue, 25 Feb 2014 14:16:26 GMT
