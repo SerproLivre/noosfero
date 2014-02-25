@@ -123,18 +123,18 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
     assert_equal false, @pairwise_content.add_new_idea("New idea")
   end
 
-  # should 'join similar choices' do
-  #   choices_to_join = []
-  #   @pairwise_content.join_choices(choices_to_join, choice_elected)
-  #   choices_to_join.each do |choice|
-  #     if choice_elected.eql?(choice)
-  #       assert choice.parent.nil?
-  #       assert_equal true, choice.active 
-  #     else
-  #       assert_equal choice_elected, choice.parent.id
-  #       assert_equal false, choice.active 
-  #     end
-  #     assert_equal 
-  #   end
-  # end
+  should 'join similar choices' do
+    choices_to_join = []
+    @pairwise_content.join_choices(choices_to_join, choice_elected, user=nil)
+    choices_to_join.each do |choice|
+      if choice_elected.eql?(choice)
+        assert choice.parent.nil?
+        assert_equal true, choice.active
+      else
+        assert_equal choice_elected, choice.parent_id
+        assert_equal false, choice.active
+      end
+      #assert_equal
+    end
+  end
 end

@@ -14,6 +14,10 @@ class PairwisePlugin < Noosfero::Plugin
   #   }
   # end
 
+  def self.extra_blocks
+    { PairwisePlugin::QuestionsGroupBlock => {} }
+  end
+
    def control_panel_buttons
     #if context.profile.is_a?(Community)
       {:title => _('Pairwise Question'), :url => {:controller =>  'cms', :action => 'new', :profile => context.profile.identifier, :type => 'PairwisePlugin::PairwiseContent'}, :icon => 'pairwise' }

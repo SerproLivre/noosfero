@@ -1,0 +1,21 @@
+<div class="article-block-edition">
+<% if @block.owner.kind_of?(Environment) and @block.owner.portal_community.nil? %>
+  <p id="no_portal_community">
+  <%= _("You don't have an community defined as the portal community. Define it before use this block properly.") %>
+  </p>
+<% else %>
+  <%
+    questions = @block.available_questions
+    #first_text = articles[articles.find_index{|a| a.kind_of? TextArticle}||-1]
+    #selected = @block.article || first_text
+  %>
+  <div id="questions_content" %>
+    <ul>
+      <% questions.each do |question| %>
+        <li>
+          <%= labelled_check_box(question.name, "block[questions_ids][]", question.id, @block.settings[:questions_ids].include?(question.id.to_s) ) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
