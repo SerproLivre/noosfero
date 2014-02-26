@@ -6,7 +6,7 @@ class PairwisePlugin::ChoicesRelated < Noosfero::Plugin::ActiveRecord
   validates_presence_of :question, :choice_id, :parent_choice_id
 
   def self.related_choices_for choice_id
-    PairwisePlugin::ChoicesRelated.find_all_by_choice_id(choice_id) + PairwisePlugin::ChoicesRelated.find_all_by_parent_choice_id(choice_id)
+     PairwisePlugin::ChoicesRelated.find_all_by_choice_id(choice_id) + PairwisePlugin::ChoicesRelated.find_all_by_parent_choice_id(choice_id)
   end
 
 end

@@ -219,20 +219,18 @@ class PairwisePlugin::PairwiseContent < Article
     pairwise_client.add_new_idea(pairwise_question_id, text)
   end
 
-#   def join_choices(ids_choices_to_join, id_choice_elected)
-#     ids_choices_to_join.each do |id_choice|
-#       choice = question.find_choice(id_choice)
-#       if id_choice.eql?(id_choice_elected)
-                
-#       else
-#         define_as_similar_choice(choice, id_choice_elected )
-#       end
-#     end
-#   end
-# protected
-#   def define_as_similar_choice(choice, id_choice_parent)
-#     choice.id_parent = id_choice_parent
-#     choice.active = false
-#     choice.save
-#   end
+  def join_choices(ids_choices_to_join, id_choice_elected, user)
+     ids_choices_to_join.each do |id_choice|
+       unless id_choice.eql?(id_choice_elected)
+          choice = question.find_choice(id_choice)
+          choice_related = PairwisePlugin::ChoicesRelated.new do |cr|
+            cr.question = self
+            cr.choice_id = choice.id
+            cr.parent_choice_id = id_choice_elected
+            cr.user = user
+            cr.save!
+           end
+       end
+    end
+   end
 end
