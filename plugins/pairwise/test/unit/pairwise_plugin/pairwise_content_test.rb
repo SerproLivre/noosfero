@@ -127,28 +127,17 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
   end
 
    should 'join similar choices' do
-     question = Pairwise::Question.new(:id =>1, :name => "Question 1")
-     choices = []
-     choices << Pairwise::Choice.new(:id => 1, :data => "Choice1")
-     choices << Pairwise::Choice.new(:id => 2, :data => "Choice2")
-     choices << Pairwise::Choice.new(:id => 3, :data => "Choice3")
+     pairwise_content = PairwiseContentFixtures.content_stub_with_3_choices
 
-     question.stubs(:find_choice).with(1).returns(choices[0])
-     question.stubs(:find_choice).with(2).returns(choices[1])
-     question.stubs(:find_choice).with(3).returns(choices[2])
+     assert_equal 3, pairwise_content.question.choices.size
 
+     choices_to_join = pairwise_content.question.choices[1..2].map { |choice| choice.id }
+     parent_choice = pairwise_content.question.choices[0].id
 
-     question.stubs(:choices => choices)
-     @pairwise_content.stubs(:question => question)
-     assert_equal 3, @pairwise_content.question.choices.size
-
-     choices_to_join = choices[1..2].map { |choice| choice.id }
-     parent_choice = choices[0].id
-
-     @pairwise_content.profile = @profile
-     @pairwise_content.stubs(:valid? => true)
-     @pairwise_content.stubs(:send_question_to_service => true)
-     @pairwise_content.join_choices(choices_to_join, parent_choice, user=nil)
+     pairwise_content.profile = @profile
+     pairwise_content.stubs(:valid? => true)
+     pairwise_content.stubs(:send_question_to_service => true)
+     pairwise_content.join_choices(choices_to_join, parent_choice, user=nil)
       
      choices_related = PairwisePlugin::ChoicesRelated.related_choices_for(parent_choice)
      assert_equal 2, choices_related.size

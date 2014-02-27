@@ -39,7 +39,7 @@ class PairwisePluginProfileController < ProfileController
     if user.nil?
       flash_tager[:error] = _("Only logged user could suggest new ideas")
     else
-      @page = find_content(params)
+      @page = @pairwise_content = find_content(params)
       @embeded = params.has_key?("embeded")
       @source = params[:source]
       begin
