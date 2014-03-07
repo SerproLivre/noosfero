@@ -14,14 +14,24 @@ module PairwisePlugin::Helpers::ViewerHelper
      link_to prompt.left_choice_text,  link_target
   end
 
-  def skip_vote_link(pairwise_content, question, prompt, embeded = false, source = nil, appearance_id = nil)
+  def skip_vote_open_function
+    link_to_function _('Skip vote'), "jQuery(\"div.skip_vote_reasons\").toggleClass(\"show\")"
+  end
+
+  def skip_vote_link(pairwise_content, question, prompt, embeded = false, source = nil, appearance_id = nil, reason = nil)
     link_target = {:controller => 'pairwise_plugin_profile',
           :action => 'skip_prompt', :id => pairwise_content.id,:question_id => question.id , :prompt_id => prompt.id,
           :appearance_id => appearance_id}
      link_target.merge!(:embeded => 1) if embeded
      link_target.merge!(:source => source) if source
      link_target.merge!(:appearance_id => appearance_id) if appearance_id
-     link_to _('Skip vote'),  link_target
+     link_target.merge!(:reason => reason) if reason
+     link_text = reason ? reason : _('Skip vote')
+     if reason
+        "<div class='skip_vote_item'>" +  link_to(link_text,  link_target) + "</div>"
+     else
+        link_to(link_text,  link_target)
+     end
   end
 
   def pairwise_user_identifier(user)

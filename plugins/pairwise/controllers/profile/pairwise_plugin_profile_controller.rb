@@ -24,7 +24,8 @@ class PairwisePluginProfileController < ProfileController
     raise 'Invalid request' unless params.has_key?('prompt_id')
     raise 'Invalid request' unless params.has_key?('appearance_id')
     @pairwise_content = find_content(params)
-    skip = @pairwise_content.skip_prompt(params[:prompt_id], user_identifier, params[:appearance_id])
+    reason = params[:reason]
+    skip = @pairwise_content.skip_prompt(params[:prompt_id], user_identifier, params[:appearance_id], reason)
     redirect_to after_action_url
   end
 

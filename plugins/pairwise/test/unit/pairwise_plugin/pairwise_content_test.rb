@@ -175,4 +175,24 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
      assert_equal 1, choices_related.select { |c| c.choice_id == 2}.size
      assert_equal 1, choices_related.select { |c| c.choice_id == 3 }.size
    end
+
+   # should 'skip prompt' do
+
+   # end
+
+   should 'ask skip prompt reasons' do
+    prompt = Pairwise::Prompt.new({"left_choice_text"=>"Choice 1", "right_choice_text"=>"New inactive choice", "left_choice_id"=>1300, "right_choice_id"=>1302, "id"=>194, "tracking"=>nil, "votes_count"=>0}) 
+    reasons = @pairwise_content.ask_skip_reasons(prompt)
+
+    assert_not_nil reasons
+    assert_equal 7, reasons.size
+    
+    assert reasons[0].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[0][:text]
+    assert reasons[1].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[1][:text]
+    assert reasons[2].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[2][:text]
+    assert reasons[3].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[3][:text]
+    assert reasons[4].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[4][:text]
+    assert reasons[5].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[4][:text]
+    assert reasons[6].include? PairwisePlugin::PairwiseContent::REASONS_ARRAY[5][:text]
+   end
 end

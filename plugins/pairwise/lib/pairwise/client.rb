@@ -105,14 +105,14 @@ class Pairwise::Client
     end
   end
 
-  def skip_prompt(question_id, prompt_id, visitor="guest", appearance_lookup=nil)
+  def skip_prompt(question_id, prompt_id, visitor="guest", appearance_lookup=nil, reason=nil)
     prompt = Pairwise::Prompt.find(prompt_id, :params => {:question_id => question_id})
     begin
       skip = prompt.post(:skip, :question_id => question_id,
          :skip => {
             :appearance_lookup => appearance_lookup,
             :visitor_identifier => visitor, 
-            :skip_reason => 'some not informed reason'
+            :skip_reason => (reason.nil? ? 'some not informed reason' : reason)
           },
            :next_prompt => {
              :with_appearance => true,

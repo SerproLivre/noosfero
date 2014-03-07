@@ -31,8 +31,13 @@
    	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
   <% end %>
 	<div class="skip_vote">
-			<%= skip_vote_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %>
+			<%= skip_vote_open_function %>
 	</div>
+  <div class="skip_vote_reasons">
+    <% pairwise_content.ask_skip_reasons(@question.prompt).each do |reason| %>
+      <%= skip_vote_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id, reason ) %>
+    <% end %>
+  </div>
 	<% if pairwise_content.allow_new_ideas? and user %>
 		<div class="show_new_idea_box">
 				<a href="javascript:;" id="suggestions_box_show_link"><%= _('Add your own idea') %></a>

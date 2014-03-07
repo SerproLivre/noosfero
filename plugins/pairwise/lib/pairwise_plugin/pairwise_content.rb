@@ -7,6 +7,15 @@ class PairwisePlugin::PairwiseContent < Article
 
   validate_on_create :validate_choices
 
+  REASONS_ARRAY = [
+    {:text => "I like both ideas", :compare => false},
+    {:text => "I think both ideas are the same", :compare => false},
+    {:text => "I don't know enough about either idea",:compare => false},
+    {:text => "I don't like either idea", :compare => false},
+    {:text => "I don't know enough about: ",:compare => true},
+    {:text => "I just can't decide",:compare => false}
+  ]
+
   def initialize(*args)
     super(*args)
     self.published = false
@@ -121,9 +130,20 @@ class PairwisePlugin::PairwiseContent < Article
     touch #invalidates cache
   end
 
-  def skip_prompt(prompt_id, visitor, appearance_id)
-    next_prompt = pairwise_client.skip_prompt(question.id, prompt_id, visitor, appearance_id)
+  def skip_prompt(prompt_id, visitor, appearance_id, reason=nil)
+    next_prompt = pairwise_client.skip_prompt(question.id, prompt_id, visitor, appearance_id, reason)
     touch #invalidates cache
+  end
+
+  def ask_skip_reasons(prompt)
+    reasons = REASONS_ARRAY.map do |item|
+      if item[:compare]
+        [_(item[:text]) + prompt.left_choice_text,  _(item[:text]) + prompt.right_choice_text]
+      else
+        _(item[:text])
+      end
+    end
+    reasons.flatten
   end
 
    def validate_choices
