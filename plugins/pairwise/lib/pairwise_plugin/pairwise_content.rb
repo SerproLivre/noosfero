@@ -8,12 +8,12 @@ class PairwisePlugin::PairwiseContent < Article
   validate_on_create :validate_choices
 
   REASONS_ARRAY = [
-    {:text => "I like both ideas", :compare => false},
-    {:text => "I think both ideas are the same", :compare => false},
-    {:text => "I don't know enough about either idea",:compare => false},
-    {:text => "I don't like either idea", :compare => false},
-    {:text => "I don't know enough about: ",:compare => true},
-    {:text => "I just can't decide",:compare => false}
+    {:text => _("I like both ideas"), :compare => false},
+    {:text => _("I think both ideas are the same"), :compare => false},
+    {:text => _("I don't know enough about either idea"),:compare => false},
+    {:text => _("I don't like either idea"), :compare => false},
+    {:text => _("I don't know enough about: "),:compare => true},
+    {:text => _("I just can't decide"),:compare => false}
   ]
 
   def initialize(*args)
@@ -138,9 +138,9 @@ class PairwisePlugin::PairwiseContent < Article
   def ask_skip_reasons(prompt)
     reasons = REASONS_ARRAY.map do |item|
       if item[:compare]
-        [_(item[:text]) + prompt.left_choice_text,  _(item[:text]) + prompt.right_choice_text]
+        [ item[:text] + prompt.left_choice_text,  item[:text] + prompt.right_choice_text]
       else
-        _(item[:text])
+        item[:text]
       end
     end
     reasons.flatten
