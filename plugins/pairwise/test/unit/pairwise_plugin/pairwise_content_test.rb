@@ -1,5 +1,16 @@
 require "test_helper"
 require "#{RAILS_ROOT}/plugins/pairwise/test/fixtures/pairwise_content_fixtures"
+require "#{RAILS_ROOT}/plugins/pairwise/test/fixtures/http_stub_fixtures"
+
+# require 'vcr'
+
+# VCR.configure do |c|
+#   c.cassette_library_dir = "#{RAILS_ROOT}/plugins/pairwise/test/fixtures/vcr_cassettes"
+#   c.hook_into :webmock
+#   c.before_playback do |i|
+#     puts "I in PLAYBACK: #{i.inspect}"
+#   end
+# end
 
 class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
 
@@ -14,13 +25,21 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
     @profile.environment = environments(:colivre_net)
     @pairwise_client = Pairwise::Client.build(1, pairwise_env_settings)
     @pairwise_content = PairwiseContentFixtures.pairwise_content
-
+    @pairwise_content.profile = @profile
     #PairwisePlugin::PairwiseContent.any_instance.stubs(:send_question_to_service).returns(true)
     #PairwisePlugin::PairwiseContent.any_instance.stubs(:pairwise_client).returns(@pairwise_client)
+    @http_stub_fixtures = HttpStubFixtures.new(pairwise_env_settings)
   end
 
   should 'be inactive when created' do
     assert_equal false, @pairwise_content.published?
+  end
+
+  should 'get question from stubed api call' do
+    question = @http_stub_fixtures.create_question(2, 'Question 2', 'Choice X\nChoice Y')
+    assert_not_nil question
+    assert_equal 2, question.id
+    assert_equal 'Question 2', question.name  
   end
 
   should 'provide proper short description' do
@@ -35,11 +54,26 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
     assert_not_nil @pairwise_content.to_html
   end
 
+  should 'have result_url' do
+    assert_not_nil @pairwise_content.result_url
+    assert_equal @pairwise_content.profile.identifier, @pairwise_content.result_url[:profile]
+    assert_equal :pairwise_plugin_profile, @pairwise_content.result_url[:controller]
+    assert_equal :result, @pairwise_content.result_url[:action]
+  end
+
   should 'get question from pairwise service' do
     @question = Pairwise::Question.new(:id => @pairwise_content.pairwise_question_id, :name => 'Question 1')
     @pairwise_content.expects(:pairwise_client).returns(@pairwise_client)
     @pairwise_client.expects(:find_question_by_id).with(@question.id).returns(@question)
     assert_equal @question, @pairwise_content.question
+  end
+
+  should 'prepare prompt' do
+    @question = Pairwise::Question.new(:id => @pairwise_content.pairwise_question_id, :name => 'Question 1')
+    @pairwise_content.expects(:pairwise_client).returns(@pairwise_client)
+    @pairwise_client.expects(:question_with_prompt).with(@question.id,'any_user', nil).returns(@question)
+    prompt = @pairwise_content.prepare_prompt('any_user')
+    assert_not_nil prompt
   end
 
   should 'add error to base when the question does not exist' do
@@ -73,7 +107,6 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
   end 
 
   should 'send changes in choices to pairwise service' do
-    @pairwise_content.profile = @profile
     @question = Pairwise::Question.new(:id => @pairwise_content.pairwise_question_id, :name => 'Question 1', :active => false)
     @pairwise_content.expects(:question).returns(@question).at_least_once
     @pairwise_content.expects(:pairwise_client).returns(@pairwise_client).at_least_once
@@ -87,8 +120,6 @@ class PairwisePlugin::PairwiseContentTest < ActiveSupport::TestCase
   end
 
   should 'send new choices to pairwise_service' do
-    @pairwise_content.profile = @profile
-
     @question = Pairwise::Question.new(:id => @pairwise_content.pairwise_question_id, :name => 'Question 1', :active => false)  
     @pairwise_content.expects('new_record?').returns(false).at_least_once
     @pairwise_content.expects('valid?').returns(true).at_least_once
