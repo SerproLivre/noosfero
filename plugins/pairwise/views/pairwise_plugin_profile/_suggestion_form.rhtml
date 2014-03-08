@@ -10,10 +10,14 @@
 	    <div class="notice">
 	       <%= flash[:notice] %>
 	    </div>
-	    <%= f.text_area 'text', :maxlenght => 160, :rows => 4, :placeholder => _('Type your idea here') %>
-	    <div style="width:100%;text-align:center">
-	      <%= submit_button('', _('Suggest idea'), :id => 'new_idea_button') %>
-	    </div>
+	    <div class="div_text_input_container"> 
+			<div class="div_text_input">
+			    <%= f.text_area 'text', :maxlenght => 160, :rows => 4, :placeholder => _('Type your idea here') %>
+			    <div style="width:100%;text-align:center">
+			      <%= submit_button('', _('Suggest idea'), :id => 'new_idea_button') %>
+			    </div>
+	    	</div> 
+		</div>
 	  </div>
 	  <div id="suggestion_box_loading" style="display: none;">
 	    <span>Processando...</span>
