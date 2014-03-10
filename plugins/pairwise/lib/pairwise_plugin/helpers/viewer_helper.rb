@@ -28,7 +28,7 @@ module PairwisePlugin::Helpers::ViewerHelper
      link_target.merge!(:reason => reason) if reason
      link_text = reason ? reason : _('Skip vote')
      if reason
-        "<div class='skip_vote_item'>" +  link_to(link_text,  link_target) + "</div>"
+        "<li class='skip_vote_item'>" +  link_to(link_text,  link_target) + "</li>"
      else
         link_to(link_text,  link_target)
      end

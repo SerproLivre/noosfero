@@ -17,34 +17,40 @@
 
 <div id="pairwise_main">
   <% unless embeded %>
-    <p class='right'><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %> 
-      <% if pairwise_content.allow_edit?(user) %>
-      | <%= pairwise_edit_link _('Edit Question'), pairwise_content %>
-      | <%= ideas_management_link _('Manage Ideas'), pairwise_content, user %>
+    <ul class="pairwise_menu">
+       <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>
+        <% if pairwise_content.allow_edit?(user) %>
+          <li><%= pairwise_edit_link _('Edit Question'), pairwise_content %></li>
+          <li><%= ideas_management_link _('Manage Ideas'), pairwise_content, user %></li>
+        <% end %>
+    </ul>
+  <% end %>
+  <div class="pairwise_content">
+      <div class="pairwise_body"><%= pairwise_content.body %></div>
+      <p class="pairwise_call_for_action">Priorize ou crie novas ideias de espaços e formas para realizar o seu direito a participação social.</p>
+      <div class="prompt"><%= choose_left_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
+    	<div class="prompt"><%= choose_right_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
+      <% if embeded %>
+       	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
       <% end %>
-    </p>
-  <% end %>
-  <p><%= pairwise_content.body %></p>
-  <div class="prompt"><%= choose_left_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
-	<div class="prompt"><%= choose_right_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
-  <% if embeded %>
-   	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
-  <% end %>
+  </div>
 	<div class="skip_vote">
 			<%= skip_vote_open_function %>
 	</div>
   <div class="skip_vote_reasons">
+    <ul>
     <% pairwise_content.ask_skip_reasons(@question.prompt).each do |reason| %>
       <%= skip_vote_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id, reason ) %>
     <% end %>
+    </ul>
   </div>
 	<% if pairwise_content.allow_new_ideas? and user %>
-		<div class="show_new_idea_box">
-				<a href="javascript:;" id="suggestions_box_show_link"><%= _('Add your own idea') %></a>
-		</div>
-		<div id="suggestions_box">
-		<%= render :partial => "pairwise_plugin_profile/suggestion_form",
+    <div id="suggestions_box">
+      <span>Gostaria de sugerir uma ideia?</span>
+      <div class="suggestion_form">
+		  <%= render :partial => "pairwise_plugin_profile/suggestion_form",
 					:locals => {:pairwise_content => pairwise_content, :embeded => embeded, :source => source} %>
+      </div>
 		</div>
 	<% end %>
 </div>
