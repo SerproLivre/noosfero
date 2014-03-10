@@ -28,8 +28,8 @@
   <div class="pairwise_content">
       <div class="pairwise_body"><%= pairwise_content.body %></div>
       <p class="pairwise_call_for_action">Priorize ou crie novas ideias de espaços e formas para realizar o seu direito a participação social.</p>
-      <div class="prompt"><%= choose_left_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
-    	<div class="prompt"><%= choose_right_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
+      <div class="prompt left"><%= choose_left_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
+    	<div class="prompt right"><%= choose_right_link(pairwise_content, @question, @question.prompt, embeded, source, @question.appearance_id) %></div>
       <% if embeded %>
        	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
       <% end %>
