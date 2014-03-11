@@ -89,7 +89,7 @@ $.fn.extend({
 })(jQuery);
 
   jQuery(document).ready(function($){
- 	$('#suggestions_box span.close_button').live('click', function(){
+/* 	$('#suggestions_box span.close_button').live('click', function(){
  		$('#suggestions_box').fadeOut();
  		$('#pairwise_main div.show_new_idea_box').show();
  	});
@@ -97,8 +97,19 @@ $.fn.extend({
 	$('#suggestions_box_show_link').live('click', function(){
  		$('#suggestions_box').fadeIn();
  		$('#pairwise_main div.show_new_idea_box').hide();
- 	}); 	
+ 	}); */	
 
- 	$('#idea_text').jqEasyCounter();
+  $('#pairwise_main ul.pairwise_menu li a').mouseenter(function(){
+  	if($(this).attr('id') != 'pairwise_votacao_tab') {
+  		$('#pairwise_votacao_tab').attr("class", "");
+  	}
+  });
+
+  $('#pairwise_main ul.pairwise_menu li a').mouseout(function(){
+  	if($(this).attr('id') != 'pairwise_votacao_tab') {
+  		$('#pairwise_votacao_tab').attr("class", "active");
+  	}
+  });
+ 
 
  });

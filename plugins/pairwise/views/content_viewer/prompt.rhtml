@@ -18,9 +18,10 @@
 <div id="pairwise_main">
   <% unless embeded %>
     <ul class="pairwise_menu">
+       <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_votacao_tab'  %></li>
        <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>
         <% if pairwise_content.allow_edit?(user) %>
-          <li><%= pairwise_edit_link _('Edit Question'), pairwise_content %></li>
+          <li><%= pairwise_edit_link _('Edit'), pairwise_content %></li>
           <li><%= ideas_management_link _('Manage Ideas'), pairwise_content, user %></li>
         <% end %>
     </ul>

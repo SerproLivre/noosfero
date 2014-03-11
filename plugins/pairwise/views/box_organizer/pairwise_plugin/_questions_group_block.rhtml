@@ -13,7 +13,7 @@
     <ul>
       <% questions.each do |question| %>
         <li>
-          <%= labelled_check_box(question.name, "block[questions_ids][]", question.id, @block.settings[:questions_ids].include?(question.id.to_s) ) %>
+          <%= labelled_check_box(question.name, "block[questions_ids][]", question.id, @block.settings[:questions_ids] !=null && @block.settings[:questions_ids].include?(question.id.to_s) ) %>
         </li>
       <% end %>
     </ul>

@@ -14,7 +14,7 @@ class PairwisePlugin::QuestionsGroupBlock < Block
     question = pick_question
     lambda do
       content = block_title(block.title)
-      content += ( question ? article_to_html(question,:gallery_view => false, :format => 'full') : _('No Question selected yet.') )
+      content += ( question ? article_to_html(question,:gallery_view => false, :format => 'full').html_safe : _('No Question selected yet.') )
     end
   end
 
@@ -32,7 +32,7 @@ class PairwisePlugin::QuestionsGroupBlock < Block
   end
 
   def pick_question
-    (questions && questions.length > 0) ? questions.sample : nil
+    (questions && questions.length > 0) ? questions[Kernel.rand(questions.size)] : nil
   end
 
   def questions(reload = false)

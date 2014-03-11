@@ -1,5 +1,5 @@
 div#pairwise_form_fields textarea {
-	width: 100% !important;
+	width: 100%;
 	margin-top: 5px;
 	height:30px;
 
@@ -43,14 +43,14 @@ div#pairwise_form_fields textarea {
 
 #pairwise_main  div.prompt  a {
 	width:100%;
-	color:white !important;
+	color:white;
 	display: block;
 	text-decoration: none;
 }
 
 
 #pairwise_main  div.prompt a:visited  {
-	color: white  !important;
+	color: white;
 }
 
 #pairwise_main  div.prompt a:hover {
