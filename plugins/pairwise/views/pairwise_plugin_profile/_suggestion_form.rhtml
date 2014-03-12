@@ -8,7 +8,7 @@
 	       <%= flash[:notice] %>
 	    </div>
 	    <div class="div_text_input_container"> 
-			<div class="div_text_input">
+			<div id="text_idea_content_<%= pairwise_content.id %>" class="div_text_input">
 			    <%= f.text_area 'text', :maxlenght => 160, :rows => 4, :placeholder => _('Type your idea here') %>
 	    	</div> 
 	    	<div class="suggest_idea_btn">
@@ -21,7 +21,8 @@
 	  </div>
 	  <script type='text/javascript'>
 		jQuery(document).ready(function($){
-		  	$('#idea_text').jqEasyCounter();
+			var pairwise_id = '<%=pairwise_content.id %>';
+		  	$('#text_idea_content_' + pairwise_id).find('textarea').jqEasyCounter();
 	  	});
 	  </script>
 	<% end %>
