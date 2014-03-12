@@ -100,14 +100,14 @@ $.fn.extend({
  	}); */	
 
   $('#pairwise_main ul.pairwise_menu li a').mouseenter(function(){
-  	if($(this).attr('id') != 'pairwise_votacao_tab') {
-  		$('#pairwise_votacao_tab').attr("class", "");
+  	if($(this).attr('id') != 'pairwise_voting_tab') {
+  		$('#pairwise_voting_tab').attr("class", "");
   	}
   });
 
   $('#pairwise_main ul.pairwise_menu li a').mouseout(function(){
-  	if($(this).attr('id') != 'pairwise_votacao_tab') {
-  		$('#pairwise_votacao_tab').attr("class", "active");
+  	if($(this).attr('id') != 'pairwise_voting_tab') {
+  		$('#pairwise_voting_tab').attr("class", "active");
   	}
   });
  

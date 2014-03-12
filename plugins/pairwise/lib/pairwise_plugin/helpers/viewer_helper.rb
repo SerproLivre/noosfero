@@ -74,10 +74,10 @@ module PairwisePlugin::Helpers::ViewerHelper
     link_to label, link_target
   end
 
-  def pairwise_result_link(label, pairwise_content, embeded = false)
+  def pairwise_result_link(label, pairwise_content, embeded = false, options = {})
     link_target = pairwise_content.result_url
     link_target.merge!(:embeded => 1) if embeded
-    link_to  label, link_target
+    link_to  label, link_target, options
   end
 
   def pairwise_suggestion_url(question, embeded = false, source = nil)
