@@ -5,8 +5,6 @@ class PairwisePlugin::PairwiseContent < Article
 
   before_save :send_question_to_service
 
-  after_initialize :prepare_new
-
   validate_on_create :validate_choices
 
   REASONS_ARRAY = [
@@ -27,6 +25,8 @@ class PairwisePlugin::PairwiseContent < Article
   def initialize(*args)
     super(*args)
     self.published = false
+    self.accept_comments = false
+    self.notify_comments = false
   end
 
   alias_method :original_view_url, :view_url
@@ -164,10 +164,6 @@ class PairwisePlugin::PairwiseContent < Article
         break
       end
     end
-  end
-
-  def prepare_new
-    settings[:accept_comments] = false
   end
 
   def update_choice(choice_id, choice_text, active)
