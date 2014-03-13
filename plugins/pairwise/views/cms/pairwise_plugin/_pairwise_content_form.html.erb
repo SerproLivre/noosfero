@@ -3,7 +3,13 @@
 	<%= hidden_field_tag 'id', @article.id %>
 	<%= required_fields_message %>
 	<%= required f.text_field(:name) %><br/>
-	<%= required f.text_field :body %><br/>
+
+	<%= render :file => 'shared/tiny_mce' %>
+
+	<%= f.text_area(:body, :style => 'width: 98%; height: 400px;', :class => 'mceEditor') %>
+
+	<%#= labelled_form_field(_('Text'), text_area(@article, :body, :style => 'width: 98%; height: 400px;', :class => 'mceEditor')) %>
+
 	<%= required f.check_box :allow_new_ideas %><br/>
 
 	<div id="choices">
