@@ -18,15 +18,6 @@ class PairwisePlugin < Noosfero::Plugin
     { PairwisePlugin::QuestionsGroupBlock => {} }
   end
 
-   def control_panel_buttons
-    #if context.profile.is_a?(Community)
-      {:title => _('Pairwise Question'), :url => {:controller =>  'cms', :action => 'new', :profile => context.profile.identifier, :type => 'PairwisePlugin::PairwiseContent'}, :icon => 'pairwise' }
-    #else
-    #  [{:title => _('Mezuro configuration'), :url => {:controller =>  'cms', :action => 'new', :profile => context.profile.identifier, :type => 'MezuroPlugin::ConfigurationContent'}, :icon => 'mezuro' },
-    #  {:title => _('Mezuro reading group'), :url => {:controller =>  'cms', :action => 'new', :profile => context.profile.identifier, :type => 'MezuroPlugin::ReadingGroupContent'}, :icon => 'mezuro' }]
-    #end
-  end
-
   def content_types
     [PairwisePlugin::PairwiseContent]
     # if context.profile.is_a?(Community)
