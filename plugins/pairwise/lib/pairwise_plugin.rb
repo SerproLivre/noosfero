@@ -15,7 +15,7 @@ class PairwisePlugin < Noosfero::Plugin
   # end
 
   def self.extra_blocks
-    { PairwisePlugin::QuestionsGroupBlock => {} }
+    { PairwisePlugin::QuestionsGroupListBlock => {} }
   end
 
   def content_types

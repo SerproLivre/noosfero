@@ -229,3 +229,98 @@ table.pairwise_choices_table th{
 	font-weight: bolder;
 	text-align: left;
 }
+
+
+
+div.pairwise_group_list_container {
+	font-family: 'Open Sans';
+}
+
+div.pairwise_group_list_container .row {
+    font-size: 14px;
+    height: 40px;
+	width:100%;
+	background-color: #F8C300;
+  vertical-align: middle;
+  margin-top:10px;
+  margin-bottom:auto;
+  padding:0px;
+}
+
+div.pairwise_group_list_container .row p {
+	line-height: 30px;
+    margin: auto;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+
+div.pairwise_group_list_container .title{
+	display: inline-block;
+	color: #2F5707;
+    Height: 40px;
+   padding-left: 20px;
+}
+
+div.pairwise_group_list_container .number{
+	display: inline-block;
+	left: 0px;
+    background-color: #2F5707;
+    width: 40px;
+    text-align: center;
+	color: #F8C300;
+  }
+
+div.pairwise_group_list_container .row.secondary {
+  background-color: #497B16;
+}
+
+div.pairwise_group_list_container .row.secondary .title {
+  color: white;
+}
+
+
+div.pairwise_group_list_container .row.secondary .number {
+  color: white;
+}
+
+div.pairwise_group_list_container .arrow{
+	display: inline-block;
+    position: absolute;
+	right: 20px;
+	margin-top: 10px;
+}
+/*
+div.pairwise_group_list_container .arrow{
+	display: inline-block;
+    position: absolute;
+	right: 20px;
+	margin-top: 10px;
+	height: 22px;
+	width:23px;
+	color: #2F5707;
+	background: url('/designs/themes/participa-theme/images/arrow_right.jpg') no-repeat center;
+}
+
+div.pairwise_group_list_container .arrow.active{
+	height: 18px;
+    margin-top: 10px;
+    right: 20px;
+    width: 22px;
+	background: url('/designs/themes/participa-theme/images/arrow_down.jpg') no-repeat center;
+}*/
+
+div.pairwise_group_list_container .arrow span {
+	background: url('/designs/themes/participa-theme/images/arrow_right.jpg') no-repeat center;
+	border: 0px;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+div.pairwise_group_list_container .arrow span.active {
+	cursor: auto;
+	background: url('/designs/themes/participa-theme/images/arrow_down.jpg') no-repeat center;
+
+}
