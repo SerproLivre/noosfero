@@ -15,8 +15,18 @@
 
 <% @question = pairwise_content.prepare_prompt(pairwise_user_identifier(user), prompt_id) %>
 
+<% if embeded || "prompt".eql?(params[:action]) %>
+<div id="article-header"> 
+    <h1 class="title"><%= pairwise_content.title %></h1>
+ </div>
+ <% end %>
 <div id="pairwise_main">
-  <% unless embeded %>
+  <% if embeded %>
+     <ul class="pairwise_menu">
+       <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_voting_tab'  %></li>
+       <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>
+    </ul>
+  <% else %>
     <ul class="pairwise_menu">
        <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_voting_tab'  %></li>
        <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>

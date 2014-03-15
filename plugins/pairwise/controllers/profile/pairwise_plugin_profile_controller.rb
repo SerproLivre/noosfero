@@ -8,7 +8,7 @@ class PairwisePluginProfileController < ProfileController
     source = params[:source]
     locals = {:pairwise_content => pairwise_content, :embeded => embeded, :source => source, :prompt_id => prompt_id }
     if embeded
-      render 'content_viewer/prompt', :layout => false, :locals => locals
+      render 'content_viewer/prompt', :layout => "embeded", :locals => locals
     else
       render 'content_viewer/prompt', :locals => locals
     end

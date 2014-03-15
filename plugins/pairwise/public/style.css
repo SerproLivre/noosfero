@@ -25,17 +25,9 @@ div#pairwise_form_fields textarea {
 	color:white;
 	min-height: 30px;
 	height:auto;
-	padding: 0.5em;
 	word-wrap: break-word;
 	font-size: 12pt;
-	background-color: #3198c1;
 	text-align: center;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-	border-color:#CCCCCC;
-	border-width: 1px;
-	border-style: solid;
 	display: inline-block;
 	vertical-align: top;
 
@@ -46,25 +38,6 @@ div#pairwise_form_fields textarea {
 	color:white;
 	display: block;
 	text-decoration: none;
-}
-
-
-#pairwise_main  div.prompt a:visited  {
-	color: white;
-}
-
-#pairwise_main  div.prompt a:hover {
-    text-decoration:none;
-}
-
-#pairwise_main  div.prompt:hover {
-	background-color: #2B88AD;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-	border-width: 1px;
-	border-style: solid;
-	color: white;
 }
 
 
