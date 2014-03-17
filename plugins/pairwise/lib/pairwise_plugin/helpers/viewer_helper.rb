@@ -100,7 +100,7 @@ module PairwisePlugin::Helpers::ViewerHelper
   end
 
   def pairwise_suggestion_url(question, embeded = false, source = nil)
-    target =  { :controller => :pairwise_plugin_profile, :profile => pairwise_content.profile.identifier,:action => 'suggest_idea', :id => question.id }
+    target =  { :controller => :pairwise_plugin_profile, :profile => question.profile.identifier,:action => 'suggest_idea', :id => question.id }
     target.merge!({ :embeded => 1 }) if embeded
     target.merge!({ :source => source }) if source
     target
