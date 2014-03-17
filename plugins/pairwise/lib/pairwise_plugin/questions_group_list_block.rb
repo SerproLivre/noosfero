@@ -34,7 +34,7 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     self.settings[:questions_ids].delete('')
   end
 
-  def shuffle_blocks
+  def shuffle_questions
     (questions && questions.length > 0) ? questions.shuffle : nil
   end
 

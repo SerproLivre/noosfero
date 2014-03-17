@@ -1,30 +1,13 @@
+<% extend PairwisePlugin::Helpers::ViewerHelper %>
 <div class='pairwise_group_list_container'>
 	<div class="question container">
-		<div class="row">
-          <div class="number"><p>1</p></div>
-          <div class="title"><p>UMA QUESTION PAIRWISE</p></div>
-			<div class="arrow" ><span class="active"></span></div>
+	<% block.shuffle_questions.each_with_index do |pairwise_content, index| %>
+		<div class='<%= pairwise_group_row_classes(index) %>'>
+          <div class="number"><p><%= index + 1 %></p></div>
+          <div class="title"><p><%= pairwise_content.title %></p></div>
+			<div class="arrow" ><%= pairwise_span_arrow(index) %></div>
 		</div>
-		<div class="pairwise_body"> <pre>as as d
-      s ad
-      as d
-      as d
-       asd
-      as d
-      s a
-      s a
-      d as
-      sd a</pre></div>
+		<%= pairwise_group_content_body(index, pairwise_content) %>
+	<% end %>
 	</div>
-  <div class="row secondary">
-          <div class="number"><p>2</p></div>
-          <div class="title"><p>UMA OUTRA QUESTION PAIRWISE</p></div>
-			<div class="arrow"><span></span></div>
-		</div>
-  <div class="row secondary">
-          <div class="number"><p>3</p></div>
-          <div class="title"><p>E AGORA UMA QUESTION PAIRWISE</p></div>
-			<div class="arrow"><span></span></div>
-		</div>
-  
 </div>

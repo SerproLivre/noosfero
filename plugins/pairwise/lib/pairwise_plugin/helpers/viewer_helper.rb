@@ -105,5 +105,27 @@ module PairwisePlugin::Helpers::ViewerHelper
     ideas_or_suggestions_text = has_param_pending_choices? ? "Suggestions" : "Ideas"
     _("Showing")  + " " + ideas_or_suggestions_text
   end
+
+  def pairwise_span_arrow(index)
+    content_tag :span, '', :class => (index == 0 ? 'active' : '')
+  end
+
+  def pairwise_group_row_classes(index)
+    index == 0 ? 'row' : 'row secondary'
+  end
+
+  def pairwise_group_content_body(index, pairwise_content, prompt_id = nil)
+    question = pairwise_content.prepare_prompt(pairwise_user_identifier(user), prompt_id)
+    style = (index > 0) ? 'display:none' : ''
+    content_tag :div, :class => "pairwise_body", :style => style do
+      render :partial => 'content_viewer/prompt_body', 
+        :locals => {
+                    :embeded => false, 
+                    :source => '', 
+                    :pairwise_content => pairwise_content,
+                    :question => question
+                  }
+    end
+  end
 end
 
