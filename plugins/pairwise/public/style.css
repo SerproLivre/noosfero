@@ -147,14 +147,7 @@ div#pairwise_form_fields textarea {
 	padding: 0.5em;
 	word-wrap: break-word;
 	font-size: 12pt;
-	background-color: #ccc;
 	text-align: center;
-    border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-	border-color:#CCCCCC;
-	border-width: 1px;
-	border-style: solid;
 	vertical-align: top;
 	margin-top: 12px;
 	margin-left: auto;

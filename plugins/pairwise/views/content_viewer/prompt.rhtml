@@ -15,9 +15,4 @@
 
 <% @question = pairwise_content.prepare_prompt(pairwise_user_identifier(user), prompt_id) %>
 
-<% if embeded || "prompt".eql?(params[:action]) %>
-<div id="article-header"> 
-    <h1 class="title"><%= pairwise_content.title %></h1>
- </div>
- <% end %>
-<%= render :partial => 'prompt_body', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => @question, :source => (defined?(source) ? source : '') }%>
+<%= render :partial => 'content_viewer/prompt_body', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => @question, :source => (defined?(source) ? source : '') }%>

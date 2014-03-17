@@ -15,8 +15,8 @@
     </ul>
   <% end %>
   <div class="pairwise_content">
-      <div class="pairwise_body"><%= pairwise_content.body %></div>
-      <p class="pairwise_call_for_action">Priorize ou crie novas ideias de espaços e formas para realizar o seu direito a participação social.</p>
+      <div class="pairwise_body"><%= pairwise_content.title %></div>
+      <div class="pairwise_call_for_action"><%= pairwise_content.body %></div>
       <%= render :partial => 'content_viewer/pairwise_prompts', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
       <% if embeded %>
        	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>

@@ -70,4 +70,8 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
   def cacheable?
     false
   end
+
+  def embedable?
+    true
+  end
 end

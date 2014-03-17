@@ -31,4 +31,3 @@ class PairwisePlugin < Noosfero::Plugin
   end
 
 end
-
