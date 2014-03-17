@@ -7,6 +7,7 @@ module PairwisePlugin::Helpers::ViewerHelper
 
   def choose_left_link(pairwise_content, question, prompt, embeded = false, source = nil, appearance_id = nil)
     link_target = {:controller => 'pairwise_plugin_profile',
+          :profile => pairwise_content.profile.identifier,
           :action => 'choose', :id => pairwise_content.id,:question_id => question.id , :prompt_id => prompt.id,
           :choice_id => prompt.left_choice_id , :direction => 'left', :appearance_id => appearance_id}
      link_target.merge!(:embeded => 1) if embeded
@@ -20,6 +21,7 @@ module PairwisePlugin::Helpers::ViewerHelper
 
   def skip_vote_link(pairwise_content, question, prompt, embeded = false, source = nil, appearance_id = nil, reason = nil)
     link_target = {:controller => 'pairwise_plugin_profile',
+          :profile => pairwise_content.profile.identifier,
           :action => 'skip_prompt', :id => pairwise_content.id,:question_id => question.id , :prompt_id => prompt.id,
           :appearance_id => appearance_id}
      link_target.merge!(:embeded => 1) if embeded
@@ -78,6 +80,7 @@ module PairwisePlugin::Helpers::ViewerHelper
 
   def choose_right_link(pairwise_content, question, prompt, embeded = false, source = nil, appearance_id = nil)
     link_target = { :controller => 'pairwise_plugin_profile',
+          :profile => pairwise_content.profile.identifier,
           :action => 'choose', :id => pairwise_content.id,  :question_id => question.id , :prompt_id => prompt.id,
           :choice_id => prompt.right_choice_id , :direction => 'right' , :appearance_id => appearance_id}
     link_target.merge!(:embeded => 1) if embeded
@@ -86,7 +89,7 @@ module PairwisePlugin::Helpers::ViewerHelper
   end
 
   def pairwise_edit_link(label, pairwise_content)
-    link_target = myprofile_path(:controller => :cms, :action => :edit, :id => pairwise_content.id)
+    link_target = myprofile_path(:controller => :cms, :profile => pairwise_content.profile.identifier, :action => :edit, :id => pairwise_content.id)
     link_to label, link_target
   end
 
@@ -97,7 +100,7 @@ module PairwisePlugin::Helpers::ViewerHelper
   end
 
   def pairwise_suggestion_url(question, embeded = false, source = nil)
-    target =  { :controller => :pairwise_plugin_profile, :action => 'suggest_idea', :id => question.id }
+    target =  { :controller => :pairwise_plugin_profile, :profile => pairwise_content.profile.identifier,:action => 'suggest_idea', :id => question.id }
     target.merge!({ :embeded => 1 }) if embeded
     target.merge!({ :source => source }) if source
     target
@@ -110,7 +113,7 @@ module PairwisePlugin::Helpers::ViewerHelper
   def ideas_management_link(label, pairwise_content, user)
     return "" unless user
     return "" unless pairwise_content.allow_edit?(user)
-    link_to label, :controller => :pairwise_plugin_suggestions, :action => :index, :id => pairwise_content.id
+    link_to label, :controller => :pairwise_plugin_suggestions, :profile => pairwise_content.profile.identifier, :action => :index, :id => pairwise_content.id
   end
 
   def has_param_pending_choices?
