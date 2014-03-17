@@ -1,4 +1,4 @@
-<div id="pairwise_main">
+<div id="pairwise_main" class="pairwise_main">
   <% if embeded %>
      <ul class="pairwise_menu">
        <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_voting_tab'  %></li>
@@ -17,17 +17,15 @@
   <div class="pairwise_content">
       <div class="pairwise_body"><%= pairwise_content.body %></div>
       <p class="pairwise_call_for_action">Priorize ou crie novas ideias de espaços e formas para realizar o seu direito a participação social.</p>
-      <div class="prompt left"><%= choose_left_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id) %></div>
-      <div class="separator"></div>
-    	<div class="prompt right"><%= choose_right_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id) %></div>
+      <%= render :partial => 'content_viewer/pairwise_prompts', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
       <% if embeded %>
        	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
       <% end %>
   </div>
 	<div class="skip_vote">
-			<%= skip_vote_open_function %>
+			<%= skip_vote_open_function(pairwise_content) %>
 	</div>
-  <div class="skip_vote_reasons">
+  <div id="skip_vote_reasons_<%= pairwise_content.id %>" class="skip_vote_reasons">
     <ul>
     <% pairwise_content.ask_skip_reasons(question.prompt).each do |reason| %>
       <%= skip_vote_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id, reason ) %>

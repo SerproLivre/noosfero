@@ -54,5 +54,14 @@ class Pairwise::Question < ActiveResource::Base
   def prompt
     @prompt
   end
-end
 
+  def appearance_id
+    if attributes["appearance_id"]
+      attributes["appearance_id"]
+    elsif prompt and prompt.respond_to? :appearance_id
+      prompt.appearance_id
+    else
+       nil
+    end
+  end
+end

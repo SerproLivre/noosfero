@@ -328,3 +328,17 @@ div.pairwise_group_list_container .row .arrow span {
 	background: url('/designs/themes/participa-theme/images/arrow_down.jpg') no-repeat center;
 
 }
+
+div.pairwise_main .spinner {
+	position: absolute;
+	text-align: center;
+	width: 95%;
+	height: 190px;
+	display: none;
+	z-index: 999;
+	background-color: #ECF2E7;
+}
+
+div.pairwise_main .spinner h5{
+	padding-top: 30px;
+}

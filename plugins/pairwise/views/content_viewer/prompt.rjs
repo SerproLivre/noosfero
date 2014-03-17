@@ -1,6 +1,16 @@
 extend PairwisePlugin::Helpers::ViewerHelper
 
-div_id = "pairwise_inner_body_#{pairwise_content.id}"
+question = @pairwise_content.prepare_prompt(pairwise_user_identifier(user), nil)
 
-page.replace_html div_id, pairwise_group_content_body(0, @pairwise_content, @prompt_id = nil)
-page.visual_effect :slide_down, div_id
+spinner = "pairwise_spinner#{@pairwise_content.id}"
+
+div_id = "pairwise_prompts_#{@pairwise_content.id}"
+
+page.replace_html div_id, :partial => 'content_viewer/pairwise_prompts', :locals => {
+                    :embeded => params[:embeded], 
+                    :source => params[:source], 
+                    :pairwise_content => @pairwise_content,
+                    :question => question
+                  }
+
+page.call pairwise_spinner_hide_function(@pairwise_content)

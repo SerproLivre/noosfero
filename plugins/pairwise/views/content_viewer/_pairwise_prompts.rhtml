@@ -1,0 +1,6 @@
+<div id="pairwise_prompts_<%= pairwise_content.id %>">
+	<%= pairwise_spinner(pairwise_content) %>
+    <div class="prompt left"><%= choose_left_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id) %></div>
+    <div class="separator"></div>
+	 <div class="prompt right"><%= choose_right_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id  ) %></div>
+</div>

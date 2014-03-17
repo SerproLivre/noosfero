@@ -27,6 +27,11 @@ class PairwisePlugin::PairwiseContent < Article
     self.published = false
     self.accept_comments = false
     self.notify_comments = false
+    @next_prompt = nil
+  end
+
+  def has_next_prompt?
+    @next_prompt.present?
   end
 
   alias_method :original_view_url, :view_url
@@ -64,8 +69,13 @@ class PairwisePlugin::PairwiseContent < Article
 
 
   def prepare_prompt(user_identifier, prompt_id=nil)
-        question = self.question_with_prompt_for_visitor(user_identifier, prompt_id)
-    question
+    prepared_question = question
+    if has_next_prompt? 
+      prepared_question.set_prompt @next_prompt
+    else
+      prepared_question = self.question_with_prompt_for_visitor(user_identifier, prompt_id)
+    end
+    prepared_question
   end
 
   def question
@@ -136,11 +146,15 @@ class PairwisePlugin::PairwiseContent < Article
     raise _("Excepted question not found") if question.nil?
     next_prompt = pairwise_client.vote(question.id, prompt_id, direction, visitor, appearance_id)
     touch #invalidates cache
+    set_next_prompt(next_prompt)
+    next_prompt
   end
 
   def skip_prompt(prompt_id, visitor, appearance_id, reason=nil)
     next_prompt = pairwise_client.skip_prompt(question.id, prompt_id, visitor, appearance_id, reason)
     touch #invalidates cache
+    set_next_prompt(next_prompt)
+    next_prompt
   end
 
   def ask_skip_reasons(prompt)
@@ -261,4 +275,10 @@ class PairwisePlugin::PairwiseContent < Article
        end
     end
    end
+
+private
+
+  def set_next_prompt(prompt)
+    @next_prompt = Pairwise::Prompt.new(prompt["prompt"])
+  end
 end
