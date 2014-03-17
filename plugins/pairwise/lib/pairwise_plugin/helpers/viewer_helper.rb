@@ -117,11 +117,11 @@ module PairwisePlugin::Helpers::ViewerHelper
   def pairwise_group_content_body(index, pairwise_content, prompt_id = nil)
     question = pairwise_content.prepare_prompt(pairwise_user_identifier(user), prompt_id)
     style = (index > 0) ? 'display:none' : ''
-    content_tag :div, :class => "pairwise_inner_body", :style => style do
+    content_tag :div, :class => "pairwise_inner_body", :id => "pairwise_inner_body_#{pairwise_content.id}", :style => style do
       render :partial => 'content_viewer/prompt_body', 
         :locals => {
-                    :embeded => false, 
-                    :source => '', 
+                    :embeded => params[:embeded], 
+                    :source => params[:source], 
                     :pairwise_content => pairwise_content,
                     :question => question
                   }

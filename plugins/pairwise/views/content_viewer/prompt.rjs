@@ -1,0 +1,6 @@
+extend PairwisePlugin::Helpers::ViewerHelper
+
+div_id = "pairwise_inner_body_#{pairwise_content.id}"
+
+page.replace_html div_id, pairwise_group_content_body(0, @pairwise_content, @prompt_id = nil)
+page.visual_effect :slide_down, div_id

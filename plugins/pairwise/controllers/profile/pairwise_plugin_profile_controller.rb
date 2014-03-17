@@ -17,7 +17,12 @@ class PairwisePluginProfileController < ProfileController
   def choose
     @pairwise_content = find_content(params)
     vote = @pairwise_content.vote_to(params[:prompt_id], params[:direction], user_identifier, params[:appearance_id])
-    redirect_to after_action_url
+    raise vote.inspect
+    if request.xhr? 
+      render 'content_viewer/prompt.rjs'
+    else
+      redirect_to after_action_url 
+    end
   end
 
   def skip_prompt
@@ -26,7 +31,13 @@ class PairwisePluginProfileController < ProfileController
     @pairwise_content = find_content(params)
     reason = params[:reason]
     skip = @pairwise_content.skip_prompt(params[:prompt_id], user_identifier, params[:appearance_id], reason)
-    redirect_to after_action_url
+    raise skip.inspect
+    if request.xhr? 
+      render 'content_viewer/prompt.rjs'
+    else
+      redirect_to after_action_url  
+    end
+        
   end
 
   def result
