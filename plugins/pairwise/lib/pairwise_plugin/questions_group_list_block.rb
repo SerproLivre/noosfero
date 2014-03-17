@@ -21,6 +21,14 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
      end
   end
 
+  def contains_question?(id)
+    if self.settings[:questions_ids]
+      self.settings[:questions_ids].include?(id.to_s) 
+    else 
+      return false
+    end
+  end
+
    def questions_ids
     self.settings[:questions_ids]
   end
