@@ -8,12 +8,12 @@ class PairwisePlugin::PairwiseContent < Article
   validate_on_create :validate_choices
 
   REASONS_ARRAY = [
-     {:text => N_("I like both ideas"), :compare => false},
-     {:text => N_("I think both ideas are the same"), :compare => false},
-     {:text => N_("I don't know enough about either idea"),:compare => false},
-     {:text => N_("I don't like either idea"), :compare => false},
-     {:text => N_("I don't know enough about: "),:compare => true},
-     {:text => N_("I just can't decide"),:compare => false}
+     {:text => _("I like both ideas"), :compare => false},
+     {:text => _("I think both ideas are the same"), :compare => false},
+     {:text => _("I don't know enough about either idea"),:compare => false},
+     {:text => _("I don't like either idea"), :compare => false},
+     {:text => _("I don't know enough about: "),:compare => true},
+     {:text => _("I just can't decide"),:compare => false}
   ]
 
   def initialize(*args)
