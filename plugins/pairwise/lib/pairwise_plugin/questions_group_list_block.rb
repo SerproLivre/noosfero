@@ -89,7 +89,7 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     return [] if self.owner.nil?
     result = []
     conditions = {}
-    if questions_ids
+    if questions_ids && !questions_ids.empty?
       questions_ids.each do |id|
         if self.owner.kind_of?(Environment) 
           question = self.owner.portal_community.questions.find(id) 
