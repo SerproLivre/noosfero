@@ -57,9 +57,9 @@ class PairwisePluginProfileController < ProfileController
           flash_target[:notice] = _("Thanks for your contributtion!")
         else
           if(@page.allow_new_ideas?)
-            flash_target[:error] = _("Unfortunatelly we could register your idea.")
+            flash_target[:error] = _("Unfortunatelly, we are not able to register your idea.")
           else
-            flash_target[:notice] = _("Unfortunatelly new ideas aren't allowed anymore.")
+            flash_target[:notice] = _("Unfortunatelly, new ideas are not allowed anymore.")
           end
         end
       rescue Exception => e
