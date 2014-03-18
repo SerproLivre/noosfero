@@ -256,9 +256,9 @@ class PairwisePlugin::PairwiseContent < Article
     return allow_new_ideas
   end
 
-  def add_new_idea(text)
+  def add_new_idea(text, visitor=nil)
     return false unless allow_new_ideas?
-    pairwise_client.add_new_idea(pairwise_question_id, text)
+    pairwise_client.add_new_idea(pairwise_question_id, text, visitor)
   end
 
   def join_choices(ids_choices_to_join, id_choice_elected, user)

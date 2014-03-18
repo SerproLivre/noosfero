@@ -53,7 +53,7 @@ class PairwisePluginProfileController < ProfileController
       @embeded = params.has_key?("embeded")
       @source = params[:source]
       begin
-        if @page.add_new_idea(params[:idea][:text])
+        if @page.add_new_idea(params[:idea][:text], user_identifier)
           flash_target[:notice] = _("Thanks for your contributtion!")
         else
           if(@page.allow_new_ideas?)

@@ -27,11 +27,13 @@
 <table class="pairwise_choices_table">
 	<tr>
 		<th><%= _("Text") %></th>
+		<th><%= _("Author") %></th>
 		<th></th>
 	</tr>
 	<% @choices.each do |choice| %>
 		<tr>
       <td><%= choice.data %></td>
+      <td><%= choice.user_created ? choice.choice.creator_identifier : profile.identifier %></td>
 			<td width="105px">
 				<%= link_to_edit_choice(@pairwise_content, choice) %>
 				<% unless choice.active %>

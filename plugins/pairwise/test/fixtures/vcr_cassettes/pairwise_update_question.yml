@@ -8,9 +8,9 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
-          <visitor-identifier>1</visitor-identifier>
           <name>Question 1</name>
           <local-identifier>1</local-identifier>
+          <visitor-identifier>1</visitor-identifier>
           <ideas>Choice 1
         Choice 2</ideas>
         </question>
@@ -25,33 +25,33 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "923"
+      - "921"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlNDU1ZTU4YjczNTAwZThkNzE1ODdkZTU2N2FlODg2OWE%3D--dccbf4094db2e7726c7a7bd6d723687c0f94c550; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "180"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlZDhkM2E2NWM0MmE2OWNkMWMxODRkNTU2YzZhMDdlYmU%3D--0403b1845834213af69e618ec5aa11270f7391fa; path=/; HttpOnly
-      Etag: 
-      - "\"77b3a3845bd0520e23da42feba3feff7\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "142"
+      Etag: 
+      - "\"e10a4ecad2ee796de647436a5d754335\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:34 GMT
+      - Tue, 18 Mar 2014 13:53:32 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
           <active type="boolean">false</active>
           <choices-count type="integer">0</choices-count>
-          <created-at type="datetime">2014-02-25T14:16:34Z</created-at>
-          <creator-id type="integer">8</creator-id>
-          <id type="integer">622</id>
+          <created-at type="datetime">2014-03-18T13:53:31Z</created-at>
+          <creator-id type="integer">4</creator-id>
+          <id type="integer">4</id>
           <inactive-choices-count type="integer">0</inactive-choices-count>
           <information nil="true"></information>
           <it-should-autoactivate-ideas type="boolean">false</it-should-autoactivate-ideas>
@@ -61,42 +61,42 @@ http_interactions:
           <show-results type="boolean">true</show-results>
           <site-id type="integer">1</site-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:34Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:31Z</updated-at>
           <uses-catchup type="boolean">true</uses-catchup>
           <version type="integer">1</version>
           <votes-count type="integer">0</votes-count>
         </question>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:34 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:32 GMT
 - request: 
     method: put
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/622.xml
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/4.xml
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
-          <active type="boolean">true</active>
           <prompts-count type="integer">0</prompts-count>
+          <updated-at type="datetime">2014-03-18T13:53:31Z</updated-at>
+          <active type="boolean">true</active>
+          <votes-count type="integer">0</votes-count>
           <version type="integer">1</version>
-          <site-id type="integer">1</site-id>
-          <uses-catchup type="boolean">true</uses-catchup>
           <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
           <information nil="true"></information>
-          <choices-count type="integer">0</choices-count>
-          <creator-id type="integer">8</creator-id>
+          <id type="integer">4</id>
+          <uses-catchup type="boolean">true</uses-catchup>
+          <creator-id type="integer">4</creator-id>
           <tracking nil="true"></tracking>
-          <inactive-choices-count type="integer">0</inactive-choices-count>
-          <votes-count type="integer">0</votes-count>
-          <id type="integer">622</id>
-          <visitor-identifier>1</visitor-identifier>
+          <choices-count type="integer">0</choices-count>
+          <site-id type="integer">1</site-id>
           <name>Question 1</name>
-          <local-identifier>1</local-identifier>
-          <updated-at type="datetime">2014-02-25T14:16:34Z</updated-at>
           <show-results type="boolean">true</show-results>
+          <inactive-choices-count type="integer">0</inactive-choices-count>
+          <local-identifier>1</local-identifier>
+          <visitor-identifier>1</visitor-identifier>
+          <created-at type="datetime">2014-03-18T13:53:31Z</created-at>
           <ideas>Choice 1
         Choice 2</ideas>
-          <created-at type="datetime">2014-02-25T14:16:34Z</created-at>
         </question>
 
     headers: 
@@ -109,29 +109,29 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
       - "1"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlMDQ0YmY1ZGZlMmY1OWUxYTZlM2RkNTM2OTI1MTUwOGM%3D--1038ef2e280bcada953209be557c671d4ac8f9bc; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "113"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlNTE2MWMzNWE2MGQ5Y2I1MTAyMjgzNDAzZTUxZWMzZTc%3D--75efd5461f388c5b3710ef2f089495682b66809a; path=/; HttpOnly
       Cache-Control: 
       - no-cache
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "53"
       Date: 
-      - Tue, 25 Feb 2014 14:16:34 GMT
+      - Tue, 18 Mar 2014 13:53:32 GMT
     body: 
       string: " "
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:34 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:32 GMT
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/622.xml
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/4.xml
     body: 
       string: ""
     headers: 
@@ -142,149 +142,149 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
-      Server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
-      Content-Length: 
-      - "965"
-      Content-Type: 
-      - application/xml; charset=utf-8
-      X-Runtime: 
-      - "39"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhcvcXVlc3Rpb25zLzYyMi54bWw6D3Nlc3Npb25faWQiJWM0ZmI3Yjc4ZWZkZWVjYTI5ZjQwMzQyNjJkNzcxMmUx--c907f5acbfe888fb2bbb537b4e9aa47a711eb81a; path=/; HttpOnly
-      Etag: 
-      - "\"73015620c928f6da60e089d35312dda3\""
-      Cache-Control: 
-      - private, max-age=0, must-revalidate
-      Date: 
-      - Tue, 25 Feb 2014 14:16:34 GMT
-    body: 
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <question>
-          <active type="boolean">true</active>
-          <choices-count type="integer">2</choices-count>
-          <created-at type="datetime">2014-02-25T14:16:34Z</created-at>
-          <creator-id type="integer">8</creator-id>
-          <id type="integer">622</id>
-          <inactive-choices-count type="integer">0</inactive-choices-count>
-          <information nil="true"></information>
-          <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
-          <local-identifier>1</local-identifier>
-          <name>Question 1</name>
-          <prompts-count type="integer">0</prompts-count>
-          <show-results type="boolean">true</show-results>
-          <site-id type="integer">1</site-id>
-          <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:34Z</updated-at>
-          <uses-catchup type="boolean">true</uses-catchup>
-          <version type="integer">2</version>
-          <votes-count type="integer">0</votes-count>
-          <item-count type="integer">2</item-count>
-        </question>
-
-    http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:34 GMT
-- request: 
-    method: put
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/622.xml
-    body: 
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <question>
-          <active type="boolean">true</active>
-          <prompts-count type="integer">0</prompts-count>
-          <version type="integer">2</version>
-          <site-id type="integer">1</site-id>
-          <uses-catchup type="boolean">true</uses-catchup>
-          <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
-          <information nil="true"></information>
-          <choices-count type="integer">2</choices-count>
-          <creator-id type="integer">8</creator-id>
-          <tracking nil="true"></tracking>
-          <inactive-choices-count type="integer">0</inactive-choices-count>
-          <id type="integer">622</id>
-          <name>New name</name>
-          <votes-count type="integer">0</votes-count>
-          <local-identifier>1</local-identifier>
-          <item-count type="integer">2</item-count>
-          <updated-at type="datetime">2014-02-25T14:16:34Z</updated-at>
-          <show-results type="boolean">true</show-results>
-          <created-at type="datetime">2014-02-25T14:16:34Z</created-at>
-        </question>
-
-    headers: 
-      Accept: 
-      - "*/*"
-      Content-Type: 
-      - application/xml
-  response: 
-    status: 
-      code: 200
-      message: "OK "
-    headers: 
-      Connection: 
-      - Keep-Alive
-      Server: 
-      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
-      Content-Length: 
-      - "1"
-      Content-Type: 
-      - application/xml; charset=utf-8
-      X-Runtime: 
-      - "48"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlYjI5NDAyOTc3ODlhNjg5ZmY2ZTY2NjU3NGI3MGQyNDE%3D--b49abf17485d5549a25e2d63fe505753a08a832e; path=/; HttpOnly
-      Cache-Control: 
-      - no-cache
-      Date: 
-      - Tue, 25 Feb 2014 14:16:35 GMT
-    body: 
-      string: " "
-    http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
-- request: 
-    method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/622.xml
-    body: 
-      string: ""
-    headers: 
-      Accept: 
-      - application/xml
-  response: 
-    status: 
-      code: 200
-      message: "OK "
-    headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
       - "963"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhUvcXVlc3Rpb25zLzQueG1sOg9zZXNzaW9uX2lkIiVmMTE3MzE0MjZkZWIzMTA0ZDc2OWUyMmUwY2I1ZmJkMw%3D%3D--931b245e8287eeedaf868537dd26d15dac62d12a; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "96"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhcvcXVlc3Rpb25zLzYyMi54bWw6D3Nlc3Npb25faWQiJTllYWUzMjM0Y2E1OTNjNTM0NDQ1MjU1ODY3NzkzY2Ji--f37d00f96fb67ebb6935961f9666b5b991ffcf12; path=/; HttpOnly
-      Etag: 
-      - "\"4e85208aa8c6cb4d6889a109aeb866ec\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "99"
+      Etag: 
+      - "\"47502300372faf4e6c7b5e523025c7a6\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:35 GMT
+      - Tue, 18 Mar 2014 13:53:32 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
           <active type="boolean">true</active>
           <choices-count type="integer">2</choices-count>
-          <created-at type="datetime">2014-02-25T14:16:34Z</created-at>
-          <creator-id type="integer">8</creator-id>
-          <id type="integer">622</id>
+          <created-at type="datetime">2014-03-18T13:53:31Z</created-at>
+          <creator-id type="integer">4</creator-id>
+          <id type="integer">4</id>
+          <inactive-choices-count type="integer">0</inactive-choices-count>
+          <information nil="true"></information>
+          <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
+          <local-identifier>1</local-identifier>
+          <name>Question 1</name>
+          <prompts-count type="integer">0</prompts-count>
+          <show-results type="boolean">true</show-results>
+          <site-id type="integer">1</site-id>
+          <tracking nil="true"></tracking>
+          <updated-at type="datetime">2014-03-18T13:53:32Z</updated-at>
+          <uses-catchup type="boolean">true</uses-catchup>
+          <version type="integer">2</version>
+          <votes-count type="integer">0</votes-count>
+          <item-count type="integer">2</item-count>
+        </question>
+
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 13:53:32 GMT
+- request: 
+    method: put
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/4.xml
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <question>
+          <prompts-count type="integer">0</prompts-count>
+          <updated-at type="datetime">2014-03-18T13:53:32Z</updated-at>
+          <active type="boolean">true</active>
+          <votes-count type="integer">0</votes-count>
+          <version type="integer">2</version>
+          <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
+          <id type="integer">4</id>
+          <information nil="true"></information>
+          <uses-catchup type="boolean">true</uses-catchup>
+          <creator-id type="integer">4</creator-id>
+          <item-count type="integer">2</item-count>
+          <tracking nil="true"></tracking>
+          <name>New name</name>
+          <choices-count type="integer">2</choices-count>
+          <site-id type="integer">1</site-id>
+          <show-results type="boolean">true</show-results>
+          <local-identifier>1</local-identifier>
+          <inactive-choices-count type="integer">0</inactive-choices-count>
+          <created-at type="datetime">2014-03-18T13:53:31Z</created-at>
+        </question>
+
+    headers: 
+      Accept: 
+      - "*/*"
+      Content-Type: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "1"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlOWQ0MmMyMDU2ZTg2ZmMxNWJiMWJjOGFmZjU0YzEzMGQ%3D--65e0d4ebabdef5ab35424b49d7d3ba053043bec4; path=/; HttpOnly
+      Content-Type: 
+      - application/xml; charset=utf-8
+      Cache-Control: 
+      - no-cache
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "45"
+      Date: 
+      - Tue, 18 Mar 2014 13:53:32 GMT
+    body: 
+      string: " "
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 13:53:32 GMT
+- request: 
+    method: get
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/4.xml
+    body: 
+      string: ""
+    headers: 
+      Accept: 
+      - application/xml
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      Server: 
+      - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
+      Content-Length: 
+      - "961"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhUvcXVlc3Rpb25zLzQueG1sOg9zZXNzaW9uX2lkIiVmY2M2YmRkYzIyN2Y4NjdjODlkMzIyMGZjZDEwZWFiZA%3D%3D--69aae7ad54982192c7c145ab10d9d31f2f76e85a; path=/; HttpOnly
+      Content-Type: 
+      - application/xml; charset=utf-8
+      Cache-Control: 
+      - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "36"
+      Etag: 
+      - "\"0fee6a1f73a2c0d5bceb2e041fcb913d\""
+      Date: 
+      - Tue, 18 Mar 2014 13:53:32 GMT
+    body: 
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <question>
+          <active type="boolean">true</active>
+          <choices-count type="integer">2</choices-count>
+          <created-at type="datetime">2014-03-18T13:53:31Z</created-at>
+          <creator-id type="integer">4</creator-id>
+          <id type="integer">4</id>
           <inactive-choices-count type="integer">0</inactive-choices-count>
           <information nil="true"></information>
           <it-should-autoactivate-ideas type="boolean">true</it-should-autoactivate-ideas>
@@ -294,7 +294,7 @@ http_interactions:
           <show-results type="boolean">true</show-results>
           <site-id type="integer">1</site-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:34Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:32Z</updated-at>
           <uses-catchup type="boolean">true</uses-catchup>
           <version type="integer">3</version>
           <votes-count type="integer">0</votes-count>
@@ -302,4 +302,4 @@ http_interactions:
         </question>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:35 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:32 GMT

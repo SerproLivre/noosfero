@@ -29,13 +29,14 @@ class Pairwise::Client
     question.save
   end
 
-  def add_choice(question_id, choice_text)
+  def add_choice(question_id, choice_text, visitor=nil)
     question = Pairwise::Question.find question_id
     raise Pairwise::Error.new("Question not found in pairwise") if question.nil?
+    visitor_identifier = visitor.blank? ? @local_identifier.to_s : visitor
     choice_args = {
                     :question_id => question_id,
                     :local_identifier => @local_identifier.to_s,
-                    :visitor_identifier => @local_identifier.to_s,
+                    :visitor_identifier => visitor_identifier,
                     :data => choice_text
                   }
     Pairwise::Choice.create(choice_args)

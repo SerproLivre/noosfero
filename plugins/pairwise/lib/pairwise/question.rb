@@ -31,8 +31,12 @@ class Pairwise::Question < ActiveResource::Base
     get_choices.select { |c| c if c.data.eql?(text) }
   end
 
-  def add_choice(text)
-    Pairwise::Choice.create(:data => text, :question_id => self.id, :active => "true")
+  def add_choice(text, visitor=nil)
+    if(visitor.nil?)
+      Pairwise::Choice.create(:data => text, :question_id => self.id, :active => "true")
+    else
+      Pairwise::Choice.create(:data => text, :question_id => self.id, :active => "true", :visitor_identifier => visitor)
+    end
   end
 
   def self.find_with_prompt(id, creator_id, visitor_id)#, prompt_id=nil)
