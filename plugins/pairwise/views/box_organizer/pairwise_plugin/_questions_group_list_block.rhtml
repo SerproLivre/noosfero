@@ -7,6 +7,10 @@
   <%
     questions = @block.available_questions
   %>
+  <div class="group_description">
+    <h3> <%= _('Description:') %> </h3>
+    <%= text_area(:block, :group_description, :rows => 6, :cols => 50) %>
+  </div>
   <div id="questions_content" %>
     <h3> <%= _('Choose which attributes should be displayed and drag to reorder them:') %> </h3>
     <ul id="pairwise_questions_list">

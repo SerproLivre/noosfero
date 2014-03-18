@@ -2,9 +2,12 @@
 
 <script src="/plugins/pairwise/javascripts/pairwise.js" type="text/javascript"></script>
 
- <%= block_title(block.title) %>
+<%= block_title(block.title) %>
 
 <div id='pairwise_group_list_block_<%= block.id %>' class='pairwise_group_list_container' data-open-prompt="0">
+  <div class="description">
+    <%= block.group_description %>
+  </div>
 	<div class="question container">
 	<% if block.questions.nil?  || block.questions.empty? %>
 		<span><%= _("Empty") %></span>
