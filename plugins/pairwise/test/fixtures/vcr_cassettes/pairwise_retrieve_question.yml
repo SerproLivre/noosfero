@@ -3,7 +3,7 @@ recorded_with: VCR 2.8.0
 http_interactions: 
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621.xml
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3.xml
     body: 
       string: ""
     headers: 
@@ -14,43 +14,43 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "958"
+      - "956"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhUvcXVlc3Rpb25zLzMueG1sOg9zZXNzaW9uX2lkIiViNDNhZjdhNzY0YTk5Yjg1YzMyOTcyYjM2YzExNGQwNg%3D%3D--43f1cfa66b564c94c154466e9076731ef1815293; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "31"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhcvcXVlc3Rpb25zLzYyMS54bWw6D3Nlc3Npb25faWQiJTM0MjYwODhmZWE1M2QyMGNiODU4YTMxYmUyYzNiOWUz--78305795282552ebfb5f5b9ce75c9d8f66bb03bf; path=/; HttpOnly
-      Etag: 
-      - "\"6aff43874c87f80028ca1c7a2d991209\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "101"
+      Etag: 
+      - "\"136a4319c14522cafd554602fe195a14\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:32 GMT
+      - Tue, 18 Mar 2014 13:53:29 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
           <active type="boolean">true</active>
           <choices-count type="integer">3</choices-count>
-          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
-          <creator-id type="integer">8</creator-id>
-          <id type="integer">621</id>
+          <created-at type="datetime">2014-03-18T13:53:23Z</created-at>
+          <creator-id type="integer">4</creator-id>
+          <id type="integer">3</id>
           <inactive-choices-count type="integer">0</inactive-choices-count>
           <information nil="true"></information>
           <it-should-autoactivate-ideas type="boolean">false</it-should-autoactivate-ideas>
           <local-identifier>1</local-identifier>
           <name>Q1</name>
-          <prompts-count type="integer">1</prompts-count>
+          <prompts-count type="integer">2</prompts-count>
           <show-results type="boolean">true</show-results>
           <site-id type="integer">1</site-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:28Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:25Z</updated-at>
           <uses-catchup type="boolean">true</uses-catchup>
           <version type="integer">5</version>
           <votes-count type="integer">1</votes-count>
@@ -58,4 +58,4 @@ http_interactions:
         </question>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:32 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:29 GMT

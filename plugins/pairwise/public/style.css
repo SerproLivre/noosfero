@@ -238,6 +238,7 @@ div.pairwise_group_list_container .row {
   margin-top:10px;
   margin-bottom:auto;
   padding:0px;
+  cursor: auto;
 }
 
 div.pairwise_group_list_container .row p {
@@ -265,6 +266,7 @@ div.pairwise_group_list_container .number{
   }
 
 div.pairwise_group_list_container .row.secondary {
+  cursor: pointer;
   background-color: #497B16;
 }
 

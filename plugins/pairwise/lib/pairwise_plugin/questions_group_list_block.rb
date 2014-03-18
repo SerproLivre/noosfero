@@ -21,6 +21,18 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
      end
   end
 
+  def random_sort= value
+    self.settings[:random_sort] = value
+  end
+
+  def random_sort
+    self.settings[:random_sort]
+  end
+
+  def is_random?
+    random_sort && !'0'.eql?(random_sort)
+  end
+
   def contains_question?(id)
     if self.settings[:questions_ids]
       self.settings[:questions_ids].include?(id.to_s) 
@@ -37,20 +49,27 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     if value.is_a?(Array)
       self.settings[:questions_ids] =  value
     else
-      self.settings[:questions_ids] = value.nil? ? [] : [value]
+      self.settings[:questions_ids] = value.nil? ? [] : value.split(",")
     end
     self.settings[:questions_ids].delete('')
   end
 
-  def shuffle_questions
-    (questions && questions.length > 0) ? questions.shuffle : nil
+  def questions_for_view
+    result = nil
+    if questions && questions.length > 0
+       result = is_random? ? questions.shuffle : questions
+    end
+    result
   end
 
   def questions(reload = false)
     @questions = nil if reload
     if @questions || questions_ids
       begin
-        @questions = Article.find(:all, :conditions => {'id' => questions_ids})
+        @questions = []
+        questions_ids.each do |id|
+          @questions << Article.find(id)
+        end
       rescue ActiveRecord::RecordNotFound
         # dangling reference, clear it
         @questions = []
@@ -68,7 +87,26 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
 
   def available_questions
     return [] if self.owner.nil?
-    self.owner.kind_of?(Environment) ? self.owner.portal_community.questions : self.owner.questions
+    result = []
+    conditions = {}
+    if questions_ids && !questions_ids.empty?
+      questions_ids.each do |id|
+        if self.owner.kind_of?(Environment) 
+          question = self.owner.portal_community.questions.find(id) 
+        else
+          question = self.owner.questions.find(id)
+        end          
+        result << question
+      end     
+      conditions = { :conditions => ['id not in (?)', questions_ids] }
+    end
+
+    if self.owner.kind_of?(Environment) 
+      result += self.owner.portal_community.questions.find(:all, conditions)
+    else 
+      result += self.owner.questions.find(:all, conditions)
+    end
+    result
   end
 
   def self.expire_on

@@ -41,6 +41,15 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
       assert_equal 2, @question.get_choices.size
     end
   end
+   should 'record that an user created the choice' do
+    VCR.use_cassette('record_choice_creator') do
+      assert_equal 3, @question.get_choices.size
+      @client.add_choice(@question.id, 'New Choice', 'John Travolta')
+      assert_equal 4, @question.choices_include_inactive.size
+      created_choice = @question.choices_include_inactive[2]
+      assert_equal true, created_choice.user_created 
+    end
+  end
 
   should 'update a choice text' do
     VCR.use_cassette('pairwise_update_choice_text') do

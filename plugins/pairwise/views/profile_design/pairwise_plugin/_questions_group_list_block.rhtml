@@ -8,12 +8,23 @@
     questions = @block.available_questions
   %>
   <div id="questions_content" %>
-    <ul>
+    <h3> <%= _('Choose which attributes should be displayed and drag to reorder them:') %> </h3>
+    <ul id="pairwise_questions_list">
       <% questions.each do |question| %>
         <li>
-          <%= labelled_check_box(question.name, "block[questions_ids][]", question.id, @block.settings[:questions_ids] && @block.settings[:questions_ids].include?(question.id.to_s) ) %>
+          <%=  
+            check_box_tag( "block[questions_ids][]", question.id, @block.settings[:questions_ids] && @block.settings[:questions_ids].include?(question.id.to_s), :id => "pairwise_question_#{question.id}" ) +
+            content_tag( 'label', question.name, :for => "pairwise_question_#{question.id}" )
+          %>
         </li>
       <% end %>
     </ul>
+   <div class="random_sort">
+      <%= labelled_form_field check_box(:block, :random_sort) + _('Show items in a random order'), '' %>
+  </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  jQuery( "#pairwise_questions_list" ).sortable();
+</script>

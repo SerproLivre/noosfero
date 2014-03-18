@@ -3,7 +3,7 @@ recorded_with: VCR 2.8.0
 http_interactions: 
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621.xml?creator_id=1&visitor_identifier=guest&with_appearance=true&with_prompt=true
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3.xml?creator_id=1&visitor_identifier=guest&with_appearance=true&with_prompt=true
     body: 
       string: ""
     headers: 
@@ -14,56 +14,56 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "1067"
+      - "1064"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvImEvcXVlc3Rpb25zLzMueG1sP2NyZWF0b3JfaWQ9MSZ2aXNpdG9yX2lkZW50aWZpZXI9Z3Vlc3Qmd2l0aF9hcHBlYXJhbmNlPXRydWUmd2l0aF9wcm9tcHQ9dHJ1ZToPc2Vzc2lvbl9pZCIlYWMzZmU3ZDNhYmVkODZmZGYyNTYxYzRjN2RlNjY0YjM%3D--3a4f27f429286fc546a6e938019fa32fdb91b70f; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "62"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvImMvcXVlc3Rpb25zLzYyMS54bWw%2FY3JlYXRvcl9pZD0xJnZpc2l0b3JfaWRlbnRpZmllcj1ndWVzdCZ3aXRoX2FwcGVhcmFuY2U9dHJ1ZSZ3aXRoX3Byb21wdD10cnVlOg9zZXNzaW9uX2lkIiVlOGM3ZWUzYjY4NDQ5ZmU0OWUzZTljNWFjZmY1NjJlNw%3D%3D--38022c9dd34f3d0ce457886b79414f90337b4fb0; path=/; HttpOnly
-      Etag: 
-      - "\"d3203ddc33d034d8b055599ce1143ea2\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "82"
+      Etag: 
+      - "\"7f078ba830c502f3e05c5572f949f4f4\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:30 GMT
+      - Tue, 18 Mar 2014 13:53:27 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
           <active type="boolean">true</active>
           <choices-count type="integer">3</choices-count>
-          <created-at type="datetime">2014-02-25T14:16:26Z</created-at>
-          <creator-id type="integer">8</creator-id>
-          <id type="integer">621</id>
+          <created-at type="datetime">2014-03-18T13:53:23Z</created-at>
+          <creator-id type="integer">4</creator-id>
+          <id type="integer">3</id>
           <inactive-choices-count type="integer">0</inactive-choices-count>
           <information nil="true"></information>
           <it-should-autoactivate-ideas type="boolean">false</it-should-autoactivate-ideas>
           <local-identifier>1</local-identifier>
           <name>Q1</name>
-          <prompts-count type="integer">1</prompts-count>
+          <prompts-count type="integer">2</prompts-count>
           <show-results type="boolean">true</show-results>
           <site-id type="integer">1</site-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:28Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:25Z</updated-at>
           <uses-catchup type="boolean">true</uses-catchup>
           <version type="integer">5</version>
           <votes-count type="integer">0</votes-count>
           <item-count type="integer">3</item-count>
-          <appearance_id>e82b039d8d4e0c72a68057b451d49900</appearance_id>
-          <picked_prompt_id>194</picked_prompt_id>
+          <appearance_id>7fb7e9aefb38b3ead7e75c87cbbc2e46</appearance_id>
+          <picked_prompt_id>11</picked_prompt_id>
         </question>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:30 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:27 GMT
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/prompts/194.xml
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3/prompts/11.xml
     body: 
       string: ""
     headers: 
@@ -74,45 +74,45 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "566"
+      - "559"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIiAvcXVlc3Rpb25zLzMvcHJvbXB0cy8xMS54bWw6D3Nlc3Npb25faWQiJTc2NWY2ZmE2ZDZkZWZiZmI0YmM4NTI3ZDY2MWY5OTIx--8355c5afeb8191f3d3c86ebe80a4dccfdc44ae59; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "46"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIiMvcXVlc3Rpb25zLzYyMS9wcm9tcHRzLzE5NC54bWw6D3Nlc3Npb25faWQiJTc2Mzk0ZjI5MjNmNmI3NmJkOGY0YTQ5ZTk5YTQ4Njk0--151b98c761cee55006afbbc60391d1a0a9cd97fc; path=/; HttpOnly
-      Etag: 
-      - "\"6751c1210da87c416234a88ebd238a97\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "50"
+      Etag: 
+      - "\"a3c909043cb826bc0f39faabc7471bcd\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:30 GMT
+      - Tue, 18 Mar 2014 13:53:28 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <prompt>
-          <created-at type="datetime">2014-02-25T14:16:29Z</created-at>
-          <id type="integer">194</id>
-          <left-choice-id type="integer">1300</left-choice-id>
-          <question-id type="integer">621</question-id>
-          <right-choice-id type="integer">1302</right-choice-id>
+          <created-at type="datetime">2014-03-18T13:53:26Z</created-at>
+          <id type="integer">11</id>
+          <left-choice-id type="integer">13</left-choice-id>
+          <question-id type="integer">3</question-id>
+          <right-choice-id type="integer">11</right-choice-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:29Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:26Z</updated-at>
           <votes-count type="integer">0</votes-count>
-          <left-choice-text>Choice 1</left-choice-text>
-          <right-choice-text>New inactive choice</right-choice-text>
+          <left-choice-text>New inactive choice</left-choice-text>
+          <right-choice-text>Choice 1</right-choice-text>
         </prompt>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:30 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:28 GMT
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/prompts/194.xml
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3/prompts/11.xml
     body: 
       string: ""
     headers: 
@@ -123,58 +123,58 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "566"
+      - "559"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIiAvcXVlc3Rpb25zLzMvcHJvbXB0cy8xMS54bWw6D3Nlc3Npb25faWQiJWEyMjY5N2ZiZTVhNWUxMDMyZTM2NmU1OTdhM2Y0YmQ2--75d6ab708fef2f4eff3a1e27617bcdc0053dab4b; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "49"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIiMvcXVlc3Rpb25zLzYyMS9wcm9tcHRzLzE5NC54bWw6D3Nlc3Npb25faWQiJWRjM2E5NzRhNzY1MDUzNjZiMWRlODU3MmQwMDNjMGYy--42070d24de6f70ebc02516a4313e7d25bd5293f4; path=/; HttpOnly
-      Etag: 
-      - "\"6751c1210da87c416234a88ebd238a97\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "108"
+      Etag: 
+      - "\"a3c909043cb826bc0f39faabc7471bcd\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:31 GMT
+      - Tue, 18 Mar 2014 13:53:28 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <prompt>
-          <created-at type="datetime">2014-02-25T14:16:29Z</created-at>
-          <id type="integer">194</id>
-          <left-choice-id type="integer">1300</left-choice-id>
-          <question-id type="integer">621</question-id>
-          <right-choice-id type="integer">1302</right-choice-id>
+          <created-at type="datetime">2014-03-18T13:53:26Z</created-at>
+          <id type="integer">11</id>
+          <left-choice-id type="integer">13</left-choice-id>
+          <question-id type="integer">3</question-id>
+          <right-choice-id type="integer">11</right-choice-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:29Z</updated-at>
+          <updated-at type="datetime">2014-03-18T13:53:26Z</updated-at>
           <votes-count type="integer">0</votes-count>
-          <left-choice-text>Choice 1</left-choice-text>
-          <right-choice-text>New inactive choice</right-choice-text>
+          <left-choice-text>New inactive choice</left-choice-text>
+          <right-choice-text>Choice 1</right-choice-text>
         </prompt>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:31 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:28 GMT
 - request: 
     method: post
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/621/prompts/194/vote.xml?next_prompt%5Bvisitor_identifier%5D=guest-tester&next_prompt%5Bwith_appearance%5D=true&next_prompt%5Bwith_visitor_stats%5D=true&question_id=621&vote%5Bappearance_lookup%5D=e82b039d8d4e0c72a68057b451d49900&vote%5Bdirection%5D=left&vote%5Bvisitor_identifier%5D=guest-tester
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3/prompts/11/vote.xml?next_prompt%5Bvisitor_identifier%5D=guest-tester&next_prompt%5Bwith_appearance%5D=true&next_prompt%5Bwith_visitor_stats%5D=true&question_id=3&vote%5Bappearance_lookup%5D=7fb7e9aefb38b3ead7e75c87cbbc2e46&vote%5Bdirection%5D=left&vote%5Bvisitor_identifier%5D=guest-tester
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <prompt>
-          <left-choice-text>Choice 1</left-choice-text>
-          <right-choice-id type="integer">1302</right-choice-id>
-          <right-choice-text>New inactive choice</right-choice-text>
-          <tracking nil="true"></tracking>
-          <left-choice-id type="integer">1300</left-choice-id>
-          <id type="integer">194</id>
+          <updated-at type="datetime">2014-03-18T13:53:26Z</updated-at>
           <votes-count type="integer">0</votes-count>
-          <updated-at type="datetime">2014-02-25T14:16:29Z</updated-at>
-          <created-at type="datetime">2014-02-25T14:16:29Z</created-at>
+          <id type="integer">11</id>
+          <right-choice-id type="integer">11</right-choice-id>
+          <left-choice-id type="integer">13</left-choice-id>
+          <tracking nil="true"></tracking>
+          <left-choice-text>New inactive choice</left-choice-text>
+          <right-choice-text>Choice 1</right-choice-text>
+          <created-at type="datetime">2014-03-18T13:53:26Z</created-at>
         </prompt>
 
     headers: 
@@ -187,42 +187,42 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
       Content-Length: 
-      - "702"
+      - "695"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlZjlhODY1NWQxMWE2ZTRlMGM0YzI0YTFmOGM4OGQ3M2Y%3D--51a238d54ad7d76107c9b3f27db3bbdd162edbb0; path=/; HttpOnly
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "196"
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlYTc0ZmM3MzRjMjJmOTQyY2FmYmRhNDIwZDM1ZWZmMjA%3D--47549a5397a84e2acfa1a42312c470874087ceaf; path=/; HttpOnly
-      Etag: 
-      - "\"ab0abf42789dbc52c8dbfe9028c63ee7\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
+      Connection: 
+      - Keep-Alive
+      X-Runtime: 
+      - "189"
+      Etag: 
+      - "\"99bb2329ad4ffcb4a022ddcb352c151b\""
       Date: 
-      - Tue, 25 Feb 2014 14:16:31 GMT
+      - Tue, 18 Mar 2014 13:53:28 GMT
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <prompt>
-          <created-at type="datetime">2014-02-25T14:16:29Z</created-at>
-          <id type="integer">194</id>
-          <left-choice-id type="integer">1300</left-choice-id>
-          <question-id type="integer">621</question-id>
-          <right-choice-id type="integer">1302</right-choice-id>
+          <created-at type="datetime">2014-03-18T13:53:27Z</created-at>
+          <id type="integer">12</id>
+          <left-choice-id type="integer">11</left-choice-id>
+          <question-id type="integer">3</question-id>
+          <right-choice-id type="integer">13</right-choice-id>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-02-25T14:16:29Z</updated-at>
-          <votes-count type="integer">1</votes-count>
+          <updated-at type="datetime">2014-03-18T13:53:27Z</updated-at>
+          <votes-count type="integer">0</votes-count>
           <left-choice-text>Choice 1</left-choice-text>
           <right-choice-text>New inactive choice</right-choice-text>
           <visitor_votes>1</visitor_votes>
+          <appearance_id>37d36e84a28d6b9c2d7766e78b6c0128</appearance_id>
           <visitor_ideas>0</visitor_ideas>
-          <appearance_id>7fee04b956b4334dbdebae1691a7459a</appearance_id>
         </prompt>
 
     http_version: 
-  recorded_at: Tue, 25 Feb 2014 14:16:31 GMT
+  recorded_at: Tue, 18 Mar 2014 13:53:28 GMT
