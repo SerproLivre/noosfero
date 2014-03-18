@@ -32,13 +32,17 @@
     <% end %>
     </ul>
   </div>
-	<% if pairwise_content.allow_new_ideas? %>
+	<% if pairwise_content.allow_new_ideas? && user %>
     <div id="suggestions_box">
       <span>Gostaria de sugerir uma ideia?</span>
       <div class="suggestion_form">
 		  <%= render :partial => "pairwise_plugin_profile/suggestion_form",
 					:locals => {:pairwise_content => pairwise_content, :embeded => embeded, :source => source} %>
       </div>
+		</div>
+  <% else %>
+    <div id="suggestions_box_not_logged">
+      <%= link_to("Contribua aqui com sua idéia ou proposta", '#', :id => 'new_idea_button_not_logged', :class => 'require-login-popup') %>
 		</div>
 	<% end %>
 </div>
