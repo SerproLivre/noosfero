@@ -171,14 +171,15 @@ class Pairwise::Client
     new local_identifier
   end
 
-  def add_new_idea(question_id, text)
+  def add_new_idea(question_id, text, visitor=nil)
     raise _("Idea text is empty") if text.empty?
     question = Pairwise::Question.find question_id
     raise Pairwise::Error.new("Question not found in pairwise") if question.nil?
+    visitor_identifier = visitor.blank? ? @local_identifier.to_s : visitor
     choice_args = {
                     :question_id => question_id,
                     :local_identifier => @local_identifier.to_s,
-                    :visitor_identifier => @local_identifier.to_s,
+                    :visitor_identifier => visitor_identifier,
                     :data => text
                   }
     return Pairwise::Choice.create(choice_args)

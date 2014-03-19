@@ -40,7 +40,7 @@ module PairwisePlugin::Helpers::ViewerHelper
     return "pairwise_spinner#{pairwise_content.id}"
   end
   def pairwise_spinner(pairwise_content)
-    text = content_tag :h5, _('Processando... Por favor aguarde e siga contribuindo!')
+    text = content_tag :h5, _('Processing... please wait.')
     content_tag :div, text, :class => "spinner", :id => pairwise_spinner_id(pairwise_content)
   end
 

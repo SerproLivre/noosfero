@@ -8,6 +8,7 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     _('This block displays one of your pairwise questions in a predefined group. You can edit the block to select which one of your questions is going to be displayed in the block.')
   end
 
+  settings_items :group_description, :type => String
 
   def content(args={})
     block = self
