@@ -18,28 +18,29 @@
 	   <%= flash[:notice] %>
 	</div>
 <% end %>
-<div class="choices_filter">
-  <h4><%= _("Filter" ) %></h4>
 
-  <% form_for(:filter, {:action => :index, :controller => 'pairwise_plugin_suggestions', :profile => profile.identifier}) do %>
-    <%= labelled_form_field(_('Text') + ":", text_field_tag('filter[data]', params[:filter] ? params[:filter][:data]:'')) %>
-    <span class="filter_pending">
-      <%= label_tag  _('Show') + ":" %>
-      <%= radio_button_tag :pending, 0, params[:pending]!='1' %> <%= _('Ideas') %>
-      <%= radio_button_tag :pending, 1, params[:pending]=='1' %> <%= _('Suggestions') %>
-    </span>
-    <%= submit_button :search, _('Search') %>
-  <% end %>
+<%#<<div class="choices_filter">%>
+  <!-- <h4><%#= _("Filter" ) %></h4> -->
 
-</div>
+  <%# form_for(:filter, {:action => :index, :controller => 'pairwise_plugin_suggestions', :profile => profile.identifier}) do %>
+    <%#= labelled_form_field(_('Text') + ":", text_field_tag('filter[data]', params[:filter] ? params[:filter][:data]:'')) %>
+    <%#<span class="filter_pending">%>
+      <%#= label_tag  _('Show') + ":" %>
+      <%#= radio_button_tag :pending, 0, params[:pending]!='1' %> <%#= _('Ideas') %>
+      <%#= radio_button_tag :pending, 1, params[:pending]=='1' %> <%#= _('Suggestions') %>
+    <%#<</span>#>
+    <%#= submit_button :search, _('Search') %>
+  <%# end %>
+<%#<</div>%>
+
   <h4><%= choices_showing_text %></h4>
 <table class="pairwise_choices_table">
 	<tr>
 		<th>
-      <%= _('Text'), 'data' %>
+      <%= _('Text') %>
     </th>
 		<th>
-      <%= _('Date'), 'created_at' %>
+      <%= _('Date') %>
     </th>
     <th> <%=_('Author') %></th>
     <th></th>
