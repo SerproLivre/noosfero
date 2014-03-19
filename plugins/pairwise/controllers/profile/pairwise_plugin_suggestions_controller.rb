@@ -61,5 +61,6 @@ private
 
   def load_pairwise_question
     @pairwise_content ||= profile.articles.find(params[:id])
+    render_access_denied unless @pairwise_content.allow_edit?(user)
   end
 end
