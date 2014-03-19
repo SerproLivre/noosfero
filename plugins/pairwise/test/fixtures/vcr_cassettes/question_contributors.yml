@@ -1,5 +1,4 @@
 --- 
-recorded_with: VCR 2.8.0
 http_interactions: 
 - request: 
     method: get
@@ -14,30 +13,30 @@ http_interactions:
       code: 200
       message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
-      Content-Length: 
-      - "955"
-      Etag: 
-      - "\"9dfd43d9c7ddf70c27b138fe83c25a70\""
       Cache-Control: 
       - private, max-age=0, must-revalidate
-      Date: 
-      - Wed, 19 Mar 2014 16:20:29 GMT
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhUvcXVlc3Rpb25zLzMueG1sOg9zZXNzaW9uX2lkIiUwNGE5MWEzMmQ0ZmIxZDE1MWQwZGJkMzYzNTZlMWEzZA%3D%3D--4a99024a2e6aba7fa36aa8e954168fdc70e6f9d8; path=/; HttpOnly
+      X-Runtime: 
+      - "34"
+      Etag: 
+      - "\"39313ba95b65cb4e2d34f30b0a5bd2f8\""
       Content-Type: 
       - application/xml; charset=utf-8
-      X-Runtime: 
-      - "37"
+      Content-Length: 
+      - "955"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIhUvcXVlc3Rpb25zLzMueG1sOg9zZXNzaW9uX2lkIiVjNDJlNjkyMGMxOWVkYWYxNTMzMTI2YTZmNjIyODA1NQ%3D%3D--94c39b83716120a25177673b0a21d788dd4af36c; path=/; HttpOnly
+      Date: 
+      - Wed, 19 Mar 2014 18:46:05 GMT
+      Connection: 
+      - Keep-Alive
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <question>
           <active type="boolean">true</active>
-          <choices-count type="integer">6</choices-count>
+          <choices-count type="integer">9</choices-count>
           <created-at type="datetime">2014-03-18T13:53:23Z</created-at>
           <creator-id type="integer">4</creator-id>
           <id type="integer">3</id>
@@ -54,11 +53,11 @@ http_interactions:
           <uses-catchup type="boolean">true</uses-catchup>
           <version type="integer">6</version>
           <votes-count type="integer">1</votes-count>
-          <item-count type="integer">6</item-count>
+          <item-count type="integer">9</item-count>
         </question>
 
     http_version: 
-  recorded_at: Wed, 19 Mar 2014 16:20:29 GMT
+  recorded_at: Wed, 19 Mar 2014 18:46:05 GMT
 - request: 
     method: post
     uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/questions/3/choices.xml
@@ -67,8 +66,8 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <choice>
           <local-identifier>1</local-identifier>
-          <visitor-identifier>John Travolta</visitor-identifier>
           <data>New Choice</data>
+          <visitor-identifier>John Travolta</visitor-identifier>
         </choice>
 
     headers: 
@@ -81,33 +80,33 @@ http_interactions:
       code: 201
       message: "Created "
     headers: 
-      Connection: 
-      - Keep-Alive
-      Content-Length: 
-      - "1039"
       Cache-Control: 
       - no-cache
-      Date: 
-      - Wed, 19 Mar 2014 16:20:29 GMT
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlZmQ1MmViNjgxMzc4OGI2OTcwY2I1NWJkMzhiYTRmNTI%3D--5b2f9d789adfa7f64cc2fd5395e995e48fa77cb4; path=/; HttpOnly
+      X-Runtime: 
+      - "157"
       Content-Type: 
       - application/xml; charset=utf-8
+      Content-Length: 
+      - "1039"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BjoPc2Vzc2lvbl9pZCIlM2FhODAxMDFkZmUwZDJmMTgyYjNkNGZjMzEzOTQ0ZTM%3D--0cde22913ec32bc420cafc0e60a84bfd45878c00; path=/; HttpOnly
+      Date: 
+      - Wed, 19 Mar 2014 18:46:05 GMT
       Location: 
-      - http://localhost:3030/questions/3/choices/21
-      X-Runtime: 
-      - "97"
+      - http://localhost:3030/questions/3/choices/40
+      Connection: 
+      - Keep-Alive
     body: 
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <choice>
           <active type="boolean">true</active>
-          <created-at type="datetime">2014-03-19T16:20:29Z</created-at>
+          <created-at type="datetime">2014-03-19T18:46:05Z</created-at>
           <creator-id type="integer">5</creator-id>
           <data>New Choice</data>
-          <id type="integer">21</id>
+          <id type="integer">40</id>
           <item-id type="integer" nil="true"></item-id>
           <local-identifier>1</local-identifier>
           <losses type="integer">0</losses>
@@ -121,16 +120,16 @@ http_interactions:
           <request-id type="integer" nil="true"></request-id>
           <score type="float">50.0</score>
           <tracking nil="true"></tracking>
-          <updated-at type="datetime">2014-03-19T16:20:29Z</updated-at>
+          <updated-at type="datetime">2014-03-19T18:46:05Z</updated-at>
           <version type="integer">1</version>
           <wins type="integer">0</wins>
         </choice>
 
     http_version: 
-  recorded_at: Wed, 19 Mar 2014 16:20:29 GMT
+  recorded_at: Wed, 19 Mar 2014 18:46:05 GMT
 - request: 
     method: get
-    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/visitors.xml?ideas_count=1&page=&question_id=3
+    uri: http://abner.oliveira%40serpro.gov.br:serpro@localhost:3030/visitors.xml?ideas_count=1&page=1&question_id=3
     body: 
       string: ""
     headers: 
@@ -138,348 +137,44 @@ http_interactions:
       - application/xml
   response: 
     status: 
-      code: 404
-      message: "Not Found "
+      code: 200
+      message: "OK "
     headers: 
-      Connection: 
-      - Keep-Alive
-      Content-Length: 
-      - "24871"
       Cache-Control: 
-      - no-cache
-      Date: 
-      - Wed, 19 Mar 2014 16:20:30 GMT
+      - private, max-age=0, must-revalidate
       Server: 
       - WEBrick/1.3.1 (Ruby/1.8.7/2013-06-27)
-      Set-Cookie: 
-      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIjQvdmlzaXRvcnMueG1sP2lkZWFzX2NvdW50PTEmcGFnZT0mcXVlc3Rpb25faWQ9MzoPc2Vzc2lvbl9pZCIlNGRhM2QwOGU4NTc2OGEwODY4NzgyOTQxZGJlZWZhODM%3D--c83320f3a647bac41f85d4a887ac06c9ab82fc15; path=/; HttpOnly
+      X-Runtime: 
+      - "107"
+      Etag: 
+      - "\"5252e9c48a1957fab7084271c0aed768\""
       Content-Type: 
-      - text/html; charset=utf-8
+      - application/xml; charset=utf-8
+      Content-Length: 
+      - "527"
+      Set-Cookie: 
+      - _rebirth_session_key=BAh7BzoOcmV0dXJuX3RvIjUvdmlzaXRvcnMueG1sP2lkZWFzX2NvdW50PTEmcGFnZT0xJnF1ZXN0aW9uX2lkPTM6D3Nlc3Npb25faWQiJTNhMzQyOTUyMzY0ZWE4MjA0MzlhNmZjOTY4M2Y5MGRk--215ec52c7edd5d155e2c6cb59c37aadea69c0d65; path=/; HttpOnly
+      Date: 
+      - Wed, 19 Mar 2014 18:46:06 GMT
+      Connection: 
+      - Keep-Alive
     body: 
       string: |
-        <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-          <title>Action Controller: Exception caught</title>
-          <style>
-            body { background-color: #fff; color: #333; }
-        
-            body, p, ol, ul, td {
-              font-family: verdana, arial, helvetica, sans-serif;
-              font-size:   13px;
-              line-height: 18px;
-            }
-        
-            pre {
-              background-color: #eee;
-              padding: 10px;
-              font-size: 11px;
-            }
-        
-            a { color: #000; }
-            a:visited { color: #666; }
-            a:hover { color: #fff; background-color:#000; }
-          </style>
-        </head>
-        <body>
-        
-        <h1>
-          WillPaginate::InvalidPage
-          
-            in VisitorsController#index
-          
-        </h1>
-        <pre>&quot;&quot; given as value, which translates to &#39;0&#39; as page number</pre>
-        
-        
-        
-        <p><code>RAILS_ROOT: /home/80129498572/projetos/participa/pairwise-api</code></p>
-        
-        <div id="traces">
-          
-            
-            <a href="#" onclick="document.getElementById('Framework-Trace').style.display='none';document.getElementById('Full-Trace').style.display='none';document.getElementById('Application-Trace').style.display='block';; return false;">Application Trace</a> |
-          
-            
-            <a href="#" onclick="document.getElementById('Application-Trace').style.display='none';document.getElementById('Full-Trace').style.display='none';document.getElementById('Framework-Trace').style.display='block';; return false;">Framework Trace</a> |
-          
-            
-            <a href="#" onclick="document.getElementById('Application-Trace').style.display='none';document.getElementById('Framework-Trace').style.display='none';document.getElementById('Full-Trace').style.display='block';; return false;">Full Trace</a> 
-          
-        
-          
-            <div id="Application-Trace" style="display: block;">
-              <pre><code>/home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:27:in `validate&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:66:in `initialize&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `new&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `create&#39;
-        /home/80129498572/projetos/participa/pairwise-api/app/controllers/visitors_controller.rb:48:in `index&#39;</code></pre>
-            </div>
-          
-            <div id="Framework-Trace" style="display: none;">
-              <pre><code>/home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:27:in `validate&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:66:in `initialize&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `new&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `create&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:1333:in `send&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:1333:in `perform_action_without_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:617:in `call_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activesupport-2.3.18/lib/active_support/core_ext/benchmark.rb:17:in `ms&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/benchmark.rb:308:in `realtime&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activesupport-2.3.18/lib/active_support/core_ext/benchmark.rb:17:in `ms&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/rescue.rb:160:in `perform_action_without_flash&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/flash.rb:151:in `perform_action_without_newrelic_trace&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/instrumentation/controller_instrumentation.rb:270:in `perform_action&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/method_tracer.rb:240:in `trace_execution_scoped&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/instrumentation/controller_instrumentation.rb:263:in `perform_action&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:532:in `send&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:532:in `process_without_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:606:in `process&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:391:in `process&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:386:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/routing/route_set.rb:438:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:87:in `dispatch&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:121:in `_call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:29:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:29:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:9:in `cache&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:28:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/rack/browser_monitoring.rb:12:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/rack/developer_mode.rb:24:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/string_coercion.rb:25:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/head.rb:9:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/methodoverride.rb:24:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/params_parser.rb:15:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/session/cookie_store.rb:99:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/rack.rb:44:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/failsafe.rb:26:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/user_informer.rb:16:in `_call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/user_informer.rb:12:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `synchronize&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:114:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/reloader.rb:34:in `run&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:108:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/rails/rack/static.rb:31:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:47:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:41:in `each&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:41:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/rails/rack/log_tailer.rb:17:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/content_length.rb:13:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/handler/webrick.rb:48:in `service&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/httpserver.rb:104:in `service&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/httpserver.rb:65:in `run&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:173:in `start_thread&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:162:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:162:in `start_thread&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:95:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:92:in `each&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:92:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:23:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:82:in `start&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/handler/webrick.rb:14:in `run&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/commands/server.rb:111
-        script/server:3:in `require&#39;
-        script/server:3</code></pre>
-            </div>
-          
-            <div id="Full-Trace" style="display: none;">
-              <pre><code>/home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:27:in `validate&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:66:in `initialize&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `new&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb:98:in `create&#39;
-        /home/80129498572/projetos/participa/pairwise-api/app/controllers/visitors_controller.rb:48:in `index&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:1333:in `send&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:1333:in `perform_action_without_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:617:in `call_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activesupport-2.3.18/lib/active_support/core_ext/benchmark.rb:17:in `ms&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/benchmark.rb:308:in `realtime&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activesupport-2.3.18/lib/active_support/core_ext/benchmark.rb:17:in `ms&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/rescue.rb:160:in `perform_action_without_flash&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/flash.rb:151:in `perform_action_without_newrelic_trace&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/instrumentation/controller_instrumentation.rb:270:in `perform_action&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/method_tracer.rb:240:in `trace_execution_scoped&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/agent/instrumentation/controller_instrumentation.rb:263:in `perform_action&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:532:in `send&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:532:in `process_without_filters&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/filters.rb:606:in `process&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:391:in `process&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/base.rb:386:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/routing/route_set.rb:438:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:87:in `dispatch&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:121:in `_call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:29:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:29:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:9:in `cache&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/query_cache.rb:28:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/activerecord-2.3.18/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/rack/browser_monitoring.rb:12:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/newrelic_rpm-3.5.5.38/lib/new_relic/rack/developer_mode.rb:24:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/string_coercion.rb:25:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/head.rb:9:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/methodoverride.rb:24:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/params_parser.rb:15:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/session/cookie_store.rb:99:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/rack.rb:44:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/failsafe.rb:26:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/user_informer.rb:16:in `_call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/airbrake-3.1.12/lib/airbrake/user_informer.rb:12:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `synchronize&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/lock.rb:11:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:114:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/reloader.rb:34:in `run&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/actionpack-2.3.18/lib/action_controller/dispatcher.rb:108:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/rails/rack/static.rb:31:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:47:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:41:in `each&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/urlmap.rb:41:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/rails/rack/log_tailer.rb:17:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/content_length.rb:13:in `call&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/handler/webrick.rb:48:in `service&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/httpserver.rb:104:in `service&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/httpserver.rb:65:in `run&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:173:in `start_thread&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:162:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:162:in `start_thread&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:95:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:92:in `each&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:92:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:23:in `start&#39;
-        /home/80129498572/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/webrick/server.rb:82:in `start&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rack-1.1.6/lib/rack/handler/webrick.rb:14:in `run&#39;
-        /home/80129498572/projetos/participa/pairwise-api/vendor/ruby/1.8/gems/rails-2.3.18/lib/commands/server.rb:111
-        script/server:3:in `require&#39;
-        script/server:3</code></pre>
-            </div>
-          
-        </div>
-        
-        
-        
-        
-        
-        
-        <h2 style="margin-top: 30px">Request</h2>
-        <p><b>Parameters</b>: <pre>{&quot;question_id&quot;=&gt;&quot;3&quot;,
-         &quot;ideas_count&quot;=&gt;&quot;1&quot;,
-         &quot;format&quot;=&gt;&quot;xml&quot;,
-         &quot;page&quot;=&gt;&quot;&quot;}</pre></p>
-        
-        <p><a href="#" onclick="document.getElementById('session_dump').style.display='block'; return false;">Show session dump</a></p>
-        <div id="session_dump" style="display:none"><pre class='debug_dump'>--- 
-        </pre></div>
-        
-        
-        <h2 style="margin-top: 30px">Response</h2>
-        <p><b>Headers</b>: <pre>{&quot;Content-Type&quot;=&gt;&quot;application/xml&quot;,
-         &quot;Cache-Control&quot;=&gt;&quot;no-cache&quot;}</pre></p>
-        
-        
-        
-        </body>
-        </html><script type="text/javascript">
-        var Airbrake = {
-          host    : "api.airbrake.io",
-          api_key : null,
-          notice  : {"file":"[PROJECT_ROOT]/vendor/ruby/1.8/gems/will_paginate-2.3.16/lib/will_paginate/collection.rb","environment_name":"production","line_number":"27","component":"visitors","action":"index","error_class":"WillPaginate::InvalidPage"},
-          message : 'This error exists in production!',
-        
-          initialize: function() {
-            if (this.initialized) {
-              return;
-            } else {
-              this.initialized = true;
-            }
-        
-            var data = [];
-        
-            for (var key in this.notice) {
-              data[data.length] = 'notice[' + key + ']=' + this.notice[key];
-            }
-        
-            data[data.length] = 'notice[api_key]=' + this.api_key;
-            data[data.length] = 'callback=Airbrake.onSuccess';
-            data[data.length] = '_=' + (new Date()).getTime();
-        
-            var head = document.getElementsByTagName('head')[0];
-            var done = false;
-        
-            var
-            script = document.createElement('script');
-            script.src  = 'http://' + this.host + '/notices_api/v1/notices/exist?' +
-                          data.join('&');
-            script.type = 'text/javascript';
-            script.onload = script.onreadystatechange = function(){
-              if (!done && (!this.readyState ||
-                  this.readyState == 'loaded' || this.readyState == 'complete')) {
-        
-                done = true;
-        
-                // Handle memory leak in IE. (via jQuery)
-                script.onload = script.onreadystatechange = null;
-                head.removeChild(script);
-              }
-            };
-        
-            head.appendChild(script);
-          },
-        
-          onSuccess: function(error) {
-            var body    = document.getElementsByTagName('body')[0];
-            var text    = document.createTextNode(this.message);
-            var element = document.createElement('a');
-        
-            element.id   = 'airbrake';
-            element.href = 'http://' + error.subdomain + '.' + this.host +
-                           '/projects/' + error.project_id + '/errors/' + error.id;
-            element.appendChild(text);
-        
-            body.insertBefore(element, body.firstChild);
-        
-            var h1      = document.getElementsByTagName('h1')[0];
-            var pre     = document.getElementsByTagName('pre')[0];
-            var wrapper = document.createElement('div');
-        
-            wrapper.id = 'wrapper';
-            wrapper.appendChild(h1);
-            wrapper.appendChild(pre);
-        
-            body.insertBefore(wrapper, body.children[1]);
-          }
-        };
-        
-        window.onload = function() {
-          Airbrake.initialize.apply(Airbrake);
-        };
-        </script>
-        
-        <style type="text/css">
-        #airbrake {
-          background: #FFF url(http://airbrake.io/images/fell-off-the-toad.gif) no-repeat top right;
-          color: #F00;
-          padding: 45px 101px 45px 12px;
-          font-size: 14px;
-          font-weight: bold;
-          display: block;
-          float: right;
-        }
-        
-        #wrapper {
-          padding-right: 360px;
-        }
-        </style>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <visitors type="array">
+          <visitor>
+            <activated type="boolean" nil="true"></activated>
+            <created-at type="datetime">2014-03-18T13:48:45Z</created-at>
+            <id type="integer">5</id>
+            <ideas-count type="">7</ideas-count>
+            <identifier>John Travolta</identifier>
+            <site-id type="integer">1</site-id>
+            <tracking nil="true"></tracking>
+            <updated-at type="datetime">2014-03-18T13:48:45Z</updated-at>
+            <user-id type="integer" nil="true"></user-id>
+          </visitor>
+        </visitors>
 
     http_version: 
-  recorded_at: Wed, 19 Mar 2014 16:20:30 GMT
+  recorded_at: Wed, 19 Mar 2014 18:46:06 GMT
+recorded_with: VCR 2.8.0

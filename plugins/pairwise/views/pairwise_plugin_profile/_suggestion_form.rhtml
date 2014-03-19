@@ -1,6 +1,6 @@
 	<% remote_form_for('idea', :url => pairwise_suggestion_url(pairwise_content, embeded, source),
-	    :id => "pairwise_suggestion_form_#{pairwise_content.id}", :loading => "$('#pairwise_suggestion_form_#{pairwise_content.id} suggestion_box_fields').hide();$('#pairwise_suggestion_form_#{pairwise_content.id} suggestion_box_loading').show();", :loaded => "$('#pairwise_suggestion_form_#{pairwise_content.id} suggestion_box_fields').show();$('#pairwise_suggestion_form_#{pairwise_content.id} suggestion_box_loading').hide();") do  |f| %>
-	  <div id="suggestion_box_fields">
+	    :html => {:id => "pairwise_suggestion_form_#{pairwise_content.id}"}, :loading => "jQuery('#pairwise_suggestion_form_#{pairwise_content.id} .suggestion_box_fields').hide();jQuery('#pairwise_suggestion_form_#{pairwise_content.id} .suggestion_box_loading').show();", :loaded => "jQuery('#pairwise_suggestion_form_#{pairwise_content.id} .suggestion_box_fields').show();jQuery('#pairwise_suggestion_form_#{pairwise_content.id} .suggestion_box_loading').hide();") do  |f| %>
+	  <div class="suggestion_box_fields">
 		<div class="error">
 	       <%= flash[:error] %>
 	    </div>
@@ -16,7 +16,7 @@
 			</div>
 		</div>
 	  </div>
-	  <div id="suggestion_box_loading" style="display: none;">
+	  <div class="suggestion_box_loading" style="display: none;">
 	    <span>Processando...</span>
 	  </div>
 	  <script type='text/javascript'>

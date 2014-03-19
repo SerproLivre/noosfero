@@ -147,6 +147,8 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
   end
   
   should 'return users whom suggested ideas' do
+    #Rails.logger.level = :debug # at any time
+    #ActiveResource::Base.logger = Logger.new(STDERR)
     VCR.use_cassette('question_contributors') do
       @client.add_choice(@question.id, 'New Choice', 'John Travolta')
       assert_equal 1, @question.get_ideas_contributors().size

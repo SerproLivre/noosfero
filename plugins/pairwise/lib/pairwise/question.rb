@@ -33,8 +33,8 @@ class Pairwise::Question < ActiveResource::Base
 
   # return visitors whom suggested ideas
   def get_ideas_contributors(options=nil)
-    options = {}
-    options.merge(options) if options.is_a? Hash
+    options = {:page => 1}
+    options.merge!(options) if options.is_a? Hash
     Pairwise::Visitor.find(:all, :params => {:question_id => id, :ideas_count => 1, :page => options[:page]})
   end
 

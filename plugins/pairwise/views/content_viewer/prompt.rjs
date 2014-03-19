@@ -13,4 +13,4 @@ page.replace_html div_id, :partial => 'content_viewer/pairwise_prompts', :locals
                     :question => question
                   }
 
-page.call pairwise_spinner_hide_function(@pairwise_content)
+page.call pairwise_spinner_hide_function_name(@pairwise_content)

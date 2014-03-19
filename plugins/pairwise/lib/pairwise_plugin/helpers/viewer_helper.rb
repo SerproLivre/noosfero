@@ -12,7 +12,7 @@ module PairwisePlugin::Helpers::ViewerHelper
           :choice_id => prompt.left_choice_id , :direction => 'left', :appearance_id => appearance_id}
      link_target.merge!(:embeded => 1) if embeded
      link_target.merge!(:source => source) if source
-     link_to_remote prompt.left_choice_text,  :loading => pairwise_spinner_show_function(pairwise_content), :url => link_target
+     link_to_remote prompt.left_choice_text,  :loading => pairwise_spinner_show_function_call(pairwise_content), :url => link_target
   end
 
   def skip_vote_open_function(pairwise_content)
@@ -30,7 +30,7 @@ module PairwisePlugin::Helpers::ViewerHelper
      link_target.merge!(:reason => reason) if reason
      link_text = reason ? reason : _('Skip vote')
      if reason
-        "<li class='skip_vote_item'>" +  link_to_remote(link_text, :loading => pairwise_spinner_show_function(pairwise_content), :url => link_target) + "</li>"
+        "<li class='skip_vote_item'>" +  link_to_remote(link_text, :loading => pairwise_spinner_show_function_call(pairwise_content), :url => link_target) + "</li>"
      else
         link_to_remote(link_text,  link_target)
      end
@@ -44,12 +44,19 @@ module PairwisePlugin::Helpers::ViewerHelper
     content_tag :div, text, :class => "spinner", :id => pairwise_spinner_id(pairwise_content)
   end
 
-  def pairwise_spinner_show_function(pairwise_content)
-    "jQuery('##{pairwise_spinner_id(pairwise_content)}').fadeIn()"
+  def pairwise_spinner_show_function_call(pairwise_content)
+    pairwise_spinner_show_function_name(pairwise_content) + "()"
+  end
+  def pairwise_spinner_show_function_name(pairwise_content)
+    "jQuery('##{pairwise_spinner_id(pairwise_content)}').fadeIn"
   end
 
-  def pairwise_spinner_hide_function(pairwise_content)
-    "jQuery('##{pairwise_spinner_id(pairwise_content)}').fadeOut()"
+
+  def pairwise_spinner_hide_function_call(pairwise_content)
+    pairwise_spinner_hide_function_name(pairwise_content) + "()"
+  end
+  def pairwise_spinner_hide_function_name(pairwise_content)
+    "jQuery('##{pairwise_spinner_id(pairwise_content)}').fadeOut"
   end
 
   def pairwise_user_identifier(user)
@@ -85,7 +92,7 @@ module PairwisePlugin::Helpers::ViewerHelper
           :choice_id => prompt.right_choice_id , :direction => 'right' , :appearance_id => appearance_id}
     link_target.merge!(:embeded => 1) if embeded
     link_target.merge!(:source => source) if source
-    link_to_remote prompt.right_choice_text, :loading => pairwise_spinner_show_function(pairwise_content), :url => link_target
+    link_to_remote prompt.right_choice_text, :loading => pairwise_spinner_show_function_call(pairwise_content), :url => link_target
   end
 
   def pairwise_edit_link(label, pairwise_content)
