@@ -252,6 +252,10 @@ class PairwisePlugin::PairwiseContent < Article
     question
   end
 
+  def ideas_contributors(options=nil)
+    question.get_ideas_contributors(options)
+  end
+
   def allow_new_ideas?
     return allow_new_ideas
   end

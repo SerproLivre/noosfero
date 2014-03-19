@@ -159,7 +159,7 @@ class Pairwise::Client
       error_message = "#{_("Plugin was not configured")}. #{_("Please contact the administrator")}"
       raise Pairwise::Error.new error_message
     end
-    [Pairwise::Question, Pairwise::Prompt, Pairwise::Choice].each do | klas |
+    [Pairwise::Question, Pairwise::Prompt, Pairwise::Choice, Pairwise::Visitor].each do | klas |
       if([Pairwise::Prompt, Pairwise::Choice].include?(klas))
         klas.site = settings[:api_host] +  "questions/:question_id/"
       else

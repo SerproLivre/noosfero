@@ -31,6 +31,13 @@ class Pairwise::Question < ActiveResource::Base
     get_choices.select { |c| c if c.data.eql?(text) }
   end
 
+  # return visitors whom suggested ideas
+  def get_ideas_contributors(options=nil)
+    options = {}
+    options.merge(options) if options.is_a? Hash
+    Pairwise::Visitor.find(:all, :params => {:question_id => id, :ideas_count => 1, :page => options[:page]})
+  end
+
   def add_choice(text, visitor=nil)
     if(visitor.nil?)
       Pairwise::Choice.create(:data => text, :question_id => self.id, :active => "true")

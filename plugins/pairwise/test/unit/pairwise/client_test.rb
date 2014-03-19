@@ -145,6 +145,13 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
       assert_equal new_choice_text, @client.find_question_by_id(@question.id).find_choice(choice.id).data
     end
   end
+  
+  should 'return users whom suggested ideas' do
+    VCR.use_cassette('question_contributors') do
+      @client.add_choice(@question.id, 'New Choice', 'John Travolta')
+      assert_equal 1, @question.get_ideas_contributors().size
+    end
+  end
 
   should 'toggle autoactivate ideas' do
     VCR.use_cassette('pairwise_toggle_autactivate_ideas', :erb => {:autoactivateidea => false}) do
