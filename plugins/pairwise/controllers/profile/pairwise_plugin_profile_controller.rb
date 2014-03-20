@@ -41,6 +41,17 @@ class PairwisePluginProfileController < ProfileController
   def result
     @embeded = params.has_key?("embeded")
     @page = @pairwise_content = find_content(params)
+    if request.xhr?
+      render 'content_viewer/result'
+    else
+      render 'pairwise_plugin_profile/result'
+    end
+  end
+
+  def prompt_tab
+    @embeded = params.has_key?("embeded")
+    pairwise_content = find_content(params)
+    render 'content_viewer/prompt_tab', :locals => {:pairwise_content => pairwise_content}
   end
 
   def suggest_idea

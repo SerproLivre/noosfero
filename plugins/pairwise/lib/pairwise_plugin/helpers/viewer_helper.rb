@@ -115,6 +115,12 @@ module PairwisePlugin::Helpers::ViewerHelper
     link_to  label, link_target, options
   end
 
+  def pairwise_tab_remote_link(label, link_target, pairwise_content, embeded = false, options = {})
+    link_target.merge!(:embeded => 1) if embeded
+    loading_javascript = pairwise_spinner_show_function_call(pairwise_content) + pairwise_hide_skip_call(pairwise_content)
+    link_to_remote label, :loading => loading_javascript, :url => link_target, :html => options
+  end
+
   def pairwise_suggestion_url(question, embeded = false, source = nil)
     target =  { :controller => :pairwise_plugin_profile, :profile => question.profile.identifier,:action => 'suggest_idea', :id => question.id }
     target.merge!({ :embeded => 1 }) if embeded

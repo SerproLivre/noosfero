@@ -1,0 +1,53 @@
+<div id="pairwise_main" class="pairwise_main">
+<div id="pairwise_<%= pairwise_content.id %>">
+
+<%
+  @question = @page.question
+ %>
+
+<% extend PairwisePlugin::Helpers::ViewerHelper %>
+
+<% unless @page.errors[:base].nil? %>
+    <h3><%= _('Pairwise Integration Error') %></h3>
+    <p> <%= _('Please contact the administrator') %></p>
+    <pre>
+    <%= @page.errors[:base] %>
+    </pre>
+<% else %>
+
+  <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :results} %>
+  <div class="pairwise_content">
+<%= pairwise_spinner(pairwise_content) %>
+    <table>
+      <thead>
+      <tr>
+        <th><%= _('Choice Text') %></th>
+        <th><%= _('Choice Wins') %></th>
+        <th><%= _('Choice Losses') %></th>
+        <th><%= _('Choice Score') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @page.question.get_choices.each do |choice| %>
+      <tr>
+          <td><%= choice.data %></td>
+          <td><%= choice.wins %></td>
+          <td><%= choice.losses %></td>
+          <td><%= choice.score.round.to_s %></td>
+    	</tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% if @page.allow_edit?(user) %>
+    <span class="embeded_code_link"><a href="javascript:;"><%= _("Show/Hide Embeded Code") %></a></span>
+    <div id="pairwise_embeded_box" style="display:none">
+      <%= pairwise_embeded_code(@page) %>
+    </div>
+  <% end %>
+  <%#= link_to _('Vote'), @page.url, :class=>"button with-text icon-edit" %>
+<% end %>
+
+</div>
+</div>
+

@@ -1,19 +1,6 @@
 <div id="pairwise_main" class="pairwise_main">
-  <% if embeded %>
-     <ul class="pairwise_menu">
-       <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_voting_tab'  %></li>
-       <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>
-    </ul>
-  <% else %>
-    <ul class="pairwise_menu">
-       <li><%=  link_to _('Pairwise Vote'), '#', :class => 'active', :id => 'pairwise_voting_tab'  %></li>
-       <li><%=  pairwise_result_link _('Results'), pairwise_content, embeded  %></li>
-        <% if pairwise_content.allow_edit?(user) %>
-          <li><%= pairwise_edit_link _('Edit'), pairwise_content %></li>
-          <li><%= ideas_management_link _('Manage Ideas'), pairwise_content, user %></li>
-        <% end %>
-    </ul>
-  <% end %>
+<div id="pairwise_<%= pairwise_content.id %>">
+  <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :prompt} %>
   <div class="pairwise_content">
       <div class="pairwise_body"><%= pairwise_content.title %></div>
       <div class="pairwise_call_for_action"><%= pairwise_content.body %></div>
@@ -42,4 +29,5 @@
       <%= link_to(_("Add new idea"), '#', :id => 'new_idea_button_not_logged', :class => 'require-login-popup') %>
 		</div>
 	<% end %>
+</div>
 </div>
