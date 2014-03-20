@@ -18,21 +18,11 @@
 	   <%= flash[:notice] %>
 	</div>
 <% end %>
-
-<%#<<div class="choices_filter">%>
-  <!-- <h4><%#= _("Filter" ) %></h4> -->
-
-  <%# form_for(:filter, {:action => :index, :controller => 'pairwise_plugin_suggestions', :profile => profile.identifier}) do %>
-    <%#= labelled_form_field(_('Text') + ":", text_field_tag('filter[data]', params[:filter] ? params[:filter][:data]:'')) %>
-    <%#<span class="filter_pending">%>
-      <%#= label_tag  _('Show') + ":" %>
-      <%#= radio_button_tag :pending, 0, params[:pending]!='1' %> <%#= _('Ideas') %>
-      <%#= radio_button_tag :pending, 1, params[:pending]=='1' %> <%#= _('Suggestions') %>
-    <%#<</span>#>
-    <%#= submit_button :search, _('Search') %>
-  <%# end %>
-<%#<</div>%>
-
+<div class="choices_filter">
+  <%= label_tag  _('Show') + ":" %>
+  <%= link_to_if  has_param_pending_choices?, _('Ideas'), :pending => '' %> |  
+  <%= link_to_if ! has_param_pending_choices?, _('Suggestions'), :pending => '1' %>
+</div>
   <h4><%= choices_showing_text %></h4>
 <table class="pairwise_choices_table">
 	<tr>
