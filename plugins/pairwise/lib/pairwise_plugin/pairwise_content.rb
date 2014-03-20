@@ -192,6 +192,10 @@ class PairwisePlugin::PairwiseContent < Article
     end
   end
 
+  def flag_choice(choice_id, explanation=nil)
+    pairwise_client.flag_choice(choice_id, explanation || 'reproved')
+  end
+
   def find_choice id
     return nil if question.nil?
     question.find_choice id

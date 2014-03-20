@@ -16,8 +16,6 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
     @client = Pairwise::Client.build('1', pairwise_env_settings)
     @choices = "Choice 1\nChoice 2"
 
-    "http://localhost/questions.xml"
-    
     VCR.use_cassette('pairwise_create_question') do
       @question = @client.create_question('Q1', @choices)
     end
@@ -163,6 +161,16 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
     
     VCR.use_cassette('pairwise_toggle_autactivate_ideas', :erb => {:autoactivateidea => true}) do
       assert_equal true, @client.find_question_by_id(@question.id).it_should_autoactivate_ideas
+    end
+  end
+
+  should 'flag a choice as reproved' do
+    VCR.use_cassette('flag_choice_as_reproved') do
+      question = @client.find_question_by_id 6
+      choices_waiting_approval = question.choices_inactive_ignore_flagged
+      assert choices_waiting_approval.count > 0, "Expected to find a inactive choice here"
+      @client.flag_choice(question, choices_waiting_approval.first.id, 'reproved')
+      assert_equal 0, question.choices_inactive_ignore_flagged.count
     end
   end
 end

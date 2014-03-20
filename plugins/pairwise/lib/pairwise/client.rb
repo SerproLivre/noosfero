@@ -66,6 +66,15 @@ class Pairwise::Client
     choice.save
   end
 
+  def flag_choice(question, choice_id, reason)
+    choice = Pairwise::Choice.find(choice_id, :params => {:question_id => question.id})
+    raise N_("Invalid choice id") unless choice
+        
+    choice.put(:flag,
+                    :visitor_identifier => @local_identifier.to_s,
+                    :explanation => reason)
+  end
+
   # finds a question by a given id
   def find_question_by_id(question_id)
     question = Pairwise::Question.find question_id
