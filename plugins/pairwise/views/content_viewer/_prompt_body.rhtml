@@ -26,12 +26,9 @@
 			<%= skip_vote_open_function(pairwise_content) %>
 	</div>
   <div id="skip_vote_reasons_<%= pairwise_content.id %>" class="skip_vote_reasons">
-    <ul>
-    <% pairwise_content.ask_skip_reasons(question.prompt).each do |reason| %>
-      <%= skip_vote_link(pairwise_content, question, question.prompt, embeded, source, question.appearance_id, reason ) %>
-    <% end %>
-    </ul>
+  <%= render :partial => 'content_viewer/pairwise_skips', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
   </div>
+
 	<% if pairwise_content.allow_new_ideas? && user %>
     <div id="suggestions_box">
       <span>Gostaria de sugerir uma ideia?</span>
