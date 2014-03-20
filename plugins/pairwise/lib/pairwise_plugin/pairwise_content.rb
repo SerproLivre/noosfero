@@ -278,6 +278,27 @@ class PairwisePlugin::PairwiseContent < Article
     end
    end
 
+  def copy(options = {})
+    attrs = attributes.reject! { |key, value| ATTRIBUTES_NOT_COPIED.include?(key.to_sym) }
+    attrs.merge!(options)
+    obj = self.class.new(attrs)
+    obj.pairwise_question_id = self.pairwise_question_id
+    obj.allow_new_ideas = self.allow_new_ideas
+    id = obj.send(:create_without_callbacks)
+    raise "Objeto não gravado" unless id
+  end
+
+  def copy!(options = {})
+    attrs = attributes.reject! { |key, value| ATTRIBUTES_NOT_COPIED.include?(key.to_sym) }
+    attrs.merge!(options)
+    #self.class.create!(attrs)
+    obj = self.class.new(attrs)
+    obj.pairwise_question_id = self.pairwise_question_id
+    obj.allow_new_ideas = self.allow_new_ideas
+    id = obj.send(:create_without_callbacks)
+    raise "Objeto não gravado" unless id
+  end
+
 private
 
   def set_next_prompt(prompt)

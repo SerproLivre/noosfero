@@ -78,7 +78,7 @@ class Pairwise::Client
   # finds a question by a given id
   def find_question_by_id(question_id)
     question = Pairwise::Question.find question_id
-    return question if question.local_identifier == @local_identifier.to_s
+    return question #if question.local_identifier == @local_identifier.to_s
   end
 
   # returns all questions in pairwise owned by the local_identifier user
@@ -90,7 +90,7 @@ class Pairwise::Client
   # get a question with a prompt, visitor_id (id of logged user) should be provided
   def question_with_prompt(question_id, visitor_id = "guest", prompt_id=nil)
     question = Pairwise::Question.find_with_prompt(question_id, @local_identifier, visitor_id)
-    return question if question.local_identifier == @local_identifier.to_s
+    return question #if question.local_identifier == @local_identifier.to_s
   end
 
   # register votes in response to a prompt to a pairwise question
