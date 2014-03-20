@@ -39,7 +39,7 @@
 		<tr>
       <td width="270px"><%= choice.data %></td>
       <td><%= show_date choice.created_at %></td>
-      <td width="105px" ><%= choice.user_created ? choice.choice.creator_identifier : profile.identifier %></td>
+      <td width="105px" ><%= choice.user_created ? choice.creator_identifier : profile.identifier %></td>
 			<td width="50px">
 				<%= link_to_edit_choice(@pairwise_content, choice) %>
 				<% unless choice.active %>
