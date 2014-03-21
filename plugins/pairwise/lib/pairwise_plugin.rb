@@ -30,4 +30,8 @@ class PairwisePlugin < Noosfero::Plugin
     true
   end
 
+  def js_files
+    'javascripts/pairwise.js'
+  end
+
 end

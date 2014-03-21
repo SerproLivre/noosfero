@@ -11,8 +11,6 @@
   'jquery-ui-timepicker-addon', :cache => 'cache-general' %>
 <% end %>
 
-<script src="/plugins/pairwise/javascripts/pairwise.js" type="text/javascript"></script>
-
 <% @question = pairwise_content.prepare_prompt(pairwise_user_identifier(user), prompt_id) %>
 
 <%= render :partial => 'content_viewer/prompt_body', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => @question, :source => (defined?(source) ? source : '') }%>
