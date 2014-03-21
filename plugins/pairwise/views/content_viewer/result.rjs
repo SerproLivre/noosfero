@@ -2,7 +2,7 @@ extend PairwisePlugin::Helpers::ViewerHelper
 
 div_id = "pairwise_#{@pairwise_content.id}"
 
-page.replace_html div_id, :partial => 'content_viewer/result', :locals => {
+page.replace div_id, :partial => 'content_viewer/result', :locals => {
                     :embeded => params[:embeded],
                     :pairwise_content => @pairwise_content,
                   }
