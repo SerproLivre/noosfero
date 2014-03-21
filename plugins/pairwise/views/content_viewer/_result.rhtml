@@ -19,11 +19,9 @@
   <div class="pairwise_content">
 <%= pairwise_spinner(pairwise_content) %>
 
-    <% choices = @page.question.get_choices %>
-
     <div class="total_votes">
       <span class="label"><%= _('Total votes:') %></span>
-      <span class="value"><%= choices.map(&:wins).sum %></span>
+      <span class="value"><%= @page.question.votes_count %></span>
     </div>
     <table>
       <thead>
@@ -35,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <% choices.each do |choice| %>
+      <% @page.question.get_choices.each do |choice| %>
       <tr>
           <td><%= choice.data %></td>
           <td><%= choice.wins %></td>
