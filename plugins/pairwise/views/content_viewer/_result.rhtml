@@ -47,9 +47,11 @@
     </table>
   </div>
   <% if @page.allow_edit?(user) %>
-    <span class="embeded_code_link"><a href="javascript:;"><%= _("Show/Hide Embeded Code") %></a></span>
-    <div id="pairwise_embeded_box" style="display:none">
-      <%= pairwise_embeded_code(@page) %>
+    <div class="embeded_code">
+      <span class="embeded_code_link"><a href="javascript:;"><%= _("Show/Hide Embeded Code") %></a></span>
+      <div id="pairwise_embeded_box" style="display:none">
+        <%= pairwise_embeded_code(@page) %>
+      </div>
     </div>
   <% end %>
   <%#= link_to _('Vote'), @page.url, :class=>"button with-text icon-edit" %>

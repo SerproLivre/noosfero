@@ -110,6 +110,9 @@ $.fn.extend({
   		$('#pairwise_voting_tab').attr("class", "active");
   	}
   });
- 
+  $('span.embeded_code_link a').die();
+  $('span.embeded_code_link a').live('click', function(){
+    $(this).parents('.embeded_code').find('#pairwise_embeded_box').slideToggle();
+  });
 
  });
