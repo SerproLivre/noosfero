@@ -18,6 +18,13 @@
   <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :results} %>
   <div class="pairwise_content">
 <%= pairwise_spinner(pairwise_content) %>
+
+    <% choices = @page.question.get_choices %>
+
+    <div class="total_votes">
+      <span class="label"><%= _('Total votes:') %></span>
+      <span class="value"><%= choices.map(&:wins).sum %></span>
+    </div>
     <table>
       <thead>
       <tr>
@@ -28,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @page.question.get_choices.each do |choice| %>
+      <% choices.each do |choice| %>
       <tr>
           <td><%= choice.data %></td>
           <td><%= choice.wins %></td>
