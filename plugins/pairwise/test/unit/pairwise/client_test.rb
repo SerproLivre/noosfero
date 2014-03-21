@@ -167,10 +167,10 @@ class Pairwise::ClientTest < ActiveSupport::TestCase
   should 'flag a choice as reproved' do
     VCR.use_cassette('flag_choice_as_reproved') do
       question = @client.find_question_by_id 6
-      choices_waiting_approval = question.choices_inactive_ignore_flagged
+      choices_waiting_approval = question.pending_choices
       assert choices_waiting_approval.count > 0, "Expected to find a inactive choice here"
       @client.flag_choice(question, choices_waiting_approval.first.id, 'reproved')
-      assert_equal 0, question.choices_inactive_ignore_flagged.count
+      assert_equal 0, question.pending_choices.count
     end
   end
 end

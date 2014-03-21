@@ -7,11 +7,11 @@ class Pairwise::Question < ActiveResource::Base
     Pairwise::Choice.find(:all, :params => {:question_id => self.id })
   end
 
-  def choices_include_inactive
+    def choices_include_inactive
     Pairwise::Choice.find(:all, :params => {:question_id => self.id , :include_inactive => true})
   end
 
-  def choices_inactive_ignore_flagged
+  def pending_choices
     Pairwise::Choice.find(:all, :params => {:question_id => self.id , :inactive_ignore_flagged => true})
   end
   

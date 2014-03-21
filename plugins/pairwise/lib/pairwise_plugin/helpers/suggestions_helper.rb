@@ -17,4 +17,8 @@ module PairwisePlugin::Helpers::SuggestionsHelper
     link_to _("Approve"), :action => "approve", :id => pairwise_content.id, :choice_id => choice.id,:page => params[:page], :pending => params[:pending]
   end
 
+   def link_to_reprove_idea(pairwise_content, choice, reason, params)
+    link_to _("Reprove"), :action => "reprove", :reason => reason || 'reprove' , :id => pairwise_content.id, :choice_id => choice.id,:page => params[:page], :pending => params[:pending]
+  end
+
 end

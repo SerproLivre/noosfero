@@ -45,14 +45,20 @@ class PairwisePluginSuggestionsController < ProfileController
 
   def inactivate
     return no_result if @pairwise_content.nil?
-    @pairwise_content.inactivate(params[:choice][:id])
+    @pairwise_content.inactivate(params[:choice_id])
+    redirect_to :action => :index, :id => @pairwise_content.id, :page => params[:page], :pending => params[:pending]
+  end
+
+  def reprove
+    return no_result if @pairwise_content.nil?
+    @pairwise_content.flag_choice(params[:choice_id])
     redirect_to :action => :index, :id => @pairwise_content.id, :page => params[:page], :pending => params[:pending]
   end
 
 private
 
   def list_choices
-    '1'.eql?(params[:pending]) ? @pairwise_content.inactive_choices : @pairwise_content.raw_choices
+    '1'.eql?(params[:pending]) ? @pairwise_content.pending_choices : @pairwise_content.raw_choices
   end
 
   def no_result

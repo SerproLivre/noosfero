@@ -98,7 +98,15 @@ class PairwisePlugin::PairwiseContent < Article
     @description
   end
 
-  def inactive_choices
+  def pending_choices(options={})
+    if(question)
+      @inactive_choices ||= question.pending_choices(options)
+    else
+      []
+    end
+  end
+
+  def inactive_choices(options={})
     if(question)
       @inactive_choices ||= (question.choices_include_inactive - question.get_choices)
     else
@@ -106,7 +114,7 @@ class PairwisePlugin::PairwiseContent < Article
     end
   end
 
-  def raw_choices
+  def raw_choices(options={})
     return [] if pairwise_question_id.nil?
     @raw_choices ||= question ? question.get_choices : []
   end
@@ -193,7 +201,7 @@ class PairwisePlugin::PairwiseContent < Article
   end
 
   def flag_choice(choice_id, explanation=nil)
-    pairwise_client.flag_choice(choice_id, explanation || 'reproved')
+    pairwise_client.flag_choice(question, choice_id, explanation || 'reproved')
   end
 
   def find_choice id
@@ -297,6 +305,10 @@ class PairwisePlugin::PairwiseContent < Article
     obj.allow_new_ideas = self.allow_new_ideas
     id = obj.send(:create_without_callbacks)
     raise "Objeto não gravado" unless id
+  end
+
+  def page_size
+    20
   end
 
 private
