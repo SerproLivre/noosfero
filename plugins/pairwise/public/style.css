@@ -337,3 +337,8 @@ div.pairwise_main .spinner {
 div.pairwise_main .spinner h5{
 	padding-top: 30px;
 }
+
+#pairwise_main .pairwise_content .total_votes {
+  float: right;
+  color: #999;
+}

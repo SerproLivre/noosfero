@@ -37,6 +37,13 @@ class PairwisePlugin::PairwiseContent < Article
                       :id => id)
   end
 
+  def prompt_url
+    profile.url.merge(
+                      :controller => :pairwise_plugin_profile,
+                      :action => :prompt_tab,
+                      :id => id)
+  end
+
   def self.short_description
     'Pairwise question'
   end
