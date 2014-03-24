@@ -3,10 +3,10 @@ class PairwisePluginProfileController < ProfileController
 
   def prompt
     prompt_id = params[:prompt_id]
-    pairwise_content = find_content(params)
+    @pairwise_content = find_content(params)
     embeded = params.has_key?("embeded")
     source = params[:source]
-    locals = {:source => source, :pairwise_content => pairwise_content, :embeded => embeded, :source => source, :prompt_id => prompt_id }
+    locals = {:source => source, :pairwise_content => @pairwise_content, :embeded => embeded, :source => source, :prompt_id => prompt_id }
     if embeded
       render 'content_viewer/prompt', :layout => "embeded", :locals => locals
     else
@@ -25,8 +25,8 @@ class PairwisePluginProfileController < ProfileController
   end
 
   def skip_prompt
-    raise 'Invalid request' unless params.has_key?('prompt_id')
-    raise 'Invalid request' unless params.has_key?('appearance_id')
+    raise _('Invalid request') unless params.has_key?('prompt_id')
+    raise _('Invalid request') unless params.has_key?('appearance_id')
     @pairwise_content = find_content(params)
     reason = params[:reason]
     skip = @pairwise_content.skip_prompt(params[:prompt_id], user_identifier, params[:appearance_id], reason)
@@ -41,6 +41,7 @@ class PairwisePluginProfileController < ProfileController
   def result
     @embeded = params.has_key?("embeded")
     @page = @pairwise_content = find_content(params)
+
     if request.xhr?
       render 'content_viewer/result'
     else
@@ -50,15 +51,15 @@ class PairwisePluginProfileController < ProfileController
 
   def prompt_tab
     @embeded = params.has_key?("embeded")
-    pairwise_content = find_content(params)
-    render 'content_viewer/prompt_tab', :locals => {:pairwise_content => pairwise_content}
+    @pairwise_content = find_content(params)
+    render 'content_viewer/prompt_tab', :locals => {:pairwise_content => @pairwise_content}
   end
 
   def suggest_idea
     flash_target = request.xhr? ? flash.now : flash
 
     if user.nil?
-      flash_tager[:error] = _("Only logged user could suggest new ideas")
+      flash_target[:error] = _("Only logged user could suggest new ideas")
     else
       @page = @pairwise_content = find_content(params)
       @embeded = params.has_key?("embeded")

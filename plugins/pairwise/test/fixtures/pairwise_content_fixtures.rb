@@ -43,13 +43,14 @@ class PairwiseContentFixtures
     content
   end
 
-  def self.pairwise_question 
+  def self.pairwise_question(votes_count = 0)
     question = Pairwise::Question.new({
         :id => 1,
         :name => 'Question 1',
         :active => true,
         :description => 'Some description',
-        :appearance_id =>  'abcdef'
+        :appearance_id =>  'abcdef',
+        :votes_count => votes_count
       })
   end
 
@@ -68,5 +69,12 @@ class PairwiseContentFixtures
     question = self.pairwise_question
     question.set_prompt self.pairwise_prompt
     question
+  end
+
+  def self.choices_with_stats
+    choices = []
+    choices << Pairwise::Choice.new(:id => 1, :data => "Choice1", :wins => 0, :losses => 0, :score => 0.0)
+    choices << Pairwise::Choice.new(:id => 2, :data => "Choice2", :wins => 0, :losses => 0, :score => 0.0)
+    choices << Pairwise::Choice.new(:id => 3, :data => "Choice3", :wins => 0, :losses => 0, :score => 0.0)
   end
 end
